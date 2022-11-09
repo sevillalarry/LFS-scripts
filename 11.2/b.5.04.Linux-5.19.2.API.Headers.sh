@@ -1,8 +1,9 @@
 # b.5.04.Linux-5.19.2.API.Headers.sh
 #
 
-tar xvf linux-5.15.76.tar.xz
-cd linux-5.15.76
+export PKG="linux-5.15.76"
+tar xvf $PKG.tar.xz
+cd $PKG
 
 time { \
 \
@@ -14,4 +15,5 @@ cp -rv usr/include $LFS/usr \
 ; }
 
 cd ..
-rm -rf linux-5.15.76
+rm -rf $PKG
+unset PKG
