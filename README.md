@@ -12,10 +12,13 @@
 # Creating/using scripts instead of manually encoding all lines
 #
 # These scripts assumed you finished executing up to Chapter 4
-# and the user is "lfs" at "/mnt/lfs/sources directory"
+# and the location is "/mnt/lfs/sources directory".
+# The user for chapter 5 & 6 is "lfs", while for Chapter 7 up is "root"
 #
 # that means the prompt should be:
-# lfs:/mnt/lfs/sources$
+# lfs:/mnt/lfs/sources$ - for Chapter 5 & 6
+# or
+# lfs:/mnt/lfs/sources# - for Chapter 7 up
 #
 # copy the script files ( *.sh ) in the said directory
 #
