@@ -1,8 +1,9 @@
 # b.6.02.M4-1.4.19.sh
 #
 
-tar xvf m4-1.4.19.tar.xz
-cd m4-1.4.19
+export PKG="m4-1.4.19"
+tar xvf $PKG.tar.xz
+cd $PKG
 
 time { \
 \
@@ -17,4 +18,5 @@ make DESTDIR=$LFS install \
 ; }
 
 cd ..
-rm -rf m4-1.4.19
+rm -rf $PKG
+unset PKG
