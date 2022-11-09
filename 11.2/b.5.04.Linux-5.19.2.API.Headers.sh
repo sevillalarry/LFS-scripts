@@ -1,3 +1,6 @@
+# b.5.04.Linux-5.19.2.API.Headers.sh
+#
+
 tar xvf linux-5.15.76.tar.xz
 cd linux-5.15.76
 
