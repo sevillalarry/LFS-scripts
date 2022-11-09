@@ -1,8 +1,9 @@
 # b.6.03.Ncurses-6.3.sh
 #
 
-tar xvf ncurses-6.3.tar.gz
-cd ncurses-6.3
+export PKG="ncurses-6.3"
+tar xvf $PKG.tar.gz
+cd $PKG
 
 time { \
 \
@@ -36,4 +37,5 @@ echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so
 ; }
 
 cd ..
-rm -rf ncurses-6.3
+rm -rf $PKG
+unset PKG
