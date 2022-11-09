@@ -7,8 +7,8 @@ cd $PKG
 
 time { \
 \
-mkdir -v build && \
-cd       build && \
+mkdir -v build      && \
+cd       build      && \
 \
 ../libstdc++-v3/configure           \
     --host=$LFS_TGT                 \
@@ -19,9 +19,9 @@ cd       build && \
     --disable-libstdcxx-pch         \
     --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/12.2.0  && \
 \
-make && \
+make                        && \
 \
-make DESTDIR=$LFS install && \
+make DESTDIR=$LFS install   && \
 \
 rm -v $LFS/usr/lib/lib{stdc++,stdc++fs,supc++}.la \
 \
