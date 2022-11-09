@@ -1,5 +1,10 @@
 # LfS-scripts
+#
 # Author: Sevilla, Larry
+#  eMail: sevilla.larry.oss@gmail.com
+#
+#
+# LfS ver: 11.2
 # Started: 2022/Nov/08
 #
 # based on: https://www.linuxfromscratch.org/lfs/
@@ -11,4 +16,6 @@
 #
 # that means the prompt should be:
 # lfs:/mnt/lfs/sources$
+#
+# copy the script files ( *.sh ) in the said directory
 #
