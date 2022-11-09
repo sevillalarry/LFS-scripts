@@ -1,8 +1,9 @@
 # b.5.06.Libstdc++.from.GCC-12.2.0.sh
 #
 
-tar xvf gcc-12.2.0.tar.xz
-cd gcc-12.2.0
+export PKG="gcc-12.2.0"
+tar xvf $PKG.tar.xz
+cd $PKG
 
 time { \
 \
@@ -27,4 +28,5 @@ rm -v $LFS/usr/lib/lib{stdc++,stdc++fs,supc++}.la \
 ; }
 
 cd ..
-rm -rf gcc-12.2.0
+rm -rf $PKG
+unset PKG
