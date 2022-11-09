@@ -30,8 +30,8 @@ echo "rootsbindir=/usr/sbin" > configparms && \
       --with-headers=$LFS/usr/include    \
       libc_cv_slibdir=/usr/lib        && \
 \
-export OLD_MAKEFLAGS=MAKEFLAGS && \
-export MAKEFLAGS='-j1'         && \
+export OLD_MAKEFLAGS=$MAKEFLAGS && \
+export MAKEFLAGS='-j1'          && \
 \
 make && \
 \
@@ -41,7 +41,7 @@ sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd && \
 \
 $LFS/tools/libexec/gcc/$LFS_TGT/12.2.0/install-tools/mkheaders && \
 \
-export MAKEFLAGS=OLD_MAKEFLAGS && \
+export MAKEFLAGS=$OLD_MAKEFLAGS && \
 unset OLD_MAKEFLAGS \
 \
 ; }
