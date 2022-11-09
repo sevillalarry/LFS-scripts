@@ -1,3 +1,6 @@
+# b.5.05.Glibc-2.36.sh
+#
+
 tar xvf glibc-2.36.tar.xz
 cd glibc-2.36
 
