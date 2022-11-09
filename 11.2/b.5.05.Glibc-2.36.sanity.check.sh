@@ -1,4 +1,4 @@
-# b.5.05.Glibc-2.36.test.sh
+# b.5.05.Glibc-2.36.sanity.check.sh
 #
 
 echo 'int main(){}' | $LFS_TGT-gcc -xc -
