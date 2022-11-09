@@ -2,7 +2,7 @@
 #
 
 export PKG="m4-1.4.19"
-tar xvf $PKG.tar.xz
+tar xvf $PKG.tar.gz
 cd $PKG
 
 time { \
