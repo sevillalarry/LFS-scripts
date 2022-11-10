@@ -6,6 +6,7 @@ tar xvf $PKG.tar.xz
 cd $PKG
 
 time { \
+\
 CC=gcc ./configure --prefix=/usr -G -O3 -r  && \
 \
 make            && \
