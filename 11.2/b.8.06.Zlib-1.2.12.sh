@@ -2,7 +2,7 @@
 #
 
 export PKG="zlib-1.2.12"
-tar xvf $PKG.tar.xz
+tar xvf $PKG.tar.gz
 cd $PKG
 
 time { \
