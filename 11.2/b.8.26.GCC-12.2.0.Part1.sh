@@ -24,7 +24,7 @@ cd       build  && \
              --disable-bootstrap      \
              --with-system-zlib     && \
 \
-make && \
+make \
 \
 ; }
 
