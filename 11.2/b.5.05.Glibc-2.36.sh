@@ -47,5 +47,6 @@ unset OLD_MAKEFLAGS                                             \
 ; }
 
 cd ..
+cd ..
 rm -rf $PKG
 unset PKG

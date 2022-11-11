@@ -32,7 +32,7 @@ popd                  && \
 make && \
 \
 make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install   && \
-echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so
+echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so      \
 \
 ; }
 

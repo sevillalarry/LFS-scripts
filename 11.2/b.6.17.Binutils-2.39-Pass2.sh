@@ -31,5 +31,6 @@ rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.{a,la}  \
 ; }
 
 cd ..
+cd ..
 rm -rf $PKG
 unset PKG

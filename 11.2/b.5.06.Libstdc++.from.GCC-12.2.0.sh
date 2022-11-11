@@ -28,5 +28,6 @@ rm -v $LFS/usr/lib/lib{stdc++,stdc++fs,supc++}.la \
 ; }
 
 cd ..
+cd ..
 rm -rf $PKG
 unset PKG
