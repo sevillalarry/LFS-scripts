@@ -1,7 +1,7 @@
 # b.8.16.Expect-5.45.4.sh
 #
 
-export PKG="expect-5.45.4"
+export PKG="expect5.45.4"
 tar xvf $PKG.tar.gz
 cd $PKG
 
