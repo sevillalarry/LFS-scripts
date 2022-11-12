@@ -2,20 +2,35 @@
 #
 
 export PKG="coreutils-9.1"
-tar xvf $PKG.tar.xz
+export PKGLOG_DIR=$LFSLOG/6.05
+export PKGLOG_TAR=$PKGLOG_DIR/tar.log
+export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
+export PKGLOG_BUILD=$PKGLOG_DIR/build.log
+export PKGLOG_INSTALL=$PKGLOG_DIR/install.log
+export PKGLOG_ERROR=$PKGLOG_DIR/error.log
+
+mkdir $PKGLOG_DIR
+
+echo "1. Extract tar..."
+tar xvf $PKG.tar.xz > $PKGLOG_TAR 2> $PKGLOG_ERROR
 cd $PKG
 
 time { \
 \
+echo "2. Configure ..."     && \
 ./configure --prefix=/usr                     \
             --host=$LFS_TGT                   \
             --build=$(build-aux/config.guess) \
             --enable-install-program=hostname \
-            --enable-no-install-program=kill,uptime && \
+            --enable-no-install-program=kill,uptime \
+            > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR  && \
 \
-make && \
+echo "3. Make Build ..."                        && \
+make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR          && \
 \
-make DESTDIR=$LFS install && \
+echo "4. Make Install ..."                      && \
+make DESTDIR=$LFS install   \
+    > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR         && \
 \
 mv -v $LFS/usr/bin/chroot              $LFS/usr/sbin                    && \
 mkdir -pv $LFS/usr/share/man/man8                                       && \
@@ -26,4 +41,6 @@ sed -i 's/"1"/"8"/'                    $LFS/usr/share/man/man8/chroot.8    \
 
 cd ..
 rm -rf $PKG
-unset PKG
+unset PKGLOG_ERROR PKGLOG_INSTALL
+unset PKGLOG_BUILD PKGLOG_CONFIG PKGLOG_TAR
+unset PKGLOG_DIR PKG
