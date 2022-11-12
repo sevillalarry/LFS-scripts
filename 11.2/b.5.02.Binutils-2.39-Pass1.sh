@@ -2,7 +2,8 @@
 #
 
 export PKG="binutils-2.39"
-export PKGLOG_DIR    =$LFSLOG/5.02
+export DIR="5.02"
+export PKGLOG_DIR    =$LFSLOG/$DIR
 export PKGLOG_TAR    =$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG =$PKGLOG_DIR/config.log
 export PKGLOG_BUILD  =$PKGLOG_DIR/build.log
@@ -42,4 +43,4 @@ cd ..
 rm -rf $PKG
 unset PKGLOG_ERROR PKGLOG_INSTALL
 unset PKGLOG_BUILD PKGLOG_CONFIG PKGLOG_TAR
-unset PKGLOG_DIR PKG
+unset PKGLOG_DIR DIR PKG
