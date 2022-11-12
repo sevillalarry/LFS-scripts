@@ -1,18 +1,29 @@
 # b.5.03.GCC-12.2.0-Pass1.sh
 #
 
+export LOG="5.03.GCC-12.2.0-Pass1"
 export PKG="gcc-12.2.0"
-tar xvf $PKG.tar.xz
+export PKGLOG_TAR=$LFSLOG_TAR/$LOG
+export PKGLOG_CONFIG=$LFSLOG_CONFIG/$LOG
+export PKGLOG_BUILD=$LFSLOG_BUILD/$LOG
+export PKGLOG_INSTALL=$LFSLOG_INSTALL/$LOG
+export PKGLOG_ERROR=$LFSLOG_ERROR/$LOG
+
+echo "1.0 Extract tar GCC..."
+tar xvf $PKG.tar.xz > $PKGLOG_TAR 2> $PKGLOG_ERROR
 cd $PKG
 
 time { \
 \
-tar -xf ../mpfr-4.1.0.tar.xz && \
-mv -v mpfr-4.1.0 mpfr        && \
-tar -xf ../gmp-6.2.1.tar.xz  && \
-mv -v gmp-6.2.1 gmp          && \
-tar -xf ../mpc-1.2.1.tar.gz  && \
-mv -v mpc-1.2.1 mpc          && \
+echo "1.1 Extract tar MPFR ." && \
+tar -xf ../mpfr-4.1.0.tar.xz  >> $PKGLOG_TAR 2>> $PKGLOG_ERROR  && \
+mv -v mpfr-4.1.0 mpfr         && \
+echo "1.2 Extract tar GMP ."  && \
+tar -xf ../gmp-6.2.1.tar.xz   >> $PKGLOG_TAR 2>> $PKGLOG_ERROR  && \
+mv -v gmp-6.2.1 gmp           && \
+echo "1.3 Extract tar MPC ."  && \
+tar -xf ../mpc-1.2.1.tar.gz   >> $PKGLOG_TAR 2>> $PKGLOG_ERROR  && \
+mv -v mpc-1.2.1 mpc           && \
 \
 case $(uname -m) in
   x86_64)
@@ -24,6 +35,7 @@ esac    && \
 mkdir -v build && \
 cd       build && \
 \
+echo "2. Configure ..."   && \
 ../configure                  \
     --target=$LFS_TGT         \
     --prefix=$LFS/tools       \
@@ -42,11 +54,14 @@ cd       build && \
     --disable-libssp          \
     --disable-libvtv          \
     --disable-libstdcxx       \
-    --enable-languages=c,c++  && \
+    --enable-languages=c,c++  \
+    > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR  && \
 \
-make &&      \
+echo "3. Make Build ..."                && \
+make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
 \
-make install && \
+echo "4. Make Install ..."                        && \
+make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR  && \
 \
 cd ..        && \
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
@@ -56,4 +71,6 @@ cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
 
 cd ..
 rm -rf $PKG
-unset PKG
+unset PKGLOG_ERROR PKGLOG_INSTALL
+unset PKGLOG_BUILD PKGLOG_CONFIG PKGLOG_TAR
+unset PKG LOG
