@@ -30,6 +30,6 @@ cp -rv usr/include $LFS/usr                         \
 
 cd ..
 rm -rf $PKG
-unset PKGLOG_ERROR PKGLOG_INSTALL
+unset PKGLOG_OTHERS PKGLOG_ERROR PKGLOG_INSTALL
 unset PKGLOG_BUILD PKGLOG_CONFIG PKGLOG_TAR
 unset PKG LOG
