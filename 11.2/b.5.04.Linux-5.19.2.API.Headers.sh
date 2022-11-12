@@ -1,14 +1,16 @@
 # b.5.04.Linux-5.19.2.API.Headers.sh
 #
 
-export LOG="5.04.Linux-5.19.2.API.Headers"
 export PKG="linux-5.15.76"
-export PKGLOG_TAR=$LFSLOG_TAR/$LOG
-#export PKGLOG_CONFIG=$LFSLOG_CONFIG/$LOG
-#export PKGLOG_BUILD=$LFSLOG_BUILD/$LOG
-#export PKGLOG_INSTALL=$LFSLOG_INSTALL/$LOG
-export PKGLOG_ERROR=$LFSLOG_ERROR/$LOG
-export PKGLOG_OTHERS=$LFSLOG_OTHERS/$LOG
+export PKGLOG_DIR=$LFSLOG/5.04
+export PKGLOG_TAR=$PKGLOG_DIR/tar.log
+#export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
+#export PKGLOG_BUILD=$PKGLOG_DIR/build.log
+#export PKGLOG_INSTALL=$PKGLOG_DIR/install.log
+export PKGLOG_OTHERS=$PKGLOG_DIR/others.log
+export PKGLOG_ERROR=$PKGLOG_DIR/error.log
+
+mkdir $PKGLOG_DIR
 
 echo "1. Extract tar..."
 tar xvf $PKG.tar.xz > $PKGLOG_TAR 2> $PKGLOG_ERROR
@@ -34,4 +36,4 @@ unset PKGLOG_OTHERS PKGLOG_ERROR
 # PKGLOG_INSTALL
 # PKGLOG_BUILD PKGLOG_CONFIG
 unset PKGLOG_TAR
-unset PKG LOG
+unset PKGLOG_DIR PKG
