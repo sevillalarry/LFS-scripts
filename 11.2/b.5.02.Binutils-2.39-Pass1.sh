@@ -10,6 +10,7 @@ export PKGLOG_INSTALL=$LFSLOG_INSTALL/$LOG
 export PKGLOG_ERROR=$LFSLOG_ERROR/$LOG
 export PKGLOG_TIME=$LFSLOG_TIME/$LOG
 
+echo "1. Extract tar..."
 tar xvf $PKG.tar.xz > $PKGLOG_TAR 2> $PKGLOG_ERROR
 cd $PKG
 
@@ -18,6 +19,7 @@ time { \
 mkdir -v build && \
 cd       build && \
 \
+echo "2. Configure ..."         && \
 ../configure --prefix=$LFS/tools    \
              --with-sysroot=$LFS    \
              --target=$LFS_TGT      \
@@ -26,8 +28,10 @@ cd       build && \
              --disable-werror       \
              > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR && \
 \
+echo "3. Make Build ..."                        && \
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR          && \
 \
+echo "4. Make Install ..."                      && \
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR    \
 \
 ; } > $PKGLOG_TIME 2>> $PKGLOG_ERROR
