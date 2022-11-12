@@ -1,8 +1,16 @@
 # b.5.05.Glibc-2.36.sh
 #
 
+export LOG="5.05.Glibc-2.36"
 export PKG="glibc-2.36"
-tar xvf $PKG.tar.xz
+export PKGLOG_TAR=$LFSLOG_TAR/$LOG
+export PKGLOG_CONFIG=$LFSLOG_CONFIG/$LOG
+export PKGLOG_BUILD=$LFSLOG_BUILD/$LOG
+export PKGLOG_INSTALL=$LFSLOG_INSTALL/$LOG
+export PKGLOG_ERROR=$LFSLOG_ERROR/$LOG
+
+echo "1. Extract tar..."
+tar xvf $PKG.tar.xz > $PKGLOG_TAR 2> $PKGLOG_ERROR
 cd $PKG
 
 time { \
@@ -22,20 +30,25 @@ cd       build                              && \
 \
 echo "rootsbindir=/usr/sbin" > configparms  && \
 \
-../configure                             \
-      --prefix=/usr                      \
-      --host=$LFS_TGT                    \
-      --build=$(../scripts/config.guess) \
-      --enable-kernel=3.2                \
-      --with-headers=$LFS/usr/include    \
-      libc_cv_slibdir=/usr/lib        && \
+echo "2. Configure ..."                 && \
+../configure                                \
+      --prefix=/usr                         \
+      --host=$LFS_TGT                       \
+      --build=$(../scripts/config.guess)    \
+      --enable-kernel=3.2                   \
+      --with-headers=$LFS/usr/include       \
+      libc_cv_slibdir=/usr/lib              \
+        > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR && \
 \
 export OLD_MAKEFLAGS=$MAKEFLAGS     && \
-export MAKEFLAGS='-j1'              && \
+export MAKEFLAGS="-j1"              && \
 \
-make                        && \
+echo "3. Make Build ..."                    && \
+make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR      && \
 \
-make DESTDIR=$LFS install   && \
+echo "4. Make Install ..."                  && \
+make DESTDIR=$LFS install   \
+    > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR     && \
 \
 sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd                  && \
 \
@@ -49,4 +62,6 @@ unset OLD_MAKEFLAGS                                             \
 cd ..
 cd ..
 rm -rf $PKG
-unset PKG
+unset PKGLOG_ERROR PKGLOG_INSTALL
+unset PKGLOG_BUILD PKGLOG_CONFIG PKGLOG_TAR
+unset PKG LOG
