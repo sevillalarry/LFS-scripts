@@ -2,14 +2,27 @@
 #
 
 export PKG="gettext-0.21"
-tar xvf $PKG.tar.xz
+export PKGLOG_DIR=$LFSLOG/7.07
+export PKGLOG_TAR=$PKGLOG_DIR/tar.log
+export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
+export PKGLOG_BUILD=$PKGLOG_DIR/build.log
+export PKGLOG_INSTALL=$PKGLOG_DIR/install.log
+export PKGLOG_ERROR=$PKGLOG_DIR/error.log
+
+mkdir $PKGLOG_DIR
+
+echo "1. Extract tar..."
+tar xvf $PKG.tar.xz > $PKGLOG_TAR 2> $PKGLOG_ERROR
 cd $PKG
 
 time { \
 \
-./configure --disable-shared     && \
+echo "2. Configure ..."     && \
+./configure --disable-shared    \
+    > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR  && \
 \
-make && \
+echo "3. Make Build ..."                        && \
+make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR          && \
 \
 cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} /usr/bin  \
 \
@@ -17,4 +30,6 @@ cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} /usr/bin  \
 
 cd ..
 rm -rf $PKG
-unset PKG
+unset PKGLOG_ERROR PKGLOG_INSTALL
+unset PKGLOG_BUILD PKGLOG_CONFIG PKGLOG_TAR
+unset PKGLOG_DIR PKG
