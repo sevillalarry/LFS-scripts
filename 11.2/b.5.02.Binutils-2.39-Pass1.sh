@@ -9,7 +9,7 @@ export PKGLOG_BUILD=$PKGLOG_DIR/build.log
 export PKGLOG_INSTALL=$PKGLOG_DIR/install.log
 export PKGLOG_ERROR=$PKGLOG_DIR/error.log
 
-mkdir -v $PKGLOG_DIR
+mkdir $PKGLOG_DIR
 
 echo "1. Extract tar..."
 tar xvf $PKG.tar.xz > $PKGLOG_TAR 2> $PKGLOG_ERROR
