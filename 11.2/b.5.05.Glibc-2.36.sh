@@ -7,6 +7,7 @@ export PKGLOG_TAR=$LFSLOG_TAR/$LOG
 export PKGLOG_CONFIG=$LFSLOG_CONFIG/$LOG
 export PKGLOG_BUILD=$LFSLOG_BUILD/$LOG
 export PKGLOG_INSTALL=$LFSLOG_INSTALL/$LOG
+export PKGLOG_CHECK=$LFSLOG_CHECK/$LOG
 export PKGLOG_ERROR=$LFSLOG_ERROR/$LOG
 
 echo "1. Extract tar..."
@@ -58,6 +59,11 @@ export MAKEFLAGS=$OLD_MAKEFLAGS                                 && \
 unset OLD_MAKEFLAGS                                             \
 \
 ; }
+
+echo 'int main(){}' | $LFS_TGT-gcc -xc -    \
+
+readelf -l a.out | grep ld-linux
+rm -v a.out
 
 cd ..
 cd ..

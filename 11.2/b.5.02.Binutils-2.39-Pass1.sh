@@ -1,13 +1,15 @@
 # b.5.02.Binutils-2.39-Pass1.sh
 #
 
-export LOG="5.02.Binutils-2.39-Pass1"
 export PKG="binutils-2.39"
-export PKGLOG_TAR=$LFSLOG_TAR/$LOG
-export PKGLOG_CONFIG=$LFSLOG_CONFIG/$LOG
-export PKGLOG_BUILD=$LFSLOG_BUILD/$LOG
-export PKGLOG_INSTALL=$LFSLOG_INSTALL/$LOG
-export PKGLOG_ERROR=$LFSLOG_ERROR/$LOG
+export PKGLOG_DIR    =$LFSLOG/"5.02"
+export PKGLOG_TAR    =$PKGLOG_DIR/tar.log
+export PKGLOG_CONFIG =$PKGLOG_DIR/config.log
+export PKGLOG_BUILD  =$PKGLOG_DIR/build.log
+export PKGLOG_INSTALL=$PKGLOG_DIR/install.log
+export PKGLOG_ERROR  =$PKGLOG_DIR/error.log
+
+mkdir -pv $PKGLOG_DIR
 
 echo "1. Extract tar..."
 tar xvf $PKG.tar.xz > $PKGLOG_TAR 2> $PKGLOG_ERROR
@@ -40,4 +42,4 @@ cd ..
 rm -rf $PKG
 unset PKGLOG_ERROR PKGLOG_INSTALL
 unset PKGLOG_BUILD PKGLOG_CONFIG PKGLOG_TAR
-unset PKG LOG
+unset PKG
