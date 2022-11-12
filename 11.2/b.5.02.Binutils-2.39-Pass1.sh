@@ -2,7 +2,7 @@
 #
 
 export PKG="binutils-2.39"
-export PKGLOG_DIR    =$LFSLOG/"5.02"
+export PKGLOG_DIR    =$LFSLOG/5.02
 export PKGLOG_TAR    =$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG =$PKGLOG_DIR/config.log
 export PKGLOG_BUILD  =$PKGLOG_DIR/build.log
