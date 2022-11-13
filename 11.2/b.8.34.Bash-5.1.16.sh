@@ -28,8 +28,14 @@ T            > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR && \
 echo "3. Make Build ..."                && \
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
 \
-echo "4. Test ..."                      && \
-chown -Rv tester .                      && \
+echo "4. Make Install ..."              && \
+make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR    \
+\
+; }
+
+echo "5. Test ..."
+chown -Rv tester .
+
 su -s /usr/bin/expect tester << EOF     \
     > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 set timeout -1
@@ -38,11 +44,6 @@ expect eof
 lassign [wait] _ _ _ value
 exit $value
 EOF
-\
-echo "5. Make Install ..."              && \
-make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR    \
-\
-; }
 
 exec /usr/bin/bash --login
 
