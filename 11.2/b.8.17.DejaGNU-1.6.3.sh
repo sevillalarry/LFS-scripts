@@ -22,7 +22,7 @@ mkdir -v build  && \
 cd       build  && \
 \
 echo "2. Configure ..."         && \
-../configure --prefix=/usr > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR&&     && \
+../configure --prefix=/usr > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR       && \
 makeinfo --html --no-split -o doc/dejagnu.html ../doc/dejagnu.texi  && \
 makeinfo --plaintext       -o doc/dejagnu.txt  ../doc/dejagnu.texi  && \
 \
