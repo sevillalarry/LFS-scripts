@@ -1,9 +1,8 @@
-# b.8.06.Zlib-1.2.13.sh
+# b.8.35.Libtool-2.4.7.sh
 #
 
-# (based on Errata use: )
-export PKG="zlib-1.2.13"
-export PKGLOG_DIR=$LFSLOG/8.06
+export PKG="libtool-2.4.7"
+export PKGLOG_DIR=$LFSLOG/8.35
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -19,20 +18,20 @@ cd $PKG
 
 time { \
 \
-echo "2. Configure ..."                 && \
-./configure --prefix=/usr   \
-    > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR  && \
+echo "2. Configure ..."     && \
+./configure --prefix=/usr                       \
+            > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR  && \
 \
 echo "3. Make Build ..."                && \
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
 \
 echo "4. Make Check ..."                && \
-make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR        && \
+make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR    && \
 \
 echo "5. Make Install ..."              && \
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR    && \
 \
-rm -fv /usr/lib/libz.a  \
+rm -fv /usr/lib/libltdl.a               \
 \
 ; }
 

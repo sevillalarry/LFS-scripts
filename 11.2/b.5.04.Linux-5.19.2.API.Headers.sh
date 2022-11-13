@@ -1,6 +1,7 @@
 # b.5.04.Linux-5.19.2.API.Headers.sh
 #
 
+# (based on Errata use: )
 export PKG="linux-5.15.76"
 export PKGLOG_DIR=$LFSLOG/5.04
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log

@@ -1,13 +1,12 @@
-# b.8.34.Bash-5.1.16.sh
+# b.8.36.GDBM-1.23.sh
 #
 
-export PKG="bash-5.1.16"
-export PKGLOG_DIR=$LFSLOG/8.34
+export PKG="gdbm-1.23"
+export PKGLOG_DIR=$LFSLOG/8.36
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
 export PKGLOG_CHECK=$PKGLOG_DIR/check.log
-export PKGLOG_OTHERS=$PKGLOG_DIR/others.log
 export PKGLOG_INSTALL=$PKGLOG_DIR/install.log
 export PKGLOG_ERROR=$PKGLOG_DIR/error.log
 
@@ -21,35 +20,23 @@ time { \
 \
 echo "2. Configure ..."     && \
 ./configure --prefix=/usr                       \
-            --docdir=/usr/share/doc/bash-5.1.16 \
-            --without-bash-malloc               \
-            --with-installed-readline           \
+            --disable-static                    \
+            --enable-libgdbm-compat             \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR  && \
 \
 echo "3. Make Build ..."                && \
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
 \
-echo "4. Make Install ..."              && \
+echo "4. Make Check ..."                && \
+make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR    && \
+\
+echo "5. Make Install ..."              && \
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR    \
 \
 ; }
 
-echo "5. Test ..."
-chown -Rv tester . > $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
-
-su -s /usr/bin/expect tester << EOF \
-    > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
-set timeout -1
-spawn make tests
-expect eof
-lassign [wait] _ _ _ value
-exit $value
-EOF
-
-#exec /usr/bin/bash --login
-
 cd ..
 rm -rf $PKG
-unset PKGLOG_ERROR PKGLOG_INSTALL PKGLOG_CHECK PKGLOG_OTHERS
+unset PKGLOG_ERROR PKGLOG_INSTALL PKGLOG_CHECK
 unset PKGLOG_BUILD PKGLOG_CONFIG PKGLOG_TAR
 unset PKGLOG_DIR PKG
