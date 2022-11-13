@@ -39,4 +39,6 @@ ln -sv flex /usr/bin/lex    \
 
 cd ..
 rm -rf $PKG
-unset PKG
+unset PKGLOG_ERROR PKGLOG_INSTALL PKGLOG_CHECK
+unset PKGLOG_BUILD PKGLOG_CONFIG PKGLOG_TAR
+unset PKGLOG_DIR PKG
