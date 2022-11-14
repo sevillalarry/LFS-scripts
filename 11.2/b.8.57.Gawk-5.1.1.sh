@@ -1,8 +1,8 @@
-# b.8.44.Autoconf-2.71.sh
+# b.8.57.Gawk-5.1.1.sh
 #
 
-export PKG="autoconf-2.71"
-export PKGLOG_DIR=$LFSLOG/8.44
+export PKG="gawk-5.1.1"
+export PKGLOG_DIR=$LFSLOG/8.57
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -18,19 +18,27 @@ cd $PKG
 
 time { \
 \
-echo "2. Configure ..."     && \
-./configure --prefix=/usr   \
-            > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR  && \
+sed -i 's/extras//' Makefile.in    && \
+\
+echo "2. Configure ..."            && \
+./configure --prefix=/usr          \
+            > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR    && \
 \
 echo "3. Make Build ..."                && \
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
 \
 echo "4. Make Check ..."                && \
-make check TESTSUITEFLAGS=-j4           \
+make check                              \
      > $PKGLOG_CHECK 2>> $PKGLOG_ERROR  && \
 \
 echo "5. Make Install ..."              && \
-make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR    \
+make install                                 \
+     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR     && \
+\
+mkdir -pv                                    \
+     /usr/share/doc/gawk-5.1.1               && \
+cp    -v doc/{awkforai.txt,*.{eps,pdf,jpg}}  \
+     /usr/share/doc/gawk-5.1.1               \
 \
 ; }
 

@@ -45,6 +45,6 @@ rm -v $LFS/usr/lib/lib{stdc++,stdc++fs,supc++}.la \
 cd ..
 cd ..
 rm -rf $PKG
-unset PKGLOG_ERROR PKGLOG_INSTALL
-unset PKGLOG_BUILD PKGLOG_CONFIG PKGLOG_TAR
+unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG 
+unset PKGLOG_ERROR PKGLOG_TAR
 unset PKGLOG_DIR PKG

@@ -95,6 +95,7 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
 cd ..
 cd ..
 rm -rf $PKG
-unset PKGLOG_ERROR PKGLOG_INSTALL PKGLOG_CHECK
-unset PKGLOG_BUILD PKGLOG_CONFIG PKGLOG_TAR
+unset PKGLOG_CHECK
+unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
+unset PKGLOG_ERROR PKGLOG_TAR
 unset PKGLOG_DIR PKG

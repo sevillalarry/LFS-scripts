@@ -1,8 +1,8 @@
-# b.8.27.Pkg-config-0.29.2.sh
+# b.8.55.Check-0.15.2.sh
 #
 
-export PKG="pkg-config-0.29.2"
-export PKGLOG_DIR=$LFSLOG/8.27
+export PKG="check-0.15.2"
+export PKGLOG_DIR=$LFSLOG/8.55
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -18,21 +18,21 @@ cd $PKG
 
 time { \
 \
-echo "2. Configure ..."     && \
-./configure --prefix=/usr              \
-            --with-internal-glib       \
-            --disable-host-tool        \
-            --docdir=/usr/share/doc/pkg-config-0.29.2   \
-            > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR          && \
+echo "2. Configure ..."            && \
+./configure --prefix=/usr          \
+            --disable-static       \
+            > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR    && \
 \
 echo "3. Make Build ..."                && \
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
 \
 echo "4. Make Check ..."                && \
-make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR    && \
+make check                              \
+     > $PKGLOG_CHECK 2>> $PKGLOG_ERROR  && \
 \
 echo "5. Make Install ..."              && \
-make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR    \
+make docdir=/usr/share/doc/check-0.15.2 install   \
+     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR          \
 \
 ; }
 

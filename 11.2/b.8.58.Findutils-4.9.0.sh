@@ -1,8 +1,8 @@
-# b.8.44.Autoconf-2.71.sh
+# b.8.58.Findutils-4.9.0.sh
 #
 
-export PKG="autoconf-2.71"
-export PKGLOG_DIR=$LFSLOG/8.44
+export PKG="findutils-4.9.0"
+export PKGLOG_DIR=$LFSLOG/8.58
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -18,19 +18,25 @@ cd $PKG
 
 time { \
 \
-echo "2. Configure ..."     && \
-./configure --prefix=/usr   \
-            > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR  && \
+echo "2. Configure ..."                 && \
+case $(uname -m) in
+    i?86)   TIME_T_32_BIT_OK=yes ./configure --prefix=/usr --localstatedir=/var/lib/locate ;;
+    x86_64) ./configure --prefix=/usr --localstatedir=/var/lib/locate ;;
+esac                                    \
+     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR && \
 \
 echo "3. Make Build ..."                && \
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
 \
 echo "4. Make Check ..."                && \
-make check TESTSUITEFLAGS=-j4           \
-     > $PKGLOG_CHECK 2>> $PKGLOG_ERROR  && \
+chown -Rv tester .                      \
+    $PKGLOG_OTHERS 2>> $PKGLOG_ERROR    && \
+su tester -c "PATH=$PATH make check"    \
+    $PKGLOG_CHECK 2>> $PKGLOG_ERROR     && \
 \
 echo "5. Make Install ..."              && \
-make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR    \
+make install                                 \
+     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR     \
 \
 ; }
 

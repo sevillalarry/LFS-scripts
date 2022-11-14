@@ -53,7 +53,8 @@ rm -fv /usr/lib/libbz2.a                    \
 
 cd ..
 rm -rf $PKG
-unset PKGLOG_ERROR PKGLOG_INSTALL PKGLOG_OTHERS
-unset PKGLOG_BUILD PKGLOG_TAR
+unset PKGLOG_OTHERS
+unset PKGLOG_INSTALL PKGLOG_BUILD
 # PKGLOG_CONFIG
+unset PKGLOG_ERROR PKGLOG_TAR
 unset PKGLOG_DIR PKG

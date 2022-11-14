@@ -41,6 +41,6 @@ sed -i 's/"1"/"8"/'                    $LFS/usr/share/man/man8/chroot.8    \
 
 cd ..
 rm -rf $PKG
-unset PKGLOG_ERROR PKGLOG_INSTALL
-unset PKGLOG_BUILD PKGLOG_CONFIG PKGLOG_TAR
+unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
+unset PKGLOG_ERROR PKGLOG_TAR
 unset PKGLOG_DIR PKG

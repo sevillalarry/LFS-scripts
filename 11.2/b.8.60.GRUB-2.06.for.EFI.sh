@@ -1,0 +1,22 @@
+# b.8.60.GRUB-2.06.for.EFI.sh
+#
+echo "....."
+echo "Read the following:"
+echo "."
+echo "https://www.linuxfromscratch.org/blfs/view/11.2/general/icu.html"
+echo "https://www.linuxfromscratch.org/blfs/view/11.2/general/harfbuzz.html"
+echo "https://www.linuxfromscratch.org/blfs/view/11.2/general/freetype2.html"
+echo "."
+echo "https://www.linuxfromscratch.org/blfs/view/11.2/general/popt.html"
+echo "."
+echo "https://www.linuxfromscratch.org/blfs/view/11.2/general/mandoc.html"
+echo "https://www.linuxfromscratch.org/blfs/view/11.2/postlfs/efivar.html"
+echo "."
+echo "https://www.linuxfromscratch.org/blfs/view/11.2/postlfs/efibootmgr.html"
+echo "."
+echo "."
+echo "Need additional downloads"
+echo "."
+echo "https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-src.tgz"
+
+echo "....."

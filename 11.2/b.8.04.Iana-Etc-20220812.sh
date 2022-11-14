@@ -24,8 +24,6 @@ cp services protocols /etc  \
 
 cd ..
 rm -rf $PKG
-unset PKGLOG_ERROR
-#unset PKGLOG_INSTALL
-#unset PKGLOG_BUILD PKGLOG_CONFIG
-unset PKGLOG_TAR
+#unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
+unset PKGLOG_ERROR PKGLOG_TAR
 unset PKGLOG_DIR PKG
