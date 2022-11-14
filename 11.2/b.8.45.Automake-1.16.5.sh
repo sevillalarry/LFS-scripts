@@ -27,7 +27,7 @@ echo "3. Make Build ..."                && \
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
 \
 echo "4. Make Check ..."                && \
-make -j4 check
+make -j4 check                          \
      > $PKGLOG_CHECK 2>> $PKGLOG_ERROR  && \
 \
 echo "5. Make Install ..."              && \
