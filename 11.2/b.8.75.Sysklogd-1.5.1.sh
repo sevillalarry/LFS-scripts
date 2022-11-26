@@ -1,8 +1,8 @@
-# b.8.60J.efivar-38.sh
+# b.8.75.Sysklogd-1.5.1.sh
 #
 
-export PKG="efivar-38"
-export PKGLOG_DIR=$LFSLOG/8.60J
+export PKG="sysklogd-1.5.1"
+export PKGLOG_DIR=$LFSLOG/8.75
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 #export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -18,19 +18,14 @@ cd $PKG
 
 time { \
 \
-sed '/prep :/a\\ttouch prep'              \
-  -i src/Makefile                         && \
-\
-sed '/sys\/mount\.h/d'                    \
-  -i src/util.h                           && \
-sed '/unistd\.h/a#include <sys/mount.h>'  \
-  -i src/gpt.c src/linux.c                && \
+sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c && \
+sed -i 's/union wait/int/' syslogd.c                      && \
 \
 echo "2. Make Build ..."                  && \
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR    && \
 \
 echo "3. Make Install ..."                && \
-make install LIBDIR=/usr/lib              \
+make BINDIR=/sbin install                 \
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR  \
 \
 ; }
