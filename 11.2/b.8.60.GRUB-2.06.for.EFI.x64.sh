@@ -1,4 +1,4 @@
-# b.8.60.GRUB-2.06.for.EFI.sh
+# b.8.60.GRUB-2.06.for.EFI.x64.sh
 #
 echo "....."
 echo "Read the following:"
@@ -45,4 +45,8 @@ echo "."
 echo "https://github.com/rhboot/efibootmgr/archive/18/efibootmgr-18.tar.gz"
 echo "."
 echo "https://unifoundry.com/pub/unifont/unifont-14.0.04/font-builds/unifont-14.0.04.pcf.gz"
+echo "."
+echo "."
+echo "Be sure the /boot is mounted properly"
+echo "."
 echo "....."
