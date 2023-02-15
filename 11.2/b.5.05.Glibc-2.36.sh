@@ -18,6 +18,8 @@ cd $PKG
 
 time { \
 \
+patch -Np1 -i ../glibc-2.36-security_fix-1.patch         && \
+\
 case $(uname -m) in
     i?86)   ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3
     ;;

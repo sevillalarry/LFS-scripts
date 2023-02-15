@@ -1,8 +1,8 @@
-# b.8.50.Python-3.10.8.sh
+# b.8.50.Python-3.10.9.sh
 #
 
 # (based on Errata use: )
-export PKG="Python-3.10.8"
+export PKG="Python-3.10.9"
 export PKGLOG_DIR=$LFSLOG/8.50
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -42,13 +42,13 @@ EOF
 
 echo "5. Extract documentation tar..."
 
-install -v -dm755 /usr/share/doc/python-3.10.6/html
+install -v -dm755 /usr/share/doc/python-3.10.9/html
 
 tar --strip-components=1  \
     --no-same-owner       \
     --no-same-permissions \
-    -C /usr/share/doc/python-3.10.6/html \
-    -xvf ../python-3.10.6-docs-html.tar.bz2
+    -C /usr/share/doc/python-3.10.9/html \
+    -xvf ../python-3.10.9-docs-html.tar.bz2
 
 cd ..
 rm -rf $PKG

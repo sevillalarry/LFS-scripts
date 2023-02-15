@@ -1,8 +1,8 @@
-# b.7.10.Python-3.10.8.sh
+# b.7.10.Python-3.10.9.sh
 #
 
 # (based on Errata use: )
-export PKG="Python-3.10.8"
+export PKG="Python-3.10.9"
 export PKGLOG_DIR=$LFSLOG/7.10
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log

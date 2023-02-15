@@ -1,7 +1,7 @@
-# b.8.74.E2fsprogs-1.46.5.sh
+# b.8.74.E2fsprogs-1.46.6.sh
 #
 
-export PKG="e2fsprogs-1.46.5"
+export PKG="e2fsprogs-1.46.6"
 export PKGLOG_DIR=$LFSLOG/8.74
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log

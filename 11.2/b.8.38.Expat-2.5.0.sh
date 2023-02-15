@@ -22,7 +22,7 @@ time { \
 echo "2. Configure ..."     && \
 ./configure --prefix=/usr                       \
             --disable-static                    \
-            --docdir=/usr/share/doc/expat-2.4.8 \
+            --docdir=/usr/share/doc/expat-2.5.0 \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR  && \
 \
 echo "3. Make Build ..."                && \
@@ -35,7 +35,7 @@ echo "5. Make Install ..."              && \
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR    && \
 \
 install -v -m644 doc/*.{html,css} \
-    /usr/share/doc/expat-2.4.8    \
+    /usr/share/doc/expat-2.5.0    \
 \
 ; }
 
