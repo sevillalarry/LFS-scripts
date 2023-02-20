@@ -1,4 +1,4 @@
-# b.8.78.&79.Stripping.&.Cleaning.Up.sh
+# b.8.78.&.79.Stripping.&.Cleaning.Up.sh
 #
 echo "....."
 echo "Read and execute the following:"
