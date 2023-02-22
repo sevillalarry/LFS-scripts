@@ -1,7 +1,7 @@
 # b.8.60E.FreeType-2.12.1.sh
 #
 
-export PKG="freeType-2.12.1"
+export PKG="freetype-2.12.1"
 export PKGLOG_DIR=$LFSLOG/8.60E
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
