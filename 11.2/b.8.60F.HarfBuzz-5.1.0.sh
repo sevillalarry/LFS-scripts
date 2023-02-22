@@ -1,7 +1,7 @@
 # b.8.60F.HarfBuzz-5.1.0.sh
 #
 
-export PKG="harfBuzz-5.1.0"
+export PKG="harfbuzz-5.1.0"
 export PKGLOG_DIR=$LFSLOG/8.60F
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log

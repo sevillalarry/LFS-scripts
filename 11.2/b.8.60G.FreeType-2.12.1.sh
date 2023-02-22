@@ -3,7 +3,7 @@
 # Re-Install after Harfbuzz
 # withOut the documentation
 
-export PKG="freeType-2.12.1"
+export PKG="freefype-2.12.1"
 export PKGLOG_DIR=$LFSLOG/8.60G
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
