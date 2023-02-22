@@ -14,7 +14,9 @@ mkdir $PKGLOG_DIR
 
 echo "1. Extract tar..."
 tar xvf $PKG-src.tgz > $PKGLOG_TAR 2> $PKGLOG_ERROR
-cd $PKG
+#cd $PKG
+cd icu
+
 cd source
 
 time { \
@@ -37,7 +39,8 @@ make install                            \
 ; }
 
 cd ..
-rm -rf $PKG
+#rm -rf $PKG
+rm -rf icu
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
 unset PKGLOG_ERROR PKGLOG_TAR
