@@ -1,5 +1,5 @@
-# b.8.54.Coreutils-9.1.Part2.sh
-#
+# b.8.54.Coreutils-9.1.Part3.sh
+# test / check
 
 export PKG="coreutils-9.1"
 export PKGLOG_DIR=$LFSLOG/8.54
@@ -17,18 +17,23 @@ cd $PKG
 
 time { \
 \
-echo "5. Make Install ..."                  && \
-make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR    && \
+echo "4. Test ..."                          && \
 \
-mv -v /usr/bin/chroot /usr/sbin                     && \
-mv -v /usr/share/man/man1/chroot.1                  \
-    /usr/share/man/man8/chroot.8                    && \
-sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8    \
+make NON_ROOT_USERNAME=tester check-root    \
+    $PKGLOG_CHECK 2>> $PKGLOG_ERROR         && \
+\
+chown -Rv tester .                          \
+    $PKGLOG_OTHERS 2>> $PKGLOG_ERROR        && \
+\
+su tester -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check"    \
+    $PKGLOG_CHECK 2>> $PKGLOG_ERROR         && \
+\
+sed -i '/dummy/d' /etc/group                && \
 \
 ; }
 
 cd ..
-rm -rf $PKG
+#rm -rf $PKG
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
 unset PKGLOG_ERROR PKGLOG_TAR
