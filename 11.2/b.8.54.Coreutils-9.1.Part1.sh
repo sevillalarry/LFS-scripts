@@ -29,7 +29,7 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure    \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR      && \
 \
 echo "3. Make Build ..."                    && \
-make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR      && \
+make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR      \
 \
 ; }
 

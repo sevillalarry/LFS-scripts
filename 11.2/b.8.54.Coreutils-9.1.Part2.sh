@@ -28,7 +28,7 @@ chown -Rv tester .                          \
 su tester -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check"    \
     $PKGLOG_CHECK 2>> $PKGLOG_ERROR         && \
 \
-sed -i '/dummy/d' /etc/group                && \
+sed -i '/dummy/d' /etc/group                \
 \
 ; }
 
