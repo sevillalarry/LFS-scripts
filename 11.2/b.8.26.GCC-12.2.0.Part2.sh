@@ -14,6 +14,8 @@ export PKGLOG_CHOWN=$PKGLOG_DIR/chown.log
 #rm -r $PKGLOG_DIR 2> /dev/null
 #mkdir $PKGLOG_DIR
 
+cd $PKG
+
 time { \
 \
 cd       build  && \
