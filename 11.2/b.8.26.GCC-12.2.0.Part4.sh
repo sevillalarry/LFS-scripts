@@ -1,4 +1,4 @@
-# b.8.26.GCC-12.2.0.Part1.sh
+# b.8.26.GCC-12.2.0.Part4.sh
 # Sanity Check 2
 
 export PKG="gcc-12.2.0"

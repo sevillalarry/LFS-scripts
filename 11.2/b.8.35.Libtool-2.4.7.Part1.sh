@@ -1,5 +1,5 @@
-# b.8.35.Libtool-2.4.7.sh
-#
+# b.8.35.Libtool-2.4.7.Part1.sh
+# Extract, configure, build & check
 
 export PKG="libtool-2.4.7"
 export PKGLOG_DIR=$LFSLOG/8.35
@@ -27,17 +27,12 @@ echo "3. Make Build ..."                && \
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
 \
 echo "4. Make Check ..."                && \
-make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR    && \
-\
-echo "5. Make Install ..."              && \
-make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR    && \
-\
-rm -fv /usr/lib/libltdl.a               \
+make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR    \
 \
 ; }
 
 cd ..
-rm -rf $PKG
+#rm -rf $PKG
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
 unset PKGLOG_ERROR PKGLOG_TAR
