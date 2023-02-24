@@ -1,5 +1,5 @@
 # b.8.20.MPFR-4.1.0.sh
-#
+# Extract, Configure, Build, Check
 
 export PKG="mpfr-4.1.0"
 export PKGLOG_DIR=$LFSLOG/8.20
@@ -31,16 +31,12 @@ make       > $PKGLOG_BUILD 2>> $PKGLOG_ERROR    && \
 make html >> $PKGLOG_BUILD 2>> $PKGLOG_ERROR    && \
 \
 echo "4. Make Check ..."                        && \
-make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR    && \
-\
-echo "5. Make Install ..."              && \
-make install       > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR  && \
-make install-html >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR  \
+make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR    \
 \
 ; }
 
 cd ..
-rm -rf $PKG
+#rm -rf $PKG
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
 unset PKGLOG_ERROR PKGLOG_TAR
