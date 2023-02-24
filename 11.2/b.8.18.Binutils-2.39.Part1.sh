@@ -1,5 +1,5 @@
 # b.6.17.Binutils-2.39.sh
-#
+# Extract, Configure, Build, Check
 
 export PKG="binutils-2.39"
 export PKGLOG_DIR=$LFSLOG/8.18
@@ -46,19 +46,13 @@ make tooldir=/usr   \
 \
 echo "4. Make Check ..."                && \
 make -k check   \
-    >> $PKGLOG_CHECK 2>> $PKGLOG_ERROR  && \
-\
-echo "5. Make Install ..."              && \
-make tooldir=/usr install   \
-    > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR && \
-\
-rm -fv /usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.a    \
+    >> $PKGLOG_CHECK 2>> $PKGLOG_ERROR  \
 \
 ; }
 
 cd ..
 cd ..
-rm -rf $PKG
+#rm -rf $PKG
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
 unset PKGLOG_ERROR PKGLOG_TAR
