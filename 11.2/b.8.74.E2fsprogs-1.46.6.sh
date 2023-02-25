@@ -16,7 +16,6 @@ mkdir $PKGLOG_DIR
 echo "1. Extract tar..."
 tar xvf $PKG.tar.gz > $PKGLOG_TAR 2> $PKGLOG_ERROR
 cd $PKG
-cd source
 
 mkdir -v build
 cd       build
