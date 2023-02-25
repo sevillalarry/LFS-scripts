@@ -32,7 +32,7 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
 \
 echo "4. Make Install ..."              && \
 make install                                 \
-     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR     && \
+     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR     \
 \
 ; }
 
