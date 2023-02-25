@@ -1,8 +1,8 @@
-# b.8.60G.CMake-3.24.1.sh
+# b.8.60K.CMake-3.24.1.sh
 #
 
 export PKG="cmake-3.24.1"
-export PKGLOG_DIR=$LFSLOG/8.60G
+export PKGLOG_DIR=$LFSLOG/8.60K
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -23,7 +23,6 @@ patch -Np1 -i ../cmake-3.24.1-upstream_fix-1.patch     &&
 \
 sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake  &&
 \
-
 echo "2. Bootstrap ..."                   && \
 ./bootstrap --prefix=/usr        \
             --system-libs        \

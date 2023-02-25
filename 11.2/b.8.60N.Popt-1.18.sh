@@ -1,8 +1,8 @@
-# b.8.60H.HarfBuzz-5.1.0.sh
+# b.8.60N.Popt-1.18.sh
 #
 
-export PKG="harfbuzz-5.1.0"
-export PKGLOG_DIR=$LFSLOG/8.60H
+export PKG="popt-1.18"
+export PKGLOG_DIR=$LFSLOG/8.60N
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -14,34 +14,33 @@ rm -r $PKGLOG_DIR 2> /dev/null
 mkdir $PKGLOG_DIR
 
 echo "1. Extract tar..."
-tar xvf $PKG.tar.xz > $PKGLOG_TAR 2> $PKGLOG_ERROR
+tar xvf $PKG.tar.gz > $PKGLOG_TAR 2> $PKGLOG_ERROR
 cd $PKG
+cd source
 
 time { \
 \
-mkdir build    && \
-cd    build    && \
-\
-echo "2. Configure ..."                 && \
-meson --prefix=/usr           \
-      --buildtype=release     \
-      -Dgraphite2=enabled     \
-     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR && \
+echo "2. Configure ..."            && \
+./configure    --prefix=/usr       \
+               --disable-static    \
+            > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR    && \
 \
 echo "3. Make Build ..."                && \
-ninja > $PKGLOG_BUILD 2>> $PKGLOG_ERROR && \
+make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
 \
 echo "4. Make Check ..."                && \
-ninja test                              \
+make check                              \
      > $PKGLOG_CHECK 2>> $PKGLOG_ERROR  && \
 \
 echo "5. Make Install ..."              && \
-ninja install                           \
-     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR     \
+make install                            \
+     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR     && \
+\
+install -v -m755 -d /usr/share/doc/popt-1.18 &&             \
+install -v -m644 doxygen/html/* /usr/share/doc/popt-1.18    \
 \
 ; }
 
-cd ..
 cd ..
 rm -rf $PKG
 unset PKGLOG_CHECK
