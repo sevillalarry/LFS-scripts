@@ -1,11 +1,7 @@
-# b.8.60A.Gzip-1.12.sh
-# should have been
-# b.8.61.Gzip-1.12.sh
-# but
-# GRUB for UEFI needs GUnzip
+# b.8.60A.Popt-1.18.sh
 #
 
-export PKG="gzip-1.12"
+export PKG="popt-1.18"
 export PKGLOG_DIR=$LFSLOG/8.60A
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -18,13 +14,14 @@ rm -r $PKGLOG_DIR 2> /dev/null
 mkdir $PKGLOG_DIR
 
 echo "1. Extract tar..."
-tar xvf $PKG.tar.xz > $PKGLOG_TAR 2> $PKGLOG_ERROR
+tar xvf $PKG.tar.gz > $PKGLOG_TAR 2> $PKGLOG_ERROR
 cd $PKG
 
 time { \
 \
 echo "2. Configure ..."            && \
-./configure --prefix=/usr          \
+./configure    --prefix=/usr       \
+               --disable-static    \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR    && \
 \
 echo "3. Make Build ..."                && \
@@ -36,7 +33,10 @@ make check                              \
 \
 echo "5. Make Install ..."              && \
 make install                            \
-     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR     \
+     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR     && \
+\
+install -v -m755 -d /usr/share/doc/popt-1.18 &&             \
+install -v -m644 doxygen/html/* /usr/share/doc/popt-1.18    \
 \
 ; }
 
