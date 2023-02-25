@@ -31,7 +31,7 @@ echo "2. Bootstrap ..."                   && \
             --no-system-jsoncpp  \
             --no-system-librhash \
             --docdir=/share/doc/cmake-3.24.1 \
-     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR  && \
+     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR && \
 \
 echo "3. Make Build ..."                && \
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
@@ -39,7 +39,6 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
 echo "4. Make Install ..."              && \
 make install                            \
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR    \
-\
 ; }
 
 
