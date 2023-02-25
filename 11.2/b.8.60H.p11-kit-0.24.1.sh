@@ -34,7 +34,7 @@ cd    p11-build &&
 echo "2. Meson / Configure ..."              && \
 meson --prefix=/usr                          \
       --buildtype=release                    \
-      -Dtrust_paths=/etc/pki/anchors         && \
+      -Dtrust_paths=/etc/pki/anchors         \
      > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR      && \
 \
 echo "3. Ninja / Make Build ..."             && \
