@@ -1,4 +1,4 @@
-# b.8.54.Coreutils-9.1.Part3.sh
+# b.8.54.Coreutils-9.1.Part2.sh
 # test / check
 
 export PKG="coreutils-9.1"
