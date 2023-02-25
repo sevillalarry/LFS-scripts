@@ -1,8 +1,8 @@
-# b.8.60O.mandoc-1.14.6.sh
+# b.8.60P.mandoc-1.14.6.sh
 #
 
 export PKG="mandoc-1.14.6"
-export PKGLOG_DIR=$LFSLOG/8.60O
+export PKGLOG_DIR=$LFSLOG/8.60P
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log

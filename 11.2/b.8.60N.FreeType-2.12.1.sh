@@ -1,10 +1,10 @@
-# b.8.60M.FreeType-2.12.1.sh
+# b.8.60N.FreeType-2.12.1.sh
 #
 # Re-Install after Harfbuzz
 # withOut the documentation
 
 export PKG="freefype-2.12.1"
-export PKGLOG_DIR=$LFSLOG/8.60M
+export PKGLOG_DIR=$LFSLOG/8.60N
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log

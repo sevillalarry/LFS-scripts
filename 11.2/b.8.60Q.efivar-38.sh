@@ -1,8 +1,8 @@
-# b.8.60P.efivar-38.sh
+# b.8.60Q.efivar-38.sh
 #
 
 export PKG="efivar-38"
-export PKGLOG_DIR=$LFSLOG/8.60P
+export PKGLOG_DIR=$LFSLOG/8.60Q
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 #export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log

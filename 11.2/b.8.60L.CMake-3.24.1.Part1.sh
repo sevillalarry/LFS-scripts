@@ -1,8 +1,8 @@
-# b.8.60K.CMake-3.24.1.sh
+# b.8.60L.CMake-3.24.1.sh
 # Extract, Bootstrap
 
 export PKG="cmake-3.24.1"
-export PKGLOG_DIR=$LFSLOG/8.60K
+export PKGLOG_DIR=$LFSLOG/8.60L
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log

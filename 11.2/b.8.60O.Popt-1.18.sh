@@ -1,8 +1,8 @@
-# b.8.60N.Popt-1.18.sh
+# b.8.60O.Popt-1.18.sh
 #
 
 export PKG="popt-1.18"
-export PKGLOG_DIR=$LFSLOG/8.60N
+export PKGLOG_DIR=$LFSLOG/8.60O
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
