@@ -1,5 +1,5 @@
-# b.8.73.Util-linux-2.38.1.sh
-#
+# b.8.73.Util-linux-2.38.1.Part1.sh
+# Extract, Configure, Build
 
 export PKG="util-linux-2.38.1"
 export PKGLOG_DIR=$LFSLOG/8.73
@@ -39,21 +39,12 @@ echo "2. Configure ..."                                && \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR         && \
 \
 echo "3. Make Build ..."                     && \
-make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR       && \
-\
-echo "4. Make Check ..."                     && \
-chown -Rv tester .                           && \
-su tester -c "make -k check"                 \
-     > $PKGLOG_CHECK 2>> $PKGLOG_ERROR       && \
-\
-echo "5. Make Install ..."                   && \
-make install                                 \
-     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR     \
+make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR       \
 \
 ; }
 
 cd ..
-rm -rf $PKG
+#rm -rf $PKG
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
 unset PKGLOG_ERROR PKGLOG_TAR
