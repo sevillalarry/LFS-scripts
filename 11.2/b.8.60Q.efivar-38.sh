@@ -14,7 +14,7 @@ rm -r $PKGLOG_DIR 2> /dev/null
 mkdir $PKGLOG_DIR
 
 echo "1. Extract tar..."
-tar xvf $PKG.tar.gz > $PKGLOG_TAR 2> $PKGLOG_ERROR
+tar xvf $PKG.tar.bz2 > $PKGLOG_TAR 2> $PKGLOG_ERROR
 cd $PKG
 
 time { \
