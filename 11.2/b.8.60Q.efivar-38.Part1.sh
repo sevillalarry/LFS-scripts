@@ -28,7 +28,7 @@ sed '/unistd\.h/a#include <sys/mount.h>'  \
   -i src/gpt.c src/linux.c                && \
 \
 echo "2. Make Build ..."                  && \
-make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR    && \
+make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR    \
 \
 ; }
 
