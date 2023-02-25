@@ -1,7 +1,7 @@
 # b.8.60J.cURL-7.84.0.sh
 #
 
-export PKG="cURL-7.84.0"
+export PKG="curl-7.84.0"
 export PKGLOG_DIR=$LFSLOG/8.60J
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
