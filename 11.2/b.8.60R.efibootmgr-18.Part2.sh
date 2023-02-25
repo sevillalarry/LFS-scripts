@@ -17,9 +17,9 @@ cd $PKG
 
 time { \
 \
-echo "3. Make Install ..."                && \
-make install EFIDIR=/boot/efi             \
-    > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR   \
+echo "3. Make Install ..."              && \
+make install EFIDIR=LFS                 \
+    > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR \
 \
 ; }
 
