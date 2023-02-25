@@ -20,7 +20,7 @@ cd $PKG
 time { \
 \
 echo "2. Configure ..."                      && \
-FORCE_UNSAFE_CONFIGURE=1                     && \
+FORCE_UNSAFE_CONFIGURE=1                     \
 ./configure    --prefix=/usr                 \
      > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR      && \
 \
