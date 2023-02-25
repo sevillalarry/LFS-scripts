@@ -1,5 +1,5 @@
-# b.8.60Q.efivar-38.sh
-#
+# b.8.60Q.efivar-38.Part1.sh
+# Extract, Build
 
 export PKG="efivar-38"
 export PKGLOG_DIR=$LFSLOG/8.60Q
@@ -30,14 +30,10 @@ sed '/unistd\.h/a#include <sys/mount.h>'  \
 echo "2. Make Build ..."                  && \
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR    && \
 \
-echo "3. Make Install ..."                && \
-make install LIBDIR=/usr/lib              \
-     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR  \
-\
 ; }
 
 cd ..
-rm -rf $PKG
+#rm -rf $PKG
 #unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD
 # PKGLOG_CONFIG
