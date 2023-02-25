@@ -19,9 +19,9 @@ cd $PKG
 
 time { \
 \
-echo "2. Make Build ..."                  && \
-make EFIDIR=LFS EFI_LOADER=grubx64.efi    \
-    > $PKGLOG_BUILD 2>> $PKGLOG_ERROR     \
+echo "2. Make Build ..."                        && \
+make EFIDIR=/boot/efi EFI_LOADER=grubx64.efi    \
+    > $PKGLOG_BUILD 2>> $PKGLOG_ERROR           \
 \
 ; }
 
