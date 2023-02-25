@@ -1,5 +1,5 @@
 # b.8.60K.CMake-3.24.1.sh
-#
+# Extract, Bootstrap
 
 export PKG="cmake-3.24.1"
 export PKGLOG_DIR=$LFSLOG/8.60K
@@ -30,19 +30,13 @@ echo "2. Bootstrap ..."                   && \
             --no-system-jsoncpp  \
             --no-system-librhash \
             --docdir=/share/doc/cmake-3.24.1 \
-     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR && \
+     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR      \
 \
-echo "3. Make Build ..."                && \
-make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR  && \
-\
-echo "4. Make Install ..."              && \
-make install                            \
-     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR    \
 ; }
 
 
 cd ..
-rm -rf $PKG
+#rm -rf $PKG
 #unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
 unset PKGLOG_ERROR PKGLOG_TAR
