@@ -75,41 +75,45 @@ localedef -i tr_TR -f UTF-8 tr_TR.UTF-8
 localedef -i zh_CN -f GB18030 zh_CN.GB18030
 localedef -i zh_HK -f BIG5-HKSCS zh_HK.BIG5-HKSCS
 localedef -i zh_TW -f UTF-8 zh_TW.UTF-8
-\
-echo "7. Make Install Locales ..."                              && \
-make localedata/install-locales \
-    >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR && \
-\
-localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true        && \
-localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true && \
-\
-echo "8. Setting Time Zone ..."     && \
-tar -xf ../../tzdata2022c.tar.gz    \
-    >> $PKGLOG_TAR 2> $PKGLOG_ERROR && \
-\
-ZONEINFO=/usr/share/zoneinfo        && \
-mkdir -pv $ZONEINFO/{posix,right}   && \
-\
-for tz in etcetera southamerica northamerica europe africa antarctica  \
+
+echo "7. Make Install Locales ..."
+echo "7. Make Install Locales ..." >> $LFSLOG_PROCESS
+echo "7. Make Install Locales ..." >> $PKGLOG_ERROR
+make localedata/install-locales
+    >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+
+localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
+localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true
+
+echo "8. Setting Time Zone ..."
+echo "8. Setting Time Zone ..." >> $LFSLOG_PROCESS
+echo "8. Setting Time Zone ..." >> $PKGLOG_ERROR
+tar -xf ../../tzdata2022c.tar.gz
+    >> $PKGLOG_TAR 2>> $PKGLOG_ERROR
+
+ZONEINFO=/usr/share/zoneinfo
+mkdir -pv $ZONEINFO/{posix,right}
+
+for tz in etcetera southamerica northamerica europe africa antarctica
           asia australasia backward; do
     zic -L /dev/null   -d $ZONEINFO       ${tz}
     zic -L /dev/null   -d $ZONEINFO/posix ${tz}
     zic -L leapseconds -d $ZONEINFO/right ${tz}
-done      && \
-\
-cp -v zone.tab zone1970.tab iso3166.tab $ZONEINFO     && \
-zic -d $ZONEINFO -p $LOCAL_TIME_ZONE                  && \
-unset ZONEINFO                                        && \
-\
-ln -sfv /usr/share/zoneinfo/$LOCAL_TIME_ZONE /etc/localtime   \
-\
-; }
+done
+
+cp -v zone.tab zone1970.tab iso3166.tab $ZONEINFO
+zic -d $ZONEINFO -p $LOCAL_TIME_ZONE
+unset ZONEINFO
+
+ln -sfv /usr/share/zoneinfo/$LOCAL_TIME_ZONE /etc/localtime
+
 
 unset LOCAL_TIME_ZONE
 
 cd ..
 cd ..
 rm -rf $PKG
+unset LFSLOG_PROCESS
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
 unset PKGLOG_ERROR PKGLOG_TAR
