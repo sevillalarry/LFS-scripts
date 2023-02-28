@@ -1,4 +1,4 @@
-# b.8.21.MPC-1.2.1.sh
+# a.8.21.MPC-1.2.1.sh
 #
 
 export PKG="mpc-1.2.1"

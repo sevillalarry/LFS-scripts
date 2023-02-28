@@ -1,4 +1,4 @@
-# b.6.18.GCC-12.2.0-Pass2.sh
+# a.6.18.GCC-12.2.0-Pass2.sh
 #
 
 export PKG="gcc-12.2.0"

@@ -1,4 +1,4 @@
-# b.6.17.Binutils-2.39.sh
+# a.6.17.Binutils-2.39.sh
 # Extract, Configure, Build, Check
 
 export PKG="binutils-2.39"

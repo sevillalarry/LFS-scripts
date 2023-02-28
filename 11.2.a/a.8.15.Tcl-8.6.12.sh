@@ -1,4 +1,4 @@
-# b.8.15.Tcl-8.6.12.sh
+# a.8.15.Tcl-8.6.12.sh
 #
 
 export PKG="tcl8.6.12"

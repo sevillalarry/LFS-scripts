@@ -1,4 +1,4 @@
-# b.8.16.Expect-5.45.4.sh
+# a.8.16.Expect-5.45.4.sh
 #
 
 export PKG="expect5.45.4"

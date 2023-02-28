@@ -1,4 +1,4 @@
-# b.8.24.Libcap-2.65.sh
+# a.8.24.Libcap-2.65.sh
 #
 
 export PKG="libcap-2.65"

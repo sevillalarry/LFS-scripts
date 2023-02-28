@@ -1,4 +1,4 @@
-# b.6.08.Findutils-4.9.0.sh
+# a.6.08.Findutils-4.9.0.sh
 #
 
 export PKG="findutils-4.9.0"

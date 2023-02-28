@@ -1,4 +1,4 @@
-# b.8.20.MPFR-4.1.0.sh
+# a.8.20.MPFR-4.1.0.sh
 # Extract, Configure, Build, Check
 
 export PKG="mpfr-4.1.0"

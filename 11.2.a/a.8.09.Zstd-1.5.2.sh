@@ -1,4 +1,4 @@
-# b.8.09.Zstd-1.5.2.sh
+# a.8.09.Zstd-1.5.2.sh
 #
 
 export PKG="zstd-1.5.2"

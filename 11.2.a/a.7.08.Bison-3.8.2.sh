@@ -1,4 +1,4 @@
-# b.7.08.Bison-3.8.2.sh
+# a.7.08.Bison-3.8.2.sh
 #
 
 export PKG="bison-3.8.2"

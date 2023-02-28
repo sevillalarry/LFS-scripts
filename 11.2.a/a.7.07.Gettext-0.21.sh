@@ -1,4 +1,4 @@
-# b.7.07.Gettext-0.21.sh
+# a.7.07.Gettext-0.21.sh
 #
 
 export PKG="gettext-0.21"

@@ -1,4 +1,4 @@
-# b.6.14.Sed-4.8.sh
+# a.6.14.Sed-4.8.sh
 #
 
 export PKG="sed-4.8"

@@ -1,4 +1,4 @@
-# b.6.17.Binutils-2.39.sh
+# a.6.17.Binutils-2.39.sh
 # Install
 
 export PKG="binutils-2.39"

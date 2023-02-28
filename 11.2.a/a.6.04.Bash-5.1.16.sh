@@ -1,4 +1,4 @@
-# b.6.04.Bash-5.1.16.sh
+# a.6.04.Bash-5.1.16.sh
 #
 
 export PKG="bash-5.1.16"

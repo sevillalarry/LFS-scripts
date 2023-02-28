@@ -1,4 +1,4 @@
-# b.5.04.Linux-5.15.91.API.Headers.sh
+# a.5.04.Linux-5.15.91.API.Headers.sh
 #
 
 # (based on Errata use: )

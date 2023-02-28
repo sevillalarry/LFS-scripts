@@ -1,4 +1,4 @@
-# b.8.05.Glibc-2.36.Part2.sh
+# a.8.05.Glibc-2.36.Part2.sh
 # Install
 
 export PKG="glibc-2.36"

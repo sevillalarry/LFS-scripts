@@ -1,4 +1,4 @@
-# b.5.02.Binutils-2.39-Pass1.sh
+# a.5.02.Binutils-2.39-Pass1.sh
 #
 
 export PKG="binutils-2.39"

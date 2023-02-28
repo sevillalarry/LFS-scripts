@@ -1,4 +1,4 @@
-# b.8.14.Flex-2.6.4.sh
+# a.8.14.Flex-2.6.4.sh
 #
 
 export PKG="flex-2.6.4"

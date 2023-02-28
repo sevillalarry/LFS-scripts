@@ -1,4 +1,4 @@
-# b.5.06.Libstdc++.from.GCC-12.2.0.sh
+# a.5.06.Libstdc++.from.GCC-12.2.0.sh
 #
 
 export PKG="gcc-12.2.0"

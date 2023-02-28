@@ -1,4 +1,4 @@
-# b.8.05.Glibc-2.36.Part1.sh
+# a.8.05.Glibc-2.36.Part1.sh
 # Extract, Configure, Build, Check
 
 export PKG="glibc-2.36"

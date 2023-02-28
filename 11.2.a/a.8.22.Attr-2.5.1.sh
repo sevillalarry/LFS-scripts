@@ -1,4 +1,4 @@
-# b.8.22.Attr-2.5.1.sh
+# a.8.22.Attr-2.5.1.sh
 #
 
 export PKG="attr-2.5.1"

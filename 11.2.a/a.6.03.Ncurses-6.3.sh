@@ -1,4 +1,4 @@
-# b.6.03.Ncurses-6.3.sh
+# a.6.03.Ncurses-6.3.sh
 #
 
 export PKG="ncurses-6.3"

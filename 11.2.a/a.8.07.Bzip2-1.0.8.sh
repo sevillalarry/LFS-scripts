@@ -1,4 +1,4 @@
-# b.8.07.Bzip2-1.0.8.sh
+# a.8.07.Bzip2-1.0.8.sh
 #
 
 export PKG="bzip2-1.0.8"

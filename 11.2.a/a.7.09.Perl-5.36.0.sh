@@ -1,4 +1,4 @@
-# b.7.09.Perl-5.36.0.sh
+# a.7.09.Perl-5.36.0.sh
 #
 
 export PKG="perl-5.36.0"

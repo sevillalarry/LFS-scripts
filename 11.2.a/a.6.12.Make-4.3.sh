@@ -1,4 +1,4 @@
-# b.6.12.Make-4.3.sh
+# a.6.12.Make-4.3.sh
 #
 
 export PKG="make-4.3"

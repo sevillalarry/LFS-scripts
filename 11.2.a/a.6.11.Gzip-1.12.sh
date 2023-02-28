@@ -1,4 +1,4 @@
-# b.6.11.Gzip-1.12.sh
+# a.6.11.Gzip-1.12.sh
 #
 
 export PKG="gzip-1.12"

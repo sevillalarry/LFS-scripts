@@ -1,4 +1,4 @@
-# b.7.12.Util-linux-2.38.1.sh
+# a.7.12.Util-linux-2.38.1.sh
 #
 
 export PKG="util-linux-2.38.1"

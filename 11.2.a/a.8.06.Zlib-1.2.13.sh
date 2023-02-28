@@ -1,4 +1,4 @@
-# b.8.06.Zlib-1.2.13.sh
+# a.8.06.Zlib-1.2.13.sh
 #
 
 # (based on Errata use: )

@@ -1,4 +1,4 @@
-# b.8.26.GCC-12.2.0.Part1.sh
+# a.8.26.GCC-12.2.0.Part1.sh
 # configure & build
 
 export PKG="gcc-12.2.0"

@@ -1,4 +1,4 @@
-# b.8.10.File-5.42.sh
+# a.8.10.File-5.42.sh
 #
 
 export PKG="file-5.42"

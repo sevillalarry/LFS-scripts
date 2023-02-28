@@ -1,4 +1,4 @@
-# b.5.05.Glibc-2.36.sh
+# a.5.05.Glibc-2.36.sh
 #
 
 export PKG="glibc-2.36"

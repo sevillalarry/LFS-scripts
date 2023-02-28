@@ -1,4 +1,4 @@
-# b.8.17.DejaGNU-1.6.3.sh
+# a.8.17.DejaGNU-1.6.3.sh
 #
 
 export PKG="dejagnu-1.6.3"

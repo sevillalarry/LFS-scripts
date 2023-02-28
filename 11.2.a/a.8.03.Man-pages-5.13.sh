@@ -1,4 +1,4 @@
-# b.8.03.Man-pages-5.13.sh
+# a.8.03.Man-pages-5.13.sh
 #
 
 export PKG="man-pages-5.13"

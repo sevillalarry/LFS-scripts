@@ -1,4 +1,4 @@
-# b.7.11.Texinfo-6.8.sh
+# a.7.11.Texinfo-6.8.sh
 #
 
 export PKG="texinfo-6.8"

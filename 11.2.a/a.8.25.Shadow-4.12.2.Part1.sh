@@ -1,4 +1,4 @@
-# b.8.25.Shadow-4.12.2.Part1.sh
+# a.8.25.Shadow-4.12.2.Part1.sh
 #
 
 export PKG="shadow-4.12.2"

@@ -1,4 +1,4 @@
-# b.8.11.Readline-8.1.2.sh
+# a.8.11.Readline-8.1.2.sh
 #
 
 export PKG="readline-8.1.2"

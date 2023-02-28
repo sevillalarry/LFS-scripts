@@ -1,4 +1,4 @@
-# b.6.05.Coreutils-9.1.sh
+# a.6.05.Coreutils-9.1.sh
 #
 
 export PKG="coreutils-9.1"

@@ -1,4 +1,4 @@
-# b.6.13.Patch-2.7.6.sh
+# a.6.13.Patch-2.7.6.sh
 #
 
 export PKG="patch-2.7.6"

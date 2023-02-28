@@ -1,4 +1,4 @@
-# b.8.04.Iana-Etc-20220812.sh
+# a.8.04.Iana-Etc-20220812.sh
 #
 
 export PKG="iana-etc-20220812"

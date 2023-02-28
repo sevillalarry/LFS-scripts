@@ -1,4 +1,4 @@
-# b.7.10.Python-3.10.9.sh
+# a.7.10.Python-3.10.9.sh
 #
 
 # (based on Errata use: )

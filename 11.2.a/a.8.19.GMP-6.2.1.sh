@@ -1,4 +1,4 @@
-# b.8.19.GMP-6.2.1.sh
+# a.8.19.GMP-6.2.1.sh
 #
 
 export PKG="gmp-6.2.1"

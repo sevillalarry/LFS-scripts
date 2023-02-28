@@ -1,4 +1,4 @@
-# b.6.10.Grep-3.7.sh
+# a.6.10.Grep-3.7.sh
 #
 
 export PKG="grep-3.7"
