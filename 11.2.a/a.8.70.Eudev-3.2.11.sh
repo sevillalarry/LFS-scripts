@@ -39,8 +39,8 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
-mkdir -pv /usr/lib/udev/rules.d
-mkdir -pv /etc/udev/rules.d
+mkdir -p /usr/lib/udev/rules.d
+mkdir -p /etc/udev/rules.d
 
 make check
      > $PKGLOG_CHECK 2>> $PKGLOG_ERROR

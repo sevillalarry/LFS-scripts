@@ -29,9 +29,9 @@ chown -v -R root:root
     /usr/lib/gcc/$(gcc -dumpmachine)/12.2.0/include{,-fixed}
     >> $PKGLOG_CHOWN 2>> $PKGLOG_ERROR
 
-ln -svr /usr/bin/cpp /usr/lib
+ln -sr /usr/bin/cpp /usr/lib
 
-ln -sfv ../../libexec/gcc/$(gcc -dumpmachine)/12.2.0/liblto_plugin.so
+ln -sf ../../libexec/gcc/$(gcc -dumpmachine)/12.2.0/liblto_plugin.so
         /usr/lib/bfd-plugins/
 
 

@@ -21,8 +21,8 @@ echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-mv -v /usr/bin/chroot /usr/sbin
-mv -v /usr/share/man/man1/chroot.1
+mv  /usr/bin/chroot /usr/sbin
+mv  /usr/share/man/man1/chroot.1
     /usr/share/man/man8/chroot.8
 sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8
 

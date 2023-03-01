@@ -50,7 +50,7 @@ EOF
 
 echo "5. Extract documentation tar..."
 
-install -v -dm755 /usr/share/doc/python-3.10.9/html
+install -dm755 /usr/share/doc/python-3.10.9/html
 
 tar --strip-components=1  \
     --no-same-owner       \

@@ -22,7 +22,7 @@ echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-rm -fv /usr/lib/libltdl.a               \
+rm -f /usr/lib/libltdl.a               \
 
 
 cd ..

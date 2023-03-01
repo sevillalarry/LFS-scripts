@@ -53,9 +53,9 @@ echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-rm -fv /usr/lib/{libcom_err,libe2p,libext2fs,libss}.a
+rm -f /usr/lib/{libcom_err,libe2p,libext2fs,libss}.a
 
-gunzip -v /usr/share/info/libext2fs.info.gz
+gunzip /usr/share/info/libext2fs.info.gz
 install-info --dir-file=/usr/share/info/dir
      /usr/share/info/libext2fs.info
 \

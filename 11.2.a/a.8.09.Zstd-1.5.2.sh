@@ -41,7 +41,7 @@ echo "4. Make Install ..." >> $PKGLOG_ERROR
 make PREFIX=/usr install
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-rm -v /usr/lib/libzstd.a
+rm /usr/lib/libzstd.a
 
 
 cd ..

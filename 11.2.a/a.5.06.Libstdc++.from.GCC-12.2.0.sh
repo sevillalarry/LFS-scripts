@@ -47,7 +47,7 @@ echo "4. Make Install ..." >> $PKGLOG_ERROR
 make DESTDIR=$LFS install
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-rm -v $LFS/usr/lib/lib{stdc++,stdc++fs,supc++}.la
+rm $LFS/usr/lib/lib{stdc++,stdc++fs,supc++}.la
 
 
 cd ..

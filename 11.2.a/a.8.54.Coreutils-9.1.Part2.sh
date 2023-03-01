@@ -23,7 +23,7 @@ echo "4. Test ..." >> $PKGLOG_ERROR
 make NON_ROOT_USERNAME=tester check-root
     $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
-chown -Rv tester .
+chown -R tester .
     $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
 
 su tester -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check"

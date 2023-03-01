@@ -59,7 +59,7 @@ echo "5. Make Install ..." >> $PKGLOG_ERROR
 make DESTDIR=$LFS install
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-rm -v $LFS/usr/lib/libmagic.la
+rm $LFS/usr/lib/libmagic.la
 
 
 cd ..

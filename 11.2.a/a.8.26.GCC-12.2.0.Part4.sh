@@ -43,10 +43,10 @@ grep "/lib.*/libc.so.6 " dummy.log
 grep found dummy.log
   >> $PKGLOG_CHECK
 
-rm -v dummy.c a.out dummy.log
+rm dummy.c a.out dummy.log
 
-mkdir -pv /usr/share/gdb/auto-load/usr/lib
-mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
+mkdir -p /usr/share/gdb/auto-load/usr/lib
+mv  /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
 
 
 cd ..

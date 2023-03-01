@@ -34,7 +34,7 @@ echo "1.3 Extract tar MPC ."
 echo "1.3 Extract tar MPC ." >> $LFSLOG_PROCESS
 echo "1.3 Extract tar MPC ." >> $PKGLOG_ERROR
 tar -xf ../mpc-1.2.1.tar.gz   >> $PKGLOG_TAR 2>> $PKGLOG_ERROR
-mv -v mpc-1.2.1 mpc
+mv mpc-1.2.1 mpc
 
 case $(uname -m) in
   x86_64)
@@ -81,7 +81,7 @@ echo "4. Make Install ..." >> $PKGLOG_ERROR
 make DESTDIR=$LFS install
   > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-ln -sv gcc $LFS/usr/bin/cc
+ln -s gcc $LFS/usr/bin/cc
 
 
 cd ..

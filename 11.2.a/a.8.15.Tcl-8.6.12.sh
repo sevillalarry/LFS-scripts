@@ -69,7 +69,7 @@ chmod u+w /usr/lib/libtcl8.6.so
 
 make install-private-headers
 
-ln -sfv tclsh8.6 /usr/bin/tclsh
+ln -sf tclsh8.6 /usr/bin/tclsh
 
 mv /usr/share/man/man3/{Thread,Tcl_Thread}.3
 

@@ -41,7 +41,7 @@ echo "4. Make Install ..." >> $PKGLOG_ERROR
 make DESTDIR=$LFS install
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-rm -v $LFS/usr/lib/liblzma.la
+rm $LFS/usr/lib/liblzma.la
 
 
 cd ..

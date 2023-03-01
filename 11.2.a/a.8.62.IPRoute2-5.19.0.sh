@@ -21,7 +21,7 @@ cd $PKG
 
 
 sed -i /ARPD/d Makefile
-rm -fv man/man8/arpd.8
+rm -f man/man8/arpd.8
 
 echo "2. Make Build ..."
 echo "2. Make Build ..." >> $LFSLOG_PROCESS
@@ -35,7 +35,7 @@ echo "3. Make Install ..." >> $PKGLOG_ERROR
 make SBINDIR=/usr/sbin install
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-mkdir -pv             /usr/share/doc/iproute2-5.19.0
+mkdir -p           /usr/share/doc/iproute2-5.19.0
 cp -v COPYING README* /usr/share/doc/iproute2-5.19.0
 
 

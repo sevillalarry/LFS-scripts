@@ -41,7 +41,7 @@ echo "4. Make Install ..." >> $PKGLOG_ERROR
 make install
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-install -v -m644 doc/{nano.html,sample.nanorc}
+install -m644 doc/{nano.html,sample.nanorc}
   /usr/share/doc/nano-6.4
 
 

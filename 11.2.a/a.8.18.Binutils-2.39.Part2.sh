@@ -25,7 +25,7 @@ echo "5. Make Install ..." >> $PKGLOG_ERROR
 make tooldir=/usr install
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-rm -fv /usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.a
+rm -f /usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.a
 
 
 cd ..

@@ -43,10 +43,10 @@ echo "4. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 for target in depmod insmod modinfo modprobe rmmod; do
-  ln -sfv ../bin/kmod /usr/sbin/$target
+  ln -sf ../bin/kmod /usr/sbin/$target
 done
 
-ln -sfv kmod /usr/bin/lsmod
+ln -sf kmod /usr/bin/lsmod
 
 
 cd ..

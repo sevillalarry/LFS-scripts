@@ -45,8 +45,8 @@ echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-install -v -m755 -d /usr/share/doc/popt-1.18
-install -v -m644 doxygen/html/* /usr/share/doc/popt-1.18
+install -m755 -d /usr/share/doc/popt-1.18
+install -m644 doxygen/html/* /usr/share/doc/popt-1.18
 
 
 cd ..

@@ -44,7 +44,7 @@ echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-ln -sv flex /usr/bin/lex
+ln -s flex /usr/bin/lex
 
 
 cd ..

@@ -43,7 +43,7 @@ echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-chmod -v 0755 /usr/lib/preloadable_libintl.so
+chmod  0755 /usr/lib/preloadable_libintl.so
 
 
 cd ..

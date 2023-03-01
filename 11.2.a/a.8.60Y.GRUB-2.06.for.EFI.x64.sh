@@ -20,7 +20,7 @@ echo "1. Extract tar..." >> $PKGLOG_ERROR
 tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
-mkdir -pv /usr/share/fonts/unifont
+mkdir -p /usr/share/fonts/unifont
 gunzip -c ../unifont-14.0.04.pcf.gz
   > /usr/share/fonts/unifont/unifont.pcf
   2>> $PKGLOG_ERROR
@@ -49,7 +49,7 @@ echo "4. Make Install ..." >> $PKGLOG_ERROR
 make install
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-mv -v /etc/bash_completion.d/grub
+mv  /etc/bash_completion.d/grub
   /usr/share/bash-completion/completions
 
 

@@ -46,9 +46,9 @@ echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-mkdir -pv
+mkdir -p
      /usr/share/doc/gawk-5.1.1
-cp    -v doc/{awkforai.txt,*.{eps,pdf,jpg}}
+cp    doc/{awkforai.txt,*.{eps,pdf,jpg}}
      /usr/share/doc/gawk-5.1.1
 
 

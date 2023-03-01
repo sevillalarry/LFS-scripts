@@ -50,7 +50,7 @@ echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-mkdir -pv           /usr/share/doc/kbd-2.5.1
+mkdir -p         /usr/share/doc/kbd-2.5.1
 cp -R -v docs/doc/* /usr/share/doc/kbd-2.5.1
 
 

@@ -45,7 +45,7 @@ echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-install -v -m644 doc/*.{html,css}
+install -m644 doc/*.{html,css}
     /usr/share/doc/expat-2.5.0
 
 

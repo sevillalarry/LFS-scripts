@@ -46,21 +46,21 @@ echo "4. Make Install ..." >> $PKGLOG_ERROR
 make DESTDIR=$PWD/dest install
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 install -vm755 dest/usr/lib/libncursesw.so.6.3 /usr/lib
-rm -v  dest/usr/lib/libncursesw.so.6.3
-cp -av dest/* /
+rm dest/usr/lib/libncursesw.so.6.3
+cp -a dest/* /
 
 for lib in ncurses form panel menu ; do
-    rm -vf                    /usr/lib/lib${lib}.so
+    rm -f                    /usr/lib/lib${lib}.so
     echo "INPUT(-l${lib}w)" > /usr/lib/lib${lib}.so
-    ln -sfv ${lib}w.pc        /usr/lib/pkgconfig/${lib}.pc
+    ln -sf ${lib}w.pc        /usr/lib/pkgconfig/${lib}.pc
 done
 
-rm -vf                     /usr/lib/libcursesw.so
+rm -f                     /usr/lib/libcursesw.so
 echo "INPUT(-lncursesw)" > /usr/lib/libcursesw.so
-ln -sfv libncurses.so      /usr/lib/libcurses.so
+ln -sf libncurses.so      /usr/lib/libcurses.so
 
-mkdir -pv      /usr/share/doc/ncurses-6.3
-cp -v -R doc/* /usr/share/doc/ncurses-6.3
+mkdir -p      /usr/share/doc/ncurses-6.3
+cp  -R doc/* /usr/share/doc/ncurses-6.3
 
 
 cd ..

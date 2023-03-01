@@ -46,7 +46,7 @@ echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-ln -svf expect5.45.4/libexpect5.45.4.so /usr/lib
+ln -sf expect5.45.4/libexpect5.45.4.so /usr/lib
 
 
 cd ..

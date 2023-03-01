@@ -50,7 +50,7 @@ echo "4. Make Install ..." >> $PKGLOG_ERROR
 make DESTDIR=$LFS install
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.{a,la}
+rm $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.{a,la}
 
 
 cd ..
