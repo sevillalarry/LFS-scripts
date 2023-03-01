@@ -37,6 +37,13 @@ echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
 make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
+echo "5. Make Install ..."
+echo "5. Make Install ..." >> $LFSLOG_PROCESS
+echo "5. Make Install ..." >> $PKGLOG_ERROR
+make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+
+rm -f /usr/lib/libltdl.a
+
 
 cd ..
 #rm -rf $PKG

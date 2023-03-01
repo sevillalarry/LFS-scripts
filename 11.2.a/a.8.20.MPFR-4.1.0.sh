@@ -41,9 +41,15 @@ echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
 make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
+echo "5. Make Install ..."
+echo "5. Make Install ..." >> $LFSLOG_PROCESS
+echo "5. Make Install ..." >> $PKGLOG_ERROR
+make install       > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+make install-html >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+
 
 cd ..
-#rm -rf $PKG
+rm -rf $PKG
 unset LFSLOG_PROCESS
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG

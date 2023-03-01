@@ -1,5 +1,5 @@
 # a.6.17.Binutils-2.39.sh
-# Extract, Configure, Build, Check
+#
 
 export PKG="binutils-2.39"
 export PKGLOG_DIR=$LFSLOG/8.18
@@ -25,7 +25,6 @@ cd $PKG
 #
 # pls see check.log
 expect -c "spawn ls" > $PKGLOG_CHECK 2> $PKGLOG_ERROR
-
 
 mkdir build
 cd    build
@@ -56,10 +55,17 @@ echo "4. Make Check ..." >> $PKGLOG_ERROR
 make -k check
     >> $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
+echo "5. Make Install ..."
+echo "5. Make Install ..." >> $LFSLOG_PROCESS
+echo "5. Make Install ..." >> $PKGLOG_ERROR
+make tooldir=/usr install
+    > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+
+rm -f /usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.a
 
 cd ..
 cd ..
-#rm -rf $PKG
+rm -rf $PKG
 unset LFSLOG_PROCESS
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG

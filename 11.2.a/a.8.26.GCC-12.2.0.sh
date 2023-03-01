@@ -48,10 +48,64 @@ echo "3. Make Build ..." >> $LFSLOG_PROCESS
 echo "3. Make Build ..." >> $PKGLOG_ERROR
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
+echo "4. Make Check 1 ..."
+echo "4. Make Check 1 ..." >> $LFSLOG_PROCESS
+echo "4. Make Check 1 ..." >> $PKGLOG_ERROR
+ulimit -s 32768
+
+chown -Rv tester . > $PKGLOG_CHOWN 2>> $PKGLOG_ERROR
+su tester -c "PATH=$PATH make -k check"
+  > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+
+../contrib/test_summary
+  >> $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+
+echo "5. Make Install ..."
+echo "5. Make Install ..." >> $LFSLOG_PROCESS
+echo "5. Make Install ..." >> $PKGLOG_ERROR
+make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+
+chown -v -R root:root
+    /usr/lib/gcc/$(gcc -dumpmachine)/12.2.0/include{,-fixed}
+    >> $PKGLOG_CHOWN 2>> $PKGLOG_ERROR
+
+ln -sr /usr/bin/cpp /usr/lib
+
+ln -sf ../../libexec/gcc/$(gcc -dumpmachine)/12.2.0/liblto_plugin.so
+        /usr/lib/bfd-plugins/
+
+echo 'int main(){}' > dummy.c
+cc dummy.c -v -Wl,--verbose &> dummy.log
+
+echo "dummy.c" >> $PKGLOG_CHECK
+cat dummy.log >> $PKGLOG_CHECK
+
+readelf -l a.out | grep ': /lib'
+
+grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log
+  >> $PKGLOG_CHECK
+
+grep -B4 '^ /usr/include' dummy.log
+  >> $PKGLOG_CHECK
+
+grep 'SEARCH.*/usr/lib' dummy.log |sed 's|; |\n|g'
+  >> $PKGLOG_CHECK
+
+grep "/lib.*/libc.so.6 " dummy.log
+  >> $PKGLOG_CHECK
+
+grep found dummy.log
+  >> $PKGLOG_CHECK
+
+rm dummy.c a.out dummy.log
+
+mkdir -p /usr/share/gdb/auto-load/usr/lib
+mv  /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
+
 
 cd ..
 cd ..
-#rm -rf $PKG
+rm -rf $PKG
 unset LFSLOG_PROCESS
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG

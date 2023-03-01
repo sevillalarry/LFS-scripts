@@ -37,9 +37,34 @@ echo "3. Make Build ..." >> $LFSLOG_PROCESS
 echo "3. Make Build ..." >> $PKGLOG_ERROR
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
+echo "4. Test ..."
+echo "4. Test ..." >> $LFSLOG_PROCESS
+echo "4. Test ..." >> $PKGLOG_ERROR
+
+make NON_ROOT_USERNAME=tester check-root
+    $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+
+chown -R tester .
+    $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
+
+su tester -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check"
+    $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+
+sed -i '/dummy/d' /etc/group
+
+echo "5. Make Install ..."
+echo "5. Make Install ..." >> $LFSLOG_PROCESS
+echo "5. Make Install ..." >> $PKGLOG_ERROR
+make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+
+mv  /usr/bin/chroot /usr/sbin
+mv  /usr/share/man/man1/chroot.1
+    /usr/share/man/man8/chroot.8
+sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8
+
 
 cd ..
-#rm -rf $PKG
+rm -rf $PKG
 unset LFSLOG_PROCESS
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
