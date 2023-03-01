@@ -11,6 +11,8 @@ echo "5.02.Binutils-2.39-Pass1" >> $LFSLOG_PROCESS
 time { bash a.5.02.Binutils-2.39-Pass1.sh ; }
 
 echo "." >> $LFSLOG_PROCESS
+echo "."
+echo "."
 
 ###
 
@@ -20,6 +22,8 @@ echo "5.03.GCC-12.2.0-Pass1" >> $LFSLOG_PROCESS
 time { bash a.5.03.GCC-12.2.0-Pass1.sh ; }
 
 echo "." >> $LFSLOG_PROCESS
+echo "."
+echo "."
 
 ###
 
@@ -29,6 +33,8 @@ echo "5.04.Linux-5.15.91.API.Headers" >> $LFSLOG_PROCESS
 time { bash a.5.04.Linux-5.15.91.API.Headers.sh ; }
 
 echo "." >> $LFSLOG_PROCESS
+echo "."
+echo "."
 
 ###
 
@@ -38,6 +44,8 @@ echo "5.05.Glibc-2.36" >> $LFSLOG_PROCESS
 time { bash a.5.05.Glibc-2.36.sh ; }
 
 echo "." >> $LFSLOG_PROCESS
+echo "."
+echo "."
 
 #####
 
