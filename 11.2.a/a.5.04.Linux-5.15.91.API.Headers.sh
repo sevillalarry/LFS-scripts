@@ -31,10 +31,10 @@ echo "3. Make Headers ..."
 echo "3. Make Headers ..." >> $LFSLOG_PROCESS
 echo "3. Make Headers ..." >> $PKGLOG_ERROR
 make headers >> $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
-find usr/include -type f ! -name '*.h' -delete
-             >> $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
-cp -rv usr/include $LFS/usr
-             >> $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
+find usr/include -type f ! -name '*.h' -delete  \
+    >> $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
+cp -rv usr/include $LFS/usr                     \
+    >> $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
 
 
 cd ..

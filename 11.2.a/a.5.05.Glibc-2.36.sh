@@ -9,6 +9,7 @@ export PKGLOG_BUILD=$PKGLOG_DIR/build.log
 export PKGLOG_INSTALL=$PKGLOG_DIR/install.log
 export PKGLOG_CHECK=$PKGLOG_DIR/check.log
 export PKGLOG_ERROR=$PKGLOG_DIR/error.log
+export PKGLOG_OTHERS=$PKGLOG_DIR/others.log
 export LFSLOG_PROCESS=$LFSLOG/process.log
 
 
@@ -22,17 +23,20 @@ tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
 
-patch -Np1 -i ../glibc-2.36-security_fix-1.patch
+echo "Patch 1 Security Fix" >> $PKGLOG_OTHERS
+patch -Np1 -i ../glibc-2.36-security_fix-1.patch    >> $PKGLOG_OTHERS 2>> PKGLOG_ERROR
 
+echo "Symbolic Link"        >> $PKGLOG_OTHERS
 case $(uname -m) in
-    i?86)   ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3
+    i?86)   ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3                          >> $PKGLOG_OTHERS 2>> PKGLOG_ERROR
     ;;
-    x86_64) ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64
-            ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-lsb-x86-64.so.3
+    x86_64) ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64                      >> $PKGLOG_OTHERS 2>> PKGLOG_ERROR
+            ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-lsb-x86-64.so.3   >> $PKGLOG_OTHERS 2>> PKGLOG_ERROR
     ;;
 esac
 
-patch -Np1 -i ../glibc-2.36-fhs-1.patch
+echo "Patch 2 FHS-compliant"    >> $PKGLOG_OTHERS
+patch -Np1 -i ../glibc-2.36-fhs-1.patch             >> $PKGLOG_OTHERS 2>> PKGLOG_ERROR
 
 mkdir build
 cd    build
@@ -65,9 +69,11 @@ echo "4. Make Install ..." >> $PKGLOG_ERROR
 make DESTDIR=$LFS install
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd
+echo "Fix hard code path in 'ldd' script" >> $PKGLOG_OTHERS
+sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd  >> $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
 
-$LFS/tools/libexec/gcc/$LFS_TGT/12.2.0/install-tools/mkheaders
+echo "Install 'limit.h' headers" >> $PKGLOG_OTHERS
+$LFS/tools/libexec/gcc/$LFS_TGT/12.2.0/install-tools/mkheaders  >> $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
 
 export MAKEFLAGS=$OLD_MAKEFLAGS
 unset OLD_MAKEFLAGS
@@ -83,6 +89,7 @@ cd ..
 cd ..
 rm -rf $PKG
 unset LFSLOG_PROCESS
+unset PKGLOG_OTHERS
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
 unset PKGLOG_ERROR PKGLOG_TAR
