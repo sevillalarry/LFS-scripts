@@ -32,8 +32,8 @@ case $(uname -m) in
     ;;
 esac
 
-echo "Patch 2 FHS-compliant"    >> $PKGLOG_OTHERS
-patch -Np1 -i ../glibc-2.37-fhs-1.patch             >> $PKGLOG_OTHERS 2>> PKGLOG_ERROR
+echo "Patch 2 FHS-compliant"            >> $PKGLOG_OTHERS
+patch -Np1 -i ../glibc-2.37-fhs-1.patch >> $PKGLOG_OTHERS 2>> PKGLOG_ERROR
 
 mkdir build
 cd    build
@@ -77,12 +77,12 @@ $LFS/tools/libexec/gcc/$LFS_TGT/12.2.0/install-tools/mkheaders  \
 export MAKEFLAGS=$OLD_MAKEFLAGS
 unset OLD_MAKEFLAGS
 
-
 echo 'int main(){}' | $LFS_TGT-gcc -xc -    \
      > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 readelf -l a.out | grep ld-linux            \
     >> $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 rm a.out
+
 
 cd ..
 cd ..
