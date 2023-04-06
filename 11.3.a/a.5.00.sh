@@ -49,8 +49,8 @@ echo "."
 
 ###
 
-echo "a.5.06.Libstdc++.from.GCC-12.2.0"
-echo "a.5.06.Libstdc++.from.GCC-12.2.0" >> $LFSLOG_PROCESS
+echo "5.06.Libstdc++.from.GCC-12.2.0"
+echo "5.06.Libstdc++.from.GCC-12.2.0" >> $LFSLOG_PROCESS
 
 time { bash a.5.06.Libstdc++.from.GCC-12.2.0.sh ; }
 
