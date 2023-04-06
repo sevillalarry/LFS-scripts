@@ -24,10 +24,10 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr       \
-            --enable-cxx        \
-            --disable-static    \
-            --docdir=/usr/share/doc/gmp-6.2.1
+./configure --prefix=/usr                       \
+            --enable-cxx                        \
+            --disable-static                    \
+            --docdir=/usr/share/doc/gmp-6.2.1   \
     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -40,9 +40,9 @@ echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
 make check > $PKGLOG_CHECK 2>&1 | tee gmp-check-log
-cp gmp-check-log $PKGLOG_ERROR
+cat gmp-check-log >> $PKGLOG_ERROR
 
-awk '/# PASS:/{total+=$3} ; END{print total}'
+awk '/# PASS:/{total+=$3} ; END{print total}'   \
     gmp-check-log
 
 echo "5. Make Install ..."

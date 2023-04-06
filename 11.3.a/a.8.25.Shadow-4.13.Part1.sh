@@ -1,7 +1,7 @@
-# a.8.25.Shadow-4.12.2.Part1.sh
+# a.8.25.Shadow-4.13.Part1.sh
 #
 
-export PKG="shadow-4.12.2"
+export PKG="shadow-4.13"
 export PKGLOG_DIR=$LFSLOG/8.25
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -20,24 +20,25 @@ echo "1. Extract tar..." >> $PKGLOG_ERROR
 tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
+
 sed -i 's/groups$(EXEEXT) //' src/Makefile.in
 find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \;
 find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \;
 find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
 
-sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD SHA512:' 
-    -e 's:/var/spool/mail:/var/mail:'                 
-    -e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                
+sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD SHA512:' \
+    -e 's@#\(SHA_CRYPT_..._ROUNDS 5000\)@\100@'       \
+    -e 's:/var/spool/mail:/var/mail:'                 \
+    -e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                \
     -i etc/login.defs
-
 
 touch /usr/bin/passwd
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --sysconfdir=/etc
-            --disable-static
-            --with-group-name-max-length=32
+./configure --sysconfdir=/etc               \
+            --disable-static                \
+            --with-group-name-max-length=32 \
     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -48,9 +49,9 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Install ..."
 echo "4. Make Install ..." >> $LFSLOG_PROCESS
 echo "4. Make Install ..." >> $PKGLOG_ERROR
-make exec_prefix=/usr install
+make exec_prefix=/usr install   \
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-make -C man install-man
+make -C man install-man         \
     >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 

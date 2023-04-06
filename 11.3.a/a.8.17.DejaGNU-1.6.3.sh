@@ -36,7 +36,7 @@ echo "3. Make Build & Install..." >> $LFSLOG_PROCESS
 echo "3. Make Build & Install..." >> $PKGLOG_ERROR
 make install > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 install -dm755  /usr/share/doc/dejagnu-1.6.3
-install -m644   doc/dejagnu.{html,txt}
+install -m644   doc/dejagnu.{html,txt}  \
     /usr/share/doc/dejagnu-1.6.3
 
 echo "4. Make Check ..."

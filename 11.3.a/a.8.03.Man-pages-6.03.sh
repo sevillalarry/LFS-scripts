@@ -1,7 +1,7 @@
-# a.8.03.Man-pages-5.13.sh
+# a.8.03.Man-pages-6.03.sh
 #
 
-export PKG="man-pages-5.13"
+export PKG="man-pages-6.03"
 export PKGLOG_DIR=$LFSLOG/8.03
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 #export PKGLOG_CONFIG=$PKGLOG_DIR/config.log

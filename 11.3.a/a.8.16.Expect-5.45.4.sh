@@ -24,10 +24,10 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr           \
-            --with-tcl=/usr/lib     \
-            --enable-shared         \
-            --mandir=/usr/share/man \
+./configure --prefix=/usr                   \
+            --with-tcl=/usr/lib             \
+            --enable-shared                 \
+            --mandir=/usr/share/man         \
             --with-tclinclude=/usr/include  \
     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 

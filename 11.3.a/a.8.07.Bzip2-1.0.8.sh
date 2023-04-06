@@ -30,13 +30,13 @@ sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
 echo "2. Make Build libbz2 ..."
 echo "2. Make Build libbz2 ..." >> $LFSLOG_PROCESS
 echo "2. Make Build libbz2 ..." >> $PKGLOG_ERROR
-make -f Makefile-libbz2_so
+make -f Makefile-libbz2_so  \
     > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
 echo "3. Make Clean-up ..."
 echo "3. Make Clean-up ..." >> $LFSLOG_PROCESS
 echo "3. Make Clean-up ..." >> $PKGLOG_ERROR
-make clean
+make clean  \
     > $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
 
 echo "4. Make Build ..."
@@ -47,7 +47,7 @@ make >> $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
-make PREFIX=/usr install
+make PREFIX=/usr install    \
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 cp -a libbz2.so.* /usr/lib

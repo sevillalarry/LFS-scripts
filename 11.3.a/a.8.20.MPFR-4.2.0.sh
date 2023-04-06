@@ -1,7 +1,7 @@
-# a.8.20.MPFR-4.1.0.sh
+# a.8.20.MPFR-4.2.0.sh
 # Extract, Configure, Build, Check
 
-export PKG="mpfr-4.1.0"
+export PKG="mpfr-4.2.0"
 export PKGLOG_DIR=$LFSLOG/8.20
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -21,13 +21,17 @@ tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
 
+sed -e 's/+01,234,567/+1,234,567 /' \
+    -e 's/13.10Pd/13Pd/'            \
+    -i tests/tsprintf.c
+
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr           \
-            --disable-static        \
-            --enable-thread-safe    \
-            --docdir=/usr/share/doc/mpfr-4.1.0
+./configure --prefix=/usr                       \
+            --disable-static                    \
+            --enable-thread-safe                \
+            --docdir=/usr/share/doc/mpfr-4.2.0  \
     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."

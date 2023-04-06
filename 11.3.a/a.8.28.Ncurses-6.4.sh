@@ -1,7 +1,7 @@
-# a.8.28.Ncurses-6.3.sh
+# a.8.28.Ncurses-6.4.sh
 #
 
-export PKG="ncurses-6.3"
+export PKG="ncurses-6.4"
 export PKGLOG_DIR=$LFSLOG/8.28
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -24,15 +24,15 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr           \
-            --mandir=/usr/share/man \
-            --with-shared           \
-            --without-debug         \
-            --without-normal        \
-            --with-cxx-shared       \
-            --enable-pc-files       \
-            --enable-widec          \
-            --with-pkg-config-libdir=/usr/lib/pkgconfig
+./configure --prefix=/usr                               \
+            --mandir=/usr/share/man                     \
+            --with-shared                               \
+            --without-debug                             \
+            --without-normal                            \
+            --with-cxx-shared                           \
+            --enable-pc-files                           \
+            --enable-widec                              \
+            --with-pkg-config-libdir=/usr/lib/pkgconfig \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -43,24 +43,24 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Install ..."
 echo "4. Make Install ..." >> $LFSLOG_PROCESS
 echo "4. Make Install ..." >> $PKGLOG_ERROR
-make DESTDIR=$PWD/dest install
+make DESTDIR=$PWD/dest install  \
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-install -vm755 dest/usr/lib/libncursesw.so.6.3 /usr/lib
-rm dest/usr/lib/libncursesw.so.6.3
+install -m755 dest/usr/lib/libncursesw.so.6.4 /usr/lib
+rm dest/usr/lib/libncursesw.so.6.4
 cp -a dest/* /
 
 for lib in ncurses form panel menu ; do
-    rm -f                    /usr/lib/lib${lib}.so
-    echo "INPUT(-l${lib}w)" > /usr/lib/lib${lib}.so
-    ln -sf ${lib}w.pc        /usr/lib/pkgconfig/${lib}.pc
+    rm -f                       /usr/lib/lib${lib}.so
+    echo "INPUT(-l${lib}w)" >   /usr/lib/lib${lib}.so
+    ln -sf ${lib}w.pc           /usr/lib/pkgconfig/${lib}.pc
 done
 
-rm -f                     /usr/lib/libcursesw.so
-echo "INPUT(-lncursesw)" > /usr/lib/libcursesw.so
-ln -sf libncurses.so      /usr/lib/libcurses.so
+rm -f                       /usr/lib/libcursesw.so
+echo "INPUT(-lncursesw)" >  /usr/lib/libcursesw.so
+ln -sf libncurses.so        /usr/lib/libcurses.so
 
-mkdir -p      /usr/share/doc/ncurses-6.3
-cp  -R doc/* /usr/share/doc/ncurses-6.3
+mkdir -p    /usr/share/doc/ncurses-6.3
+cp -R doc/* /usr/share/doc/ncurses-6.3
 
 
 cd ..

@@ -24,9 +24,9 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr           \
-            --disable-static        \
-            --docdir=/usr/share/doc/acl-2.3.1
+./configure --prefix=/usr                       \
+            --disable-static                    \
+            --docdir=/usr/share/doc/acl-2.3.1   \
     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
