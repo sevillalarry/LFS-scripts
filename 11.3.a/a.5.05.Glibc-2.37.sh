@@ -1,7 +1,7 @@
-# a.5.05.Glibc-2.36.sh
+# a.5.05.Glibc-2.37.sh
 #
 
-export PKG="glibc-2.36"
+export PKG="glibc-2.37"
 export PKGLOG_DIR=$LFSLOG/5.05
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -23,9 +23,6 @@ tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
 
-echo "Patch 1 Security Fix" >> $PKGLOG_OTHERS
-patch -Np1 -i ../glibc-2.36-security_fix-1.patch    >> $PKGLOG_OTHERS 2>> PKGLOG_ERROR
-
 echo "Symbolic Link"        >> $PKGLOG_OTHERS
 case $(uname -m) in
     i?86)   ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3                          >> $PKGLOG_OTHERS 2>> PKGLOG_ERROR
@@ -36,7 +33,7 @@ case $(uname -m) in
 esac
 
 echo "Patch 2 FHS-compliant"    >> $PKGLOG_OTHERS
-patch -Np1 -i ../glibc-2.36-fhs-1.patch             >> $PKGLOG_OTHERS 2>> PKGLOG_ERROR
+patch -Np1 -i ../glibc-2.37-fhs-1.patch             >> $PKGLOG_OTHERS 2>> PKGLOG_ERROR
 
 mkdir build
 cd    build
@@ -70,10 +67,12 @@ make DESTDIR=$LFS install
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 echo "Fix hard code path in 'ldd' script" >> $PKGLOG_OTHERS
-sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd  >> $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
+sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd  \
+    >> $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
 
 echo "Install 'limit.h' headers" >> $PKGLOG_OTHERS
-$LFS/tools/libexec/gcc/$LFS_TGT/12.2.0/install-tools/mkheaders  >> $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
+$LFS/tools/libexec/gcc/$LFS_TGT/12.2.0/install-tools/mkheaders  \
+    >> $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
 
 export MAKEFLAGS=$OLD_MAKEFLAGS
 unset OLD_MAKEFLAGS
