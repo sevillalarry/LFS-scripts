@@ -21,14 +21,14 @@ tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
 
-mkdir -pv /var/lib/hwclock
+mkdir -p /var/lib/hwclock
 
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure ADJTIME_PATH=/var/lib/hwclock/adjtime    \
+./configure ADJTIME_PATH=/var/lib/hwclock/adjtime       \
             --libdir=/usr/lib       \
-            --docdir=/usr/share/doc/util-linux-2.38.1 \
+            --docdir=/usr/share/doc/util-linux-2.38.1   \
             --disable-chfn-chsh     \
             --disable-login         \
             --disable-nologin       \
@@ -38,7 +38,7 @@ echo "2. Configure ..." >> $PKGLOG_ERROR
             --disable-pylibmount    \
             --disable-static        \
             --without-python        \
-            runstatedir=/run
+            runstatedir=/run        \
     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."

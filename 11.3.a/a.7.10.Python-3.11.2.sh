@@ -1,8 +1,8 @@
-# a.7.11.Texinfo-6.8.sh
+# a.7.10.Python-3.11.2.sh
 #
 
-export PKG="texinfo-6.8"
-export PKGLOG_DIR=$LFSLOG/7.11
+export PKG="Python-3.11.2"
+export PKGLOG_DIR=$LFSLOG/7.10
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -23,7 +23,9 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr
+./configure --prefix=/usr       \
+            --enable-shared     \
+            --without-ensurepip \
     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."

@@ -5,10 +5,10 @@ export LFSLOG_PROCESS=$LFSLOG/process.log
 
 #####
 
-echo "7.07.Gettext-0.21"
-echo "7.07.Gettext-0.21" >> $LFSLOG_PROCESS
+echo "7.07.Gettext-0.21.1"
+echo "7.07.Gettext-0.21.1" >> $LFSLOG_PROCESS
 
-time { bash a.7.07.Gettext-0.21.sh ; }
+time { bash a.7.07.Gettext-0.21.1.sh ; }
 
 echo "." >> $LFSLOG_PROCESS
 echo "."
@@ -38,10 +38,10 @@ echo "."
 
 ###
 
-echo "7.10.Python-3.10.9"
-echo "7.10.Python-3.10.9" >> $LFSLOG_PROCESS
+echo "7.10.Python-3.11.2"
+echo "7.10.Python-3.11.2" >> $LFSLOG_PROCESS
 
-time { bash a.7.10.Python-3.10.9.sh ; }
+time { bash a.7.10.Python-3.11.2.sh ; }
 
 echo "." >> $LFSLOG_PROCESS
 echo "."
@@ -49,10 +49,10 @@ echo "."
 
 ###
 
-echo "7.11.Texinfo-6.8"
-echo "7.11.Texinfo-6.8" >> $LFSLOG_PROCESS
+echo "7.11.Texinfo-7.0.2"
+echo "7.11.Texinfo-7.0.2" >> $LFSLOG_PROCESS
 
-time { bash a.7.11.Texinfo-6.8.sh ; }
+time { bash a.7.11.Texinfo-7.0.2.sh ; }
 
 echo "." >> $LFSLOG_PROCESS
 echo "."
@@ -75,6 +75,17 @@ echo "7.13.Cleaning.up.Only"
 echo "7.13.Cleaning.up.Only" >> $LFSLOG_PROCESS
 
 time { bash a.7.13.Cleaning.up.Only.sh ; }
+
+echo "." >> $LFSLOG_PROCESS
+echo "."
+echo "."
+
+###
+
+echo "7.13.pause.Backup"
+echo "7.13.pause.Backup" >> $LFSLOG_PROCESS
+
+bash a.7.13.pause.Backup.sh
 
 echo "." >> $LFSLOG_PROCESS
 echo "."

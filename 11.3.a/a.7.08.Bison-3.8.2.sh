@@ -23,8 +23,8 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr
-            --docdir=/usr/share/doc/bison-3.8.2
+./configure --prefix=/usr                       \
+            --docdir=/usr/share/doc/bison-3.8.2 \
     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
