@@ -1,8 +1,8 @@
-# a.6.12.Make-4.3.sh
+# a.6.04.Bash-5.2.15.sh
 #
 
-export PKG="make-4.3"
-export PKGLOG_DIR=$LFSLOG/6.12
+export PKG="bash-5.2.15"
+export PKGLOG_DIR=$LFSLOG/6.04
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -23,10 +23,10 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr   \
-            --without-guile \
-            --host=$LFS_TGT \
-            --build=$(build-aux/config.guess)
+./configure --prefix=/usr                       \
+            --build=$(sh support/config.guess)  \
+            --host=$LFS_TGT                     \
+            --without-bash-malloc               \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -34,12 +34,13 @@ echo "3. Make Build ..." >> $LFSLOG_PROCESS
 echo "3. Make Build ..." >> $PKGLOG_ERROR
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
-echo "3. Make Build ..."
-echo "3. Make Build ..." >> $LFSLOG_PROCESS
-echo "3. Make Build ..." >> $PKGLOG_ERROR
-
-make DESTDIR=$LFS install
+echo "4. Make Install ..."
+echo "4. Make Install ..." >> $LFSLOG_PROCESS
+echo "4. Make Install ..." >> $PKGLOG_ERROR
+make DESTDIR=$LFS install   \
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+
+ln -sv bash $LFS/bin/sh
 
 
 cd ..

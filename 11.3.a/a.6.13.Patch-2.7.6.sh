@@ -23,9 +23,9 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr   \
-            --host=$LFS_TGT \
-            --build=$(build-aux/config.guess)
+./configure --prefix=/usr                       \
+            --host=$LFS_TGT                     \
+            --build=$(build-aux/config.guess)   \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -36,7 +36,7 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Install ..."
 echo "4. Make Install ..." >> $LFSLOG_PROCESS
 echo "4. Make Install ..." >> $PKGLOG_ERROR
-make DESTDIR=$LFS install
+make DESTDIR=$LFS install   \
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 

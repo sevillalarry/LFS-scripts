@@ -1,8 +1,8 @@
-# a.6.09.Gawk-5.1.1.sh
+# a.6.10.Grep-3.8.sh
 #
 
-export PKG="gawk-5.1.1"
-export PKGLOG_DIR=$LFSLOG/6.09
+export PKG="grep-3.8"
+export PKGLOG_DIR=$LFSLOG/6.10
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -20,14 +20,11 @@ tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
 
-sed -i 's/extras//' Makefile.in
-
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
-            --build=$(build-aux/config.guess)
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -38,7 +35,7 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Install ..."
 echo "4. Make Install ..." >> $LFSLOG_PROCESS
 echo "4. Make Install ..." >> $PKGLOG_ERROR
-make DESTDIR=$LFS install
+make DESTDIR=$LFS install   \
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 

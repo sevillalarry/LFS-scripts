@@ -1,7 +1,7 @@
-# a.6.07.File-5.42.sh
+# a.6.07.File-5.44.sh
 #
 
-export PKG="file-5.42"
+export PKG="file-5.44"
 export PKGLOG_DIR=$LFSLOG/6.07
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -32,7 +32,7 @@ pushd build
   ../configure --disable-bzlib      \
                --disable-libseccomp \
                --disable-xzlib      \
-               --disable-zlib
+               --disable-zlib       \
     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
   
   echo "2.2 Make Build ..."
@@ -44,19 +44,21 @@ popd
 echo "3. Configure (again)..."
 echo "3. Configure (again)..." >> $LFSLOG_PROCESS
 echo "3. Configure (again)..." >> $PKGLOG_ERROR
-./configure --prefix=/usr --host=$LFS_TGT --build=$(./config.guess)
+./configure --prefix=/usr             \
+            --host=$LFS_TGT           \
+            --build=$(./config.guess) \
   >> $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "4. Make Build ..."
 echo "4. Make Build ..." >> $LFSLOG_PROCESS
 echo "4. Make Build ..." >> $PKGLOG_ERROR
-make FILE_COMPILE=$(pwd)/build/src/file
+make FILE_COMPILE=$(pwd)/build/src/file   \
   >> $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
-make DESTDIR=$LFS install
+make DESTDIR=$LFS install   \
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 rm $LFS/usr/lib/libmagic.la

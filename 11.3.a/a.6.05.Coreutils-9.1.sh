@@ -23,11 +23,11 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr                     \
-            --host=$LFS_TGT                   \
-            --build=$(build-aux/config.guess) \
-            --enable-install-program=hostname \
-            --enable-no-install-program=kill,uptime
+./configure --prefix=/usr                           \
+            --host=$LFS_TGT                         \
+            --build=$(build-aux/config.guess)       \
+            --enable-install-program=hostname       \
+            --enable-no-install-program=kill,uptime \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -38,13 +38,13 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Install ..."
 echo "4. Make Install ..." >> $LFSLOG_PROCESS
 echo "4. Make Install ..." >> $PKGLOG_ERROR
-make DESTDIR=$LFS install
+make DESTDIR=$LFS install   \
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 mv $LFS/usr/bin/chroot              $LFS/usr/sbin
 mkdir -p $LFS/usr/share/man/man8
 mv $LFS/usr/share/man/man1/chroot.1 $LFS/usr/share/man/man8/chroot.8
-sed -i 's/"1"/"8"/'                    $LFS/usr/share/man/man8/chroot.8
+sed -i 's/"1"/"8"/'                 $LFS/usr/share/man/man8/chroot.8
 
 
 cd ..

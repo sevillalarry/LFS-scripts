@@ -1,8 +1,8 @@
-# a.6.10.Grep-3.7.sh
+# a.6.16.Xz-5.4.1.sh
 #
 
-export PKG="grep-3.7"
-export PKGLOG_DIR=$LFSLOG/6.10
+export PKG="xz-5.4.1"
+export PKGLOG_DIR=$LFSLOG/6.16
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -23,8 +23,11 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr   \
-            --host=$LFS_TGT
+./configure --prefix=/usr                       \
+            --host=$LFS_TGT                     \
+            --build=$(build-aux/config.guess)   \
+            --disable-static                    \
+            --docdir=/usr/share/doc/xz-5.4.1    \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -35,8 +38,10 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Install ..."
 echo "4. Make Install ..." >> $LFSLOG_PROCESS
 echo "4. Make Install ..." >> $PKGLOG_ERROR
-make DESTDIR=$LFS install
-    > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR         \
+make DESTDIR=$LFS install   \
+    > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+
+rm $LFS/usr/lib/liblzma.la
 
 
 cd ..

@@ -1,7 +1,7 @@
-# a.6.03.Ncurses-6.3.sh
+# a.6.03.Ncurses-6.4.sh
 #
 
-export PKG="ncurses-6.3"
+export PKG="ncurses-6.4"
 export PKGLOG_DIR=$LFSLOG/6.03
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -57,7 +57,7 @@ make >> $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
-make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install
+make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install   \
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so
 

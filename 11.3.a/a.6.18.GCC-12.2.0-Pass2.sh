@@ -23,18 +23,18 @@ cd $PKG
 echo "1.1 Extract tar MPFR ."
 echo "1.1 Extract tar MPFR ." >> $LFSLOG_PROCESS
 echo "1.1 Extract tar MPFR ." >> $PKGLOG_ERROR
-tar -xf ../mpfr-4.1.0.tar.xz  >> $PKGLOG_TAR 2>> $PKGLOG_ERROR
-mv -v mpfr-4.1.0 mpfr
+tar -xf ../mpfr-4.2.0.tar.xz  >> $PKGLOG_TAR 2>> $PKGLOG_ERROR
+mv -v mpfr-4.2.0 mpfr
 echo "1.2 Extract tar GMP ."
 echo "1.2 Extract tar GMP ." >> $LFSLOG_PROCESS
 echo "1.2 Extract tar GMP ." >> $PKGLOG_ERROR
-tar -xf ../gmp-6.2.1.tar.xz   >> $PKGLOG_TAR 2>> $PKGLOG_ERROR
+tar -xf ../gmp-6.2.1.tar.xz  >> $PKGLOG_TAR 2>> $PKGLOG_ERROR
 mv -v gmp-6.2.1 gmp
 echo "1.3 Extract tar MPC ."
 echo "1.3 Extract tar MPC ." >> $LFSLOG_PROCESS
 echo "1.3 Extract tar MPC ." >> $PKGLOG_ERROR
-tar -xf ../mpc-1.2.1.tar.gz   >> $PKGLOG_TAR 2>> $PKGLOG_ERROR
-mv mpc-1.2.1 mpc
+tar -xf ../mpc-1.3.1.tar.gz  >> $PKGLOG_TAR 2>> $PKGLOG_ERROR
+mv mpc-1.3.1 mpc
 
 case $(uname -m) in
   x86_64)
@@ -42,7 +42,7 @@ case $(uname -m) in
   ;;
 esac
 
-sed '/thread_header =/s/@.*@/gthr-posix.h/'
+sed '/thread_header =/s/@.*@/gthr-posix.h/' \
     -i libgcc/Makefile.in libstdc++-v3/include/Makefile.in
 
 mkdir build
@@ -58,16 +58,16 @@ echo "2. Configure ..." >> $PKGLOG_ERROR
     LDFLAGS_FOR_TARGET=-L$PWD/$LFS_TGT/libgcc \
     --prefix=/usr                             \
     --with-build-sysroot=$LFS                 \
-    --enable-initfini-array                   \
+    --enable-default-pie                      \
+    --enable-default-ssp                      \
     --disable-nls                             \
     --disable-multilib                        \
-    --disable-decimal-float                   \
     --disable-libatomic                       \
     --disable-libgomp                         \
     --disable-libquadmath                     \
     --disable-libssp                          \
     --disable-libvtv                          \
-    --enable-languages=c,c++
+    --enable-languages=c,c++                  \
     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -78,7 +78,7 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Install ..."
 echo "4. Make Install ..." >> $LFSLOG_PROCESS
 echo "4. Make Install ..." >> $PKGLOG_ERROR
-make DESTDIR=$LFS install
+make DESTDIR=$LFS install \
   > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 ln -s gcc $LFS/usr/bin/cc

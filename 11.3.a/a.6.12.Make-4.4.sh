@@ -1,8 +1,8 @@
-# a.6.16.Xz-5.2.6.sh
+# a.6.12.Make-4.4.sh
 #
 
-export PKG="xz-5.2.6"
-export PKGLOG_DIR=$LFSLOG/6.16
+export PKG="make-4.4"
+export PKGLOG_DIR=$LFSLOG/6.12
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -16,9 +16,13 @@ mkdir $PKGLOG_DIR
 echo "1. Extract tar..."
 echo "1. Extract tar..." >> $LFSLOG_PROCESS
 echo "1. Extract tar..." >> $PKGLOG_ERROR
-tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
+tar xvf $PKG.tar.gz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
+
+sed -e '/ifdef SIGPIPE/,+2 d'                       \
+    -e '/undef  FATAL_SIG/i FATAL_SIG (SIGPIPE);'   \
+    -i src/main.c
 
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
@@ -26,8 +30,6 @@ echo "2. Configure ..." >> $PKGLOG_ERROR
 ./configure --prefix=/usr                       \
             --host=$LFS_TGT                     \
             --build=$(build-aux/config.guess)   \
-            --disable-static                    \
-            --docdir=/usr/share/doc/xz-5.2.6
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -35,13 +37,12 @@ echo "3. Make Build ..." >> $LFSLOG_PROCESS
 echo "3. Make Build ..." >> $PKGLOG_ERROR
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
-echo "4. Make Install ..."
-echo "4. Make Install ..." >> $LFSLOG_PROCESS
-echo "4. Make Install ..." >> $PKGLOG_ERROR
-make DESTDIR=$LFS install
-    > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+echo "3. Make Build ..."
+echo "3. Make Build ..." >> $LFSLOG_PROCESS
+echo "3. Make Build ..." >> $PKGLOG_ERROR
 
-rm $LFS/usr/lib/liblzma.la
+make DESTDIR=$LFS install   \
+    > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 
 cd ..
