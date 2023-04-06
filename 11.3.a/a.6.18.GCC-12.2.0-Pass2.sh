@@ -24,12 +24,12 @@ echo "1.1 Extract tar MPFR ."
 echo "1.1 Extract tar MPFR ." >> $LFSLOG_PROCESS
 echo "1.1 Extract tar MPFR ." >> $PKGLOG_ERROR
 tar -xf ../mpfr-4.2.0.tar.xz  >> $PKGLOG_TAR 2>> $PKGLOG_ERROR
-mv -v mpfr-4.2.0 mpfr
+mv mpfr-4.2.0 mpfr
 echo "1.2 Extract tar GMP ."
 echo "1.2 Extract tar GMP ." >> $LFSLOG_PROCESS
 echo "1.2 Extract tar GMP ." >> $PKGLOG_ERROR
 tar -xf ../gmp-6.2.1.tar.xz  >> $PKGLOG_TAR 2>> $PKGLOG_ERROR
-mv -v gmp-6.2.1 gmp
+mv gmp-6.2.1 gmp
 echo "1.3 Extract tar MPC ."
 echo "1.3 Extract tar MPC ." >> $LFSLOG_PROCESS
 echo "1.3 Extract tar MPC ." >> $PKGLOG_ERROR
