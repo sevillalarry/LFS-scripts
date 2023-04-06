@@ -1,8 +1,8 @@
-# a.5.04.Linux-6.1.11.API.Headers.sh
+# a.5.04.Linux-6.1.22.API.Headers.sh
 #
 
 # (based on Errata use: )
-export PKG="linux-6.1.11"
+export PKG="linux-6.1.22"
 export PKGLOG_DIR=$LFSLOG/5.04
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 #export PKGLOG_CONFIG=$PKGLOG_DIR/config.log

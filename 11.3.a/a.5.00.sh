@@ -5,10 +5,10 @@ export LFSLOG_PROCESS=$LFSLOG/process.log
 
 #####
 
-echo "5.02.Binutils-2.39-Pass1"
-echo "5.02.Binutils-2.39-Pass1" >> $LFSLOG_PROCESS
+echo "5.02.Binutils-2.40-Pass1"
+echo "5.02.Binutils-2.40-Pass1" >> $LFSLOG_PROCESS
 
-time { bash a.5.02.Binutils-2.39-Pass1.sh ; }
+time { bash a.5.02.Binutils-2.40-Pass1.sh ; }
 
 echo "." >> $LFSLOG_PROCESS
 echo "."
@@ -27,10 +27,10 @@ echo "."
 
 ###
 
-echo "5.04.Linux-5.15.91.API.Headers"
-echo "5.04.Linux-5.15.91.API.Headers" >> $LFSLOG_PROCESS
+echo "5.04.Linux-6.1.22.API.Headers"
+echo "5.04.Linux-6.1.22.API.Headers" >> $LFSLOG_PROCESS
 
-time { bash a.5.04.Linux-5.15.91.API.Headers.sh ; }
+time { bash a.5.04.Linux-6.1.22.API.Headers.sh ; }
 
 echo "." >> $LFSLOG_PROCESS
 echo "."
@@ -38,10 +38,21 @@ echo "."
 
 ###
 
-echo "5.05.Glibc-2.36"
-echo "5.05.Glibc-2.36" >> $LFSLOG_PROCESS
+echo "5.05.Glibc-2.37"
+echo "5.05.Glibc-2.37" >> $LFSLOG_PROCESS
 
-time { bash a.5.05.Glibc-2.36.sh ; }
+time { bash a.5.05.Glibc-2.37.sh ; }
+
+echo "." >> $LFSLOG_PROCESS
+echo "."
+echo "."
+
+###
+
+echo "a.5.06.Libstdc++.from.GCC-12.2.0"
+echo "a.5.06.Libstdc++.from.GCC-12.2.0" >> $LFSLOG_PROCESS
+
+time { bash a.5.06.Libstdc++.from.GCC-12.2.0.sh ; }
 
 echo "." >> $LFSLOG_PROCESS
 echo "."
