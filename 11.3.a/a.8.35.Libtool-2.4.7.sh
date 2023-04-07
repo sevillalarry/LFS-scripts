@@ -24,8 +24,8 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr                       \
-            > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
+./configure --prefix=/usr   \
+    > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
 echo "3. Make Build ..." >> $LFSLOG_PROCESS
@@ -35,7 +35,7 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
-make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+make -k check TESTSUITEFLAGS=$MAKEFLAGS > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS

@@ -1,7 +1,7 @@
-# a.8.48.Libelf.from.Elfutils-0.187.sh
+# a.8.48.Libelf.from.Elfutils-0.188.sh
 #
 
-export PKG="elfutils-0.187"
+export PKG="elfutils-0.188"
 export PKGLOG_DIR=$LFSLOG/8.48
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -37,15 +37,14 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
-make check
-     > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
-make -C libelf install
+make -C libelf install   \
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-install -vm644 config/libelf.pc /usr/lib/pkgconfig
+install -m644 config/libelf.pc /usr/lib/pkgconfig
 rm /usr/lib/libelf.a
 
 

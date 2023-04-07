@@ -1,7 +1,6 @@
 # a.8.38. Expat-2.5.0.sh
 #
 
-# (based on Errata use: )
 export PKG="expat-2.5.0"
 export PKGLOG_DIR=$LFSLOG/8.38
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
@@ -45,7 +44,7 @@ echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-install -m644 doc/*.{html,css}
+install -m644 doc/*.{html,css}  \
     /usr/share/doc/expat-2.5.0
 
 

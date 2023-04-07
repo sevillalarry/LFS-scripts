@@ -39,6 +39,7 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Test ..."
 echo "4. Test ..." >> $LFSLOG_PROCESS
 echo "4. Test ..." >> $PKGLOG_ERROR
+
 chown -R tester .
 
 su -s /usr/bin/expect tester << EOF 
@@ -54,8 +55,13 @@ echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
+exec /usr/bin/bash --login
 
-#exec /usr/bin/bash --login
+echo "."                >> $PKGLOG_CHECK
+echo "New Bash version" >> $PKGLOG_CHECK
+bash --version          >> $PKGLOG_CHECK
+echo "."                >> $PKGLOG_CHECK
+
 
 cd ..
 rm -rf $PKG

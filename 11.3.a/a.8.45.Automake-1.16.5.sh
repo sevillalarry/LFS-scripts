@@ -23,8 +23,8 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure    --prefix=/usr   \
-               --docdir=/usr/share/doc/automake-1.16.5
+./configure    --prefix=/usr                           \
+               --docdir=/usr/share/doc/automake-1.16.5 \
                > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -35,7 +35,7 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
-make -j4 check
+make $MAKEFLAGS check \
      > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 echo "5. Make Install ..."

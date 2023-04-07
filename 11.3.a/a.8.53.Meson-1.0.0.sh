@@ -1,7 +1,7 @@
-# a.8.53.Meson-0.63.1.sh
+# a.8.53.Meson-1.0.0.sh
 #
 
-export PKG="meson-0.63.1"
+export PKG="meson-1.0.0"
 export PKGLOG_DIR=$LFSLOG/8.53
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 #export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -24,19 +24,22 @@ cd $PKG
 echo "2. Build ..."
 echo "2. Build ..." >> $LFSLOG_PROCESS
 echo "2. Build ..." >> $PKGLOG_ERROR
-pip3 wheel -w dist --no-build-isolation --no-deps $PWD
+pip3 wheel  -w dist                 \
+            --no-build-isolation    \
+            --no-deps $PWD          \
     > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
 echo "3. Install ..."
 echo "3. Install ..." >> $LFSLOG_PROCESS
 echo "3. Install ..." >> $PKGLOG_ERROR
-pip3 install --no-index --find-links dist meson
+pip3 install    --no-index              \
+                --find-links dist meson \
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-install -vDm644 data/shell-completions/bash/meson
-    /usr/share/bash-completion/completions/meson
+install -Dm644 data/shell-completions/bash/meson    \
+    /usr/share/bash-completion/completions/meson    \
     >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-install -vDm644 data/shell-completions/zsh/_meson
-    /usr/share/zsh/site-functions/_meson
+install -Dm644 data/shell-completions/zsh/_meson    \
+    /usr/share/zsh/site-functions/_meson            \
     >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 

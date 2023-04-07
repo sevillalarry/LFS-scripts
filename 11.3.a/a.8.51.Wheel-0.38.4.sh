@@ -1,7 +1,7 @@
-# a.8.51.Wheel-0.37.1.sh
+# a.8.51.Wheel-0.38.4.sh
 #
 
-export PKG="wheel-0.37.1"
+export PKG="wheel-0.38.4"
 export PKGLOG_DIR=$LFSLOG/8.51
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 #export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -19,11 +19,22 @@ tar xvf $PKG.tar.gz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
 
-echo "2. Install ..."
-echo "2. Install ..." >> $LFSLOG_PROCESS
-echo "2. Install ..." >> $PKGLOG_ERROR
-pip3 install --no-index $PWD
-    > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+echo "2. Make Build ..."
+echo "2. Make Build ..." >> $LFSLOG_PROCESS
+echo "2. Make Build ..." >> $PKGLOG_ERROR
+PYTHONPATH=src                          \
+    pip3 wheel  -w dist                 \
+                --no-build-isolation    \
+                --no-deps $PWD          \
+        > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
+
+echo "3. Install ..."
+echo "3. Install ..." >> $LFSLOG_PROCESS
+echo "3. Install ..." >> $PKGLOG_ERROR
+pip3 install    --no-index          \
+                --find-links=dist   \
+                wheel               \
+        > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 
 cd ..

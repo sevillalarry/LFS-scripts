@@ -1,7 +1,7 @@
-# a.8.52.Ninja-1.11.0.sh
+# a.8.52.Ninja-1.11.1.sh
 #
 
-export PKG="ninja-1.11.0"
+export PKG="ninja-1.11.1"
 export PKGLOG_DIR=$LFSLOG/8.52
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 #export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -20,7 +20,9 @@ echo "1. Extract tar..." >> $PKGLOG_ERROR
 tar xvf $PKG.tar.gz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
-export NINJAJOBS=4
+
+#Number of Parallel processes
+export NINJAJOBS=8
 
 sed -i '/int Guess/a \
   int   j = 0;\
@@ -29,31 +31,30 @@ sed -i '/int Guess/a \
   if ( j > 0 ) return j;\
 ' src/ninja.cc
 
-
 echo "2. Build ..."
 echo "2. Build ..." >> $LFSLOG_PROCESS
 echo "2. Build ..." >> $PKGLOG_ERROR
-python3 configure.py --bootstrap
+python3 configure.py --bootstrap    \
     > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
 echo "3. Test ..."
 echo "3. Test ..." >> $LFSLOG_PROCESS
 echo "3. Test ..." >> $PKGLOG_ERROR
-./ninja ninja_test
+./ninja ninja_test                                      \
      > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
-./ninja_test --gtest_filter=-SubprocessTest.SetWithLots
+./ninja_test --gtest_filter=-SubprocessTest.SetWithLots \
     >> $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 echo "4. Install ..."
 echo "4. Install ..." >> $LFSLOG_PROCESS
 echo "4. Install ..." >> $PKGLOG_ERROR
-install -vm755 ninja /usr/bin/
+install -m755 ninja /usr/bin/                       \
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-install -vDm644 misc/bash-completion
-    /usr/share/bash-completion/completions/ninja
+install -Dm644 misc/bash-completion                 \
+    /usr/share/bash-completion/completions/ninja    \
     >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-install -vDm644 misc/zsh-completion
-    /usr/share/zsh/site-functions/_ninja
+install -Dm644 misc/zsh-completion                  \
+    /usr/share/zsh/site-functions/_ninja            \
     >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 

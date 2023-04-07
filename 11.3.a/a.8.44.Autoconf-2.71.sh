@@ -21,6 +21,10 @@ tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
 
+sed -e 's/SECONDS|/&SHLVL|/'               \
+    -e '/BASH_ARGV=/a\        /^SHLVL=/ d' \
+    -i.orig tests/local.at
+    
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
@@ -35,7 +39,7 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
-make check TESTSUITEFLAGS=-j4           \
+make check TESTSUITEFLAGS=$MAKEFLAGS \
      > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 echo "5. Make Install ..."

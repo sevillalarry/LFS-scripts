@@ -57,8 +57,7 @@ ulimit -s 32768
 
 chown -R tester . > $PKGLOG_CHOWN 2>> $PKGLOG_ERROR
 
-### Note change the -jN value to the number of CPU cores
-su tester -c "PATH=$PATH make -j8 -k check" \
+su tester -c "PATH=$PATH make $MAKEFLAGS -k check" \
   > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 ../contrib/test_summary \

@@ -26,8 +26,7 @@ echo "2. Configure ..." >> $PKGLOG_ERROR
 case $(uname -m) in 
     i?86)   TIME_T_32_BIT_OK=yes ./configure --prefix=/usr --localstatedir=/var/lib/locate ;;
     x86_64) ./configure --prefix=/usr --localstatedir=/var/lib/locate ;;
-esac
-     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
+esac > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
 echo "3. Make Build ..." >> $LFSLOG_PROCESS
@@ -37,16 +36,15 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
-chown -R tester .
-    $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
-su tester -c "PATH=$PATH make check"
-    $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+chown -R tester .   \
+    > $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
+su tester -c "PATH=$PATH make check"    \
+    > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
-make install
-     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 
 cd ..
