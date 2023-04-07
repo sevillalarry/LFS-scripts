@@ -1,7 +1,7 @@
-# a.8.76.Sysvinit-3.04.sh
+# a.8.76.Sysvinit-3.06.sh
 #
 
-export PKG="sysvinit-3.04"
+export PKG="sysvinit-3.06"
 export PKGLOG_DIR=$LFSLOG/8.76
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 #export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -21,7 +21,7 @@ tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
 
-patch -Np1 -i ../sysvinit-3.04-consolidated-1.patch
+patch -Np1 -i ../sysvinit-3.06-consolidated-1.patch
 
 echo "2. Make Build ..."
 echo "2. Make Build ..." >> $LFSLOG_PROCESS
@@ -31,8 +31,7 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "3. Make Install ..."
 echo "3. Make Install ..." >> $LFSLOG_PROCESS
 echo "3. Make Install ..." >> $PKGLOG_ERROR
-make install
-     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 
 cd ..

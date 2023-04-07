@@ -21,6 +21,8 @@ tar xvf $PKG.tar.gz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
 
+sed -i '/udevdir/a udev_dir=${udevdir}' src/udev/udev.pc.in
+
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
@@ -41,26 +43,23 @@ echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
 mkdir -p /usr/lib/udev/rules.d
 mkdir -p /etc/udev/rules.d
-
-make check
-     > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
-make install
-      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 echo "6. Extract custom rules & support files ..."
 echo "6. Extract custom rules & support files ..." >> $LFSLOG_PROCESS
 echo "6. Extract custom rules & support files ..." >> $PKGLOG_ERROR
-tar -xvf ../udev-lfs-20171102.tar.xz
+tar -xvf ../udev-lfs-20171102.tar.xz    \
      >> $PKGLOG_TAR 2>> $PKGLOG_ERROR
 
 echo "7. Make Install customs rules & support files ..."
 echo "7. Make Install customs rules & support files ..." >> $LFSLOG_PROCESS
 echo "7. Make Install customs rules & support files ..." >> $PKGLOG_ERROR
-make -f udev-lfs-20171102/Makefile.lfs install
+make -f udev-lfs-20171102/Makefile.lfs install    \
      >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 

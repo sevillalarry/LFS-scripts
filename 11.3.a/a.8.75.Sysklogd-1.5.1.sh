@@ -32,7 +32,7 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "3. Make Install ..."
 echo "3. Make Install ..." >> $LFSLOG_PROCESS
 echo "3. Make Install ..." >> $PKGLOG_ERROR
-make BINDIR=/sbin install
+make BINDIR=/sbin install     \
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 

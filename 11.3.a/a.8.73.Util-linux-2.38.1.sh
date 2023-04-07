@@ -1,5 +1,5 @@
-# a.8.73.Util-linux-2.38.1.Part1.sh
-# Extract, Configure, Build
+# a.8.73.Util-linux-2.38.1.sh
+#
 
 export PKG="util-linux-2.38.1"
 export PKGLOG_DIR=$LFSLOG/8.73
@@ -28,7 +28,6 @@ echo "2. Configure ..." >> $PKGLOG_ERROR
             --bindir=/usr/bin    \
             --libdir=/usr/lib    \
             --sbindir=/usr/sbin  \
-            --docdir=/usr/share/doc/util-linux-2.38.1  \
             --disable-chfn-chsh  \
             --disable-login      \
             --disable-nologin    \
@@ -40,6 +39,7 @@ echo "2. Configure ..." >> $PKGLOG_ERROR
             --without-python     \
             --without-systemd    \
             --without-systemdsystemunitdir             \
+            --docdir=/usr/share/doc/util-linux-2.38.1  \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -50,15 +50,14 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
-chown -Rv tester .
-su tester -c "make -k check"
+chown -R tester .
+su tester -c "make -k check"  \
      > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
-make install
-     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 
 cd ..

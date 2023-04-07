@@ -1,7 +1,7 @@
-# a.8.69a.Nano-6.4.sh
+# a.8.69a.Nano-7.2.sh
 #
 
-export PKG="nano-6.4"
+export PKG="nano-7.2"
 export PKGLOG_DIR=$LFSLOG/8.69a
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -24,10 +24,10 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr                        \
-            --sysconfdir=/etc                    \
-            --enable-utf8                        \
-            --docdir=/usr/share/doc/nano-6.4
+./configure --prefix=/usr                     \
+            --sysconfdir=/etc                 \
+            --enable-utf8                     \
+            --docdir=/usr/share/doc/nano-7.2  \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -38,11 +38,9 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Install ..."
 echo "4. Make Install ..." >> $LFSLOG_PROCESS
 echo "4. Make Install ..." >> $PKGLOG_ERROR
-make install
-     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-
-install -m644 doc/{nano.html,sample.nanorc}
-  /usr/share/doc/nano-6.4
+make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+install -m644 doc/{nano.html,sample.nanorc} \
+  /usr/share/doc/nano-7.2
 
 
 cd ..

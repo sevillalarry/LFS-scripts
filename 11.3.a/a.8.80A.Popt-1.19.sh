@@ -1,7 +1,7 @@
-# a.8.60A.Popt-1.18.sh
+# a.8.80A.Popt-1.19.sh
 #
 
-export PKG="popt-1.18"
+export PKG="popt-1.19"
 export PKGLOG_DIR=$LFSLOG/8.60A
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -26,7 +26,7 @@ echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
 ./configure    --prefix=/usr       \
                --disable-static    \
-            > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
+     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
 echo "3. Make Build ..." >> $LFSLOG_PROCESS
@@ -36,17 +36,15 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
-make check
-     > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
-make install
-     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-install -m755 -d /usr/share/doc/popt-1.18
-install -m644 doxygen/html/* /usr/share/doc/popt-1.18
+install -vm755 -d /usr/share/doc/popt-1.19              > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+install -vm644 doxygen/html/* /usr/share/doc/popt-1.19 >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 
 cd ..

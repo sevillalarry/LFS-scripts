@@ -1,4 +1,4 @@
-# a.8.60D.efibootmgr-18.Part1.sh
+# a.8.80D.efibootmgr-18.Part1.sh
 # Extract, Build
 
 export PKG="efibootmgr-18"
@@ -24,13 +24,13 @@ cd $PKG
 echo "2. Make Build ..."
 echo "2. Make Build ..." >> $LFSLOG_PROCESS
 echo "2. Make Build ..." >> $PKGLOG_ERROR
-make EFIDIR=LFS EFI_LOADER=grubx64.efi
+make EFIDIR=LFS EFI_LOADER=grubx64.efi  \
     > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
 echo "3. Make Install ..."
 echo "3. Make Install ..." >> $LFSLOG_PROCESS
 echo "3. Make Install ..." >> $PKGLOG_ERROR
-make install EFIDIR=LFS
+make install EFIDIR=LFS \
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 

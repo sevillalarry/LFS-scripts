@@ -1,7 +1,7 @@
-# a.8.62.IPRoute2-5.19.0.sh
+# a.8.62.IPRoute2-6.1.0.sh
 #
 
-export PKG="iproute2-5.19.0"
+export PKG="iproute2-6.1.0"
 export PKGLOG_DIR=$LFSLOG/8.62
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 #export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -26,17 +26,17 @@ rm -f man/man8/arpd.8
 echo "2. Make Build ..."
 echo "2. Make Build ..." >> $LFSLOG_PROCESS
 echo "2. Make Build ..." >> $PKGLOG_ERROR
-make NETNS_RUN_DIR=/run/netns
+make NETNS_RUN_DIR=/run/netns \
   > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
 echo "3. Make Install ..."
 echo "3. Make Install ..." >> $LFSLOG_PROCESS
 echo "3. Make Install ..." >> $PKGLOG_ERROR
-make SBINDIR=/usr/sbin install
-     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+make SBINDIR=/usr/sbin install  \
+  > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-mkdir -p           /usr/share/doc/iproute2-5.19.0
-cp -v COPYING README* /usr/share/doc/iproute2-5.19.0
+mkdir -p            /usr/share/doc/iproute2-6.1.0
+cp COPYING README*  /usr/share/doc/iproute2-6.1.0
 
 
 cd ..

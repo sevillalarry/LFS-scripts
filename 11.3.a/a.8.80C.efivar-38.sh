@@ -1,5 +1,5 @@
-# a.8.60C.efivar-38.Part1.sh
-# Extract, Build
+# a.8.80C.efivar-38.sh
+#
 
 export PKG="efivar-38"
 export PKGLOG_DIR=$LFSLOG/8.60C
@@ -21,13 +21,7 @@ tar xvf $PKG.tar.bz2 > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
 
-sed '/prep :/a\\ttouch prep'
-  -i src/Makefile
-
-sed '/sys\/mount\.h/d'
-  -i src/util.h
-sed '/unistd\.h/a#include <sys/mount.h>'
-  -i src/gpt.c src/linux.c
+sed '/prep :/a\\ttouch prep' -i src/Makefile
 
 echo "2. Make Build ..."
 echo "2. Make Build ..." >> $LFSLOG_PROCESS
@@ -37,7 +31,7 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "3. Make Install ..."
 echo "3. Make Install ..." >> $LFSLOG_PROCESS
 echo "3. Make Install ..." >> $PKGLOG_ERROR
-make install LIBDIR=/usr/lib
+make install LIBDIR=/usr/lib  \
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 
