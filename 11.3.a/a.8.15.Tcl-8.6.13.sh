@@ -65,7 +65,8 @@ make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 chmod u+w /usr/lib/libtcl8.6.so
 
-make install-private-headers
+make install-private-headers    \
+    >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 ln -sf tclsh8.6 /usr/bin/tclsh
 
@@ -74,7 +75,7 @@ mv /usr/share/man/man3/{Thread,Tcl_Thread}.3
 cd ..
 tar -xf ../tcl8.6.13-html.tar.gz --strip-components=1
 mkdir -p /usr/share/doc/tcl-8.6.13
-cp -r  ../html/* /usr/share/doc/tcl-8.6.13
+cp -r ./html/* /usr/share/doc/tcl-8.6.13
 
 
 cd ..
