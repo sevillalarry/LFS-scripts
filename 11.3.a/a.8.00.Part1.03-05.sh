@@ -53,10 +53,7 @@ echo "."
 echo "8.05.Glibc-2.37.Part9"
 echo "8.05.Glibc-2.37.Part9" >> $LFSLOG_PROCESS
 
-time { bash a.8.05.Glibc-2.37.Part9.sh ; }
-
-date +"%Y/%b/%d %H:%M"
-date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
+bash a.8.05.Glibc-2.37.Part9.sh
 
 echo "." >> $LFSLOG_PROCESS
 echo "."
