@@ -42,7 +42,7 @@ echo "4. Test ..." >> $PKGLOG_ERROR
 
 chown -R tester .
 
-su -s /usr/bin/expect tester << EOF 
+su -s /usr/bin/expect tester << EOF > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 set timeout -1
 spawn make tests
 expect eof
@@ -54,13 +54,6 @@ echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-
-exec /usr/bin/bash --login
-
-echo "."                >> $PKGLOG_CHECK
-echo "New Bash version" >> $PKGLOG_CHECK
-bash --version          >> $PKGLOG_CHECK
-echo "."                >> $PKGLOG_CHECK
 
 
 cd ..
