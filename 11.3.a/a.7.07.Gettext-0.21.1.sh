@@ -32,7 +32,7 @@ echo "3. Make Build ..." >> $LFSLOG_PROCESS
 echo "3. Make Build ..." >> $PKGLOG_ERROR
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
-cp  gettext-tools/src/{msgfmt,msgmerge,xgettext} /usr/bin
+cp gettext-tools/src/{msgfmt,msgmerge,xgettext} /usr/bin
 
 
 cd ..
