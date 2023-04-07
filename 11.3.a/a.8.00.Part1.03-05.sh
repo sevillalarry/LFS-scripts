@@ -8,24 +8,10 @@ date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
 
 #####
 
-echo "8.03.Man-pages-5.13"
-echo "8.03.Man-pages-5.13" >> $LFSLOG_PROCESS
+echo "8.03.Man-pages-6.03"
+echo "8.03.Man-pages-6.03" >> $LFSLOG_PROCESS
 
-time { bash a.8.03.Man-pages-5.13.sh ; }
-
-date +"%Y/%b/%d %H:%M"
-date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
-
-echo "." >> $LFSLOG_PROCESS
-echo "."
-echo "."
-
-###
-
-echo "8.04.Iana-Etc-20220812"
-echo "8.04.Iana-Etc-20220812" >> $LFSLOG_PROCESS
-
-time { bash a.8.04.Iana-Etc-20220812.sh ; }
+time { bash a.8.03.Man-pages-6.03.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
@@ -36,10 +22,10 @@ echo "."
 
 ###
 
-echo "8.05.Glibc-2.36.Part1"
-echo "8.05.Glibc-2.36.Part1" >> $LFSLOG_PROCESS
+echo "8.04.Iana-Etc-20230202"
+echo "8.04.Iana-Etc-20230202" >> $LFSLOG_PROCESS
 
-time { bash a.8.05.Glibc-2.36.Part1.sh ; }
+time { bash a.8.04.Iana-Etc-20230202.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
@@ -50,10 +36,24 @@ echo "."
 
 ###
 
-echo "8.05.Glibc-2.36.Part9"
-echo "8.05.Glibc-2.36.Part9" >> $LFSLOG_PROCESS
+echo "8.05.Glibc-2.37.Part1"
+echo "8.05.Glibc-2.37.Part1" >> $LFSLOG_PROCESS
 
-time { bash a.8.05.Glibc-2.36.Part9.sh ; }
+time { bash a.8.05.Glibc-2.37.Part1.sh ; }
+
+date +"%Y/%b/%d %H:%M"
+date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
+
+echo "." >> $LFSLOG_PROCESS
+echo "."
+echo "."
+
+###
+
+echo "8.05.Glibc-2.37.Part9"
+echo "8.05.Glibc-2.37.Part9" >> $LFSLOG_PROCESS
+
+time { bash a.8.05.Glibc-2.37.Part9.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
