@@ -118,13 +118,6 @@ echo "." >> $LFSLOG_PROCESS
 echo "."
 echo "."
 
-###
-
-echo "8.80Z.Using.GRUB.with.UEFI"
-echo "8.80Z.Using.GRUB.with.UEFI" >> $LFSLOG_PROCESS
-
-bash a.8.80Z.Using.GRUB.with.UEFI.sh
-
 #####
 
 unset LFSLOG_PROCESS
