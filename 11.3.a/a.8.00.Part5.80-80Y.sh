@@ -1,4 +1,6 @@
-# a.8.00.Part4.60-60Y.sh
+# a.8.00.Part5.80-80Y.sh
+#
+# Replacement for a.8.60.GRUB
 #
 
 export LFSLOG_PROCESS=$LFSLOG/process.log

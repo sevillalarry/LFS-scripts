@@ -1,7 +1,13 @@
 # a.8.80.GRUB-2.06.for.EFI.x64.sh
+#
 # original is for 8.60 GRUB
 #
 echo "....."
+echo "."
+echo "."
+echo "GRUB for EFI x64"
+echo "."
+echo "."
 echo "Read the following:"
 echo "."
 echo "."
