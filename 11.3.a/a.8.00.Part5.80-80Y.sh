@@ -24,10 +24,10 @@ echo "."
 
 ###
 
-echo "8.80A.Popt-1.18"
-echo "8.80A.Popt-1.18" >> $LFSLOG_PROCESS
+echo "8.80A.Popt-1.19"
+echo "8.80A.Popt-1.19" >> $LFSLOG_PROCESS
 
-time { bash a.8.80A.Popt-1.18.sh ; }
+time { bash a.8.80A.Popt-1.19.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
@@ -52,24 +52,10 @@ echo "."
 
 ###
 
-echo "8.80C.efivar-38.Part1"
-echo "8.80C.efivar-38.Part1" >> $LFSLOG_PROCESS
+echo "8.80C.efivar-38"
+echo "8.80C.efivar-38" >> $LFSLOG_PROCESS
 
-time { bash a.8.80C.efivar-38.Part1.sh ; }
-
-date +"%Y/%b/%d %H:%M"
-date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
-
-echo "." >> $LFSLOG_PROCESS
-echo "."
-echo "."
-
-###
-
-echo "8.80C.efivar-38.Part2"
-echo "8.80C.efivar-38.Part2" >> $LFSLOG_PROCESS
-
-time { bash a.8.80C.efivar-38.Part2.sh ; }
+time { bash a.8.80C.efivar-38.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
@@ -80,24 +66,10 @@ echo "."
 
 ###
 
-echo "8.80D.efibootmgr-18.Part1"
-echo "8.80D.efibootmgr-18.Part1" >> $LFSLOG_PROCESS
+echo "8.80D.efibootmgr-18"
+echo "8.80D.efibootmgr-18" >> $LFSLOG_PROCESS
 
-time { bash a.8.80D.efibootmgr-18.Part1.sh ; }
-
-date +"%Y/%b/%d %H:%M"
-date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
-
-echo "." >> $LFSLOG_PROCESS
-echo "."
-echo "."
-
-###
-
-echo "8.80D.efibootmgr-18.Part2"
-echo "8.80D.efibootmgr-18.Part2" >> $LFSLOG_PROCESS
-
-time { bash a.8.80D.efibootmgr-18.Part2.sh ; }
+time { bash a.8.80D.efibootmgr-18.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
