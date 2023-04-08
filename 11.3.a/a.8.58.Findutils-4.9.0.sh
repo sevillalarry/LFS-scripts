@@ -36,8 +36,7 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
-chown -R tester .   \
-    > $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
+chown -R tester .
 su tester -c "PATH=$PATH make check"    \
     > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 

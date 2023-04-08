@@ -26,7 +26,7 @@ patch -Np1 -i ../coreutils-9.1-i18n-1.patch
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-autoreconf -fiv
+autoreconf -fi
 FORCE_UNSAFE_CONFIGURE=1 ./configure                \
             --prefix=/usr                           \
             --enable-no-install-program=kill,uptime \
