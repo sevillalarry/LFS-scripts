@@ -2,7 +2,7 @@
 #
 
 export PKG="grub-2.06"
-export PKGLOG_DIR=$LFSLOG/8.60Y
+export PKGLOG_DIR=$LFSLOG/8.80Y
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -34,13 +34,13 @@ echo "2. Configure ..." >> $PKGLOG_ERROR
 ./configure --prefix=/usr         \
             --sysconfdir=/etc     \
             --disable-efiemu      \
-            --enable-grub-mkfont  \
             --with-platform=efi   \
             --target=x86_64       \
             --disable-werror      \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
-unset TARGET_CC
+#            --enable-grub-mkfont  \
+#unset TARGET_CC
 
 echo "3. Make Build ..."
 echo "3. Make Build ..." >> $LFSLOG_PROCESS

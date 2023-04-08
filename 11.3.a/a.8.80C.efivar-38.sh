@@ -2,7 +2,7 @@
 #
 
 export PKG="efivar-38"
-export PKGLOG_DIR=$LFSLOG/8.60C
+export PKGLOG_DIR=$LFSLOG/8.80C
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 #export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log

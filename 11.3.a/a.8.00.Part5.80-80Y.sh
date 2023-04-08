@@ -13,10 +13,7 @@ date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
 echo "8.80.GRUB-2.06.for.EFI.x64"
 echo "8.80.GRUB-2.06.for.EFI.x64" >> $LFSLOG_PROCESS
 
-time { bash a.8.80.GRUB-2.06.for.EFI.x64.sh ; }
-
-date +"%Y/%b/%d %H:%M"
-date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
+bash a.8.80.GRUB-2.06.for.EFI.x64.sh ;
 
 echo "." >> $LFSLOG_PROCESS
 echo "."

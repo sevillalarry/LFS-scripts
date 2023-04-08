@@ -2,7 +2,7 @@
 #
 
 export PKG="mandoc-1.14.6"
-export PKGLOG_DIR=$LFSLOG/8.60B
+export PKGLOG_DIR=$LFSLOG/8.80B
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -39,8 +39,8 @@ make regress > $PKGLOG_CHECK  2>> $PKGLOG_ERROR
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
-install -vm755 mandoc   /usr/bin             > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-install -vm644 mandoc.1 /usr/share/man/man1 >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+install -m755 mandoc   /usr/bin             2>> $PKGLOG_ERROR
+install -m644 mandoc.1 /usr/share/man/man1  2>> $PKGLOG_ERROR
 
 
 cd ..

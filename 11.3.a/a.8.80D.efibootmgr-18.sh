@@ -2,7 +2,7 @@
 # Extract, Build
 
 export PKG="efibootmgr-18"
-export PKGLOG_DIR=$LFSLOG/8.60D
+export PKGLOG_DIR=$LFSLOG/8.80D
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 #export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
