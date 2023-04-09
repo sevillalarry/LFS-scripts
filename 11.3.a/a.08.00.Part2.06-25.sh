@@ -176,10 +176,10 @@ echo "."
 
 ###
 
-echo "08.108.Binutils-2.40"
-echo "08.108.Binutils-2.40" >> $LFSLOG_PROCESS
+echo "08.18.Binutils-2.40"
+echo "08.18.Binutils-2.40" >> $LFSLOG_PROCESS
 
-time { bash a.08.108.Binutils-2.40.sh ; }
+time { bash a.08.18.Binutils-2.40.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
