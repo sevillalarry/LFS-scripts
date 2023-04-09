@@ -23,7 +23,8 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr --host=$LFS_TGT   \
+./configure --prefix=/usr   \
+            --host=$LFS_TGT \
     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."

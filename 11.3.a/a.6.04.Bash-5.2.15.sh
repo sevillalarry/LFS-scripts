@@ -40,7 +40,7 @@ echo "4. Make Install ..." >> $PKGLOG_ERROR
 make DESTDIR=$LFS install   \
     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-ln -sv bash $LFS/bin/sh
+ln -s bash $LFS/bin/sh
 
 
 cd ..

@@ -28,6 +28,7 @@ echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
 ./configure --prefix=/usr                       \
+            --without-guile                     \
             --host=$LFS_TGT                     \
             --build=$(build-aux/config.guess)   \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
