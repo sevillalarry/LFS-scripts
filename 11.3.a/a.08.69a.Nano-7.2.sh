@@ -1,5 +1,7 @@
 # a.08.69a.Nano-7.2.sh
 #
+# Don't forget to download
+# https://www.nano-editor.org/dist/v7/nano-7.2.tar.xz
 
 export PKG="nano-7.2"
 export PKGLOG_DIR=$LFSLOG/08.69a
