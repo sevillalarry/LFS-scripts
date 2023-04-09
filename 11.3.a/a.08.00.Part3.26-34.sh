@@ -137,7 +137,7 @@ echo "."
 echo "08.34.Bash-5.2.15.Part9"
 echo "08.34.Bash-5.2.15.Part9" >> $LFSLOG_PROCESS
 
-bash a.08.34.Bash-5.2.15.Part9.sh ; }
+bash a.08.34.Bash-5.2.15.Part9.sh
 
 echo "." >> $LFSLOG_PROCESS
 echo "."
