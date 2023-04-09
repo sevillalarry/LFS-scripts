@@ -1,0 +1,18 @@
+# a.08.78.&.79.Stripping.&.Cleaning.Up.sh
+#
+echo "....."
+echo "Read first: https://www.linuxfromscratch.org/blfs/advisories/consolidated.html"
+echo "."
+echo "....."
+echo "Read and Execute"
+echo "7.13.2 Create a Backup again"
+echo "."
+echo "."
+echo "Then,"
+echo "."
+echo "Read and execute the following:"
+echo "."
+echo "8.78. Stripping"
+echo "8.79. Cleaning Up"
+echo "."
+echo "....."
