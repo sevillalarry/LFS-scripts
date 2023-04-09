@@ -204,10 +204,10 @@ echo "."
 
 ###
 
-echo "06.106.Xz-5.4.1"
-echo "06.106.Xz-5.4.1" >> $LFSLOG_PROCESS
+echo "06.16.Xz-5.4.1"
+echo "06.16.Xz-5.4.1" >> $LFSLOG_PROCESS
 
-time { bash a.06.106.Xz-5.4.1.sh ; }
+time { bash a.06.16.Xz-5.4.1.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
