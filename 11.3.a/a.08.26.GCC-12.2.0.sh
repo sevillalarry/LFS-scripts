@@ -55,7 +55,7 @@ echo "4. Make Check 1 ..." >> $LFSLOG_PROCESS
 echo "4. Make Check 1 ..." >> $PKGLOG_ERROR
 ulimit -s 32768
 
-chown -R tester . > $PKGLOG_CHOWN 2>> $PKGLOG_ERROR
+chown -Rv tester . > $PKGLOG_CHOWN 2>> $PKGLOG_ERROR
 
 su tester -c "PATH=$PATH make $MAKEFLAGS -k check" \
   > $PKGLOG_CHECK 2>> $PKGLOG_ERROR

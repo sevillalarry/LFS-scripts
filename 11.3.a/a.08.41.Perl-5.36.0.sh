@@ -19,9 +19,9 @@ echo "1. Extract tar..." >> $PKGLOG_ERROR
 tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
+
 export BUILD_ZLIB=False
 export BUILD_BZIP2=0
-
 
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS

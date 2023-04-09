@@ -43,7 +43,7 @@ su tester -c "PATH=$PATH make check"    \
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
-make install       > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 install -d -m755           /usr/share/doc/sed-4.9
 install -m644 doc/sed.html /usr/share/doc/sed-4.9
 

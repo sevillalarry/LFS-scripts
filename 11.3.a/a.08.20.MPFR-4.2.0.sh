@@ -1,5 +1,5 @@
 # a.08.20.MPFR-4.2.0.sh
-# Extract, Configure, Build, Check
+#
 
 export PKG="mpfr-4.2.0"
 export PKGLOG_DIR=$LFSLOG/08.20

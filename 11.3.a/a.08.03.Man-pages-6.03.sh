@@ -23,7 +23,8 @@ cd $PKG
 echo "2. Make Install ..."
 echo "2. Make Install ..." >> $LFSLOG_PROCESS
 echo "2. Make Install ..." >> $PKGLOG_ERROR
-make prefix=/usr install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+make prefix=/usr install    \
+    > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 
 cd ..

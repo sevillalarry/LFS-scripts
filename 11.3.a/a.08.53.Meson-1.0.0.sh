@@ -32,8 +32,9 @@ pip3 wheel  -w dist                 \
 echo "3. Install ..."
 echo "3. Install ..." >> $LFSLOG_PROCESS
 echo "3. Install ..." >> $PKGLOG_ERROR
-pip3 install    --no-index              \
-                --find-links dist meson \
+pip3 install    --no-index          \
+                --find-links dist   \
+                meson               \
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 install -Dm644 data/shell-completions/bash/meson    \
     /usr/share/bash-completion/completions/meson    \

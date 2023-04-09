@@ -8,6 +8,7 @@ export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
 export PKGLOG_CHECK=$PKGLOG_DIR/check.log
 export PKGLOG_INSTALL=$PKGLOG_DIR/install.log
+export PKGLOG_OTHERS=$PKGLOG_DIR/others.log
 export PKGLOG_ERROR=$PKGLOG_DIR/error.log
 export LFSLOG_PROCESS=$LFSLOG/process.log
 
@@ -23,9 +24,13 @@ echo "1. Extract tar..." >> $PKGLOG_ERROR
 tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
-patch -Np1 -i ../glibc-2.37-fhs-1.patch
+echo "2. Patching..."
+echo "2. Patching..." >> $LFSLOG_PROCESS
+echo "2. Patching..." >> $PKGLOG_ERROR
+patch -Np1 -i ../glibc-2.37-fhs-1.patch \
+     > $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
 
-sed '/width -=/s/workend - string/number_length/' \
+sed '/width -=/s/workend - string/number_length/'   \
     -i stdio-common/vfprintf-process-arg.c
 
 mkdir build
@@ -33,9 +38,9 @@ cd    build
 
 echo "rootsbindir=/usr/sbin" > configparms
 
-echo "2. Configure ..."
-echo "2. Configure ..." >> $LFSLOG_PROCESS
-echo "2. Configure ..." >> $PKGLOG_ERROR
+echo "3. Configure ..."
+echo "3. Configure ..." >> $LFSLOG_PROCESS
+echo "3. Configure ..." >> $PKGLOG_ERROR
 ../configure --prefix=/usr                      \
              --disable-werror                   \
              --enable-kernel=3.2                \
@@ -44,23 +49,23 @@ echo "2. Configure ..." >> $PKGLOG_ERROR
              libc_cv_slibdir=/usr/lib           \
     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
-echo "3. Make Build ..."
-echo "3. Make Build ..." >> $LFSLOG_PROCESS
-echo "3. Make Build ..." >> $PKGLOG_ERROR
+echo "4. Make Build ..."
+echo "4. Make Build ..." >> $LFSLOG_PROCESS
+echo "4. Make Build ..." >> $PKGLOG_ERROR
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
-echo "4. Make Check ..."
-echo "4. Make Check ..." >> $LFSLOG_PROCESS
-echo "4. Make Check ..." >> $PKGLOG_ERROR
+echo "5. Make Check ..."
+echo "5. Make Check ..." >> $LFSLOG_PROCESS
+echo "5. Make Check ..." >> $PKGLOG_ERROR
 make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 touch /etc/ld.so.conf
 
 sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile
 
-echo "5. Make Install ..."
-echo "5. Make Install ..." >> $LFSLOG_PROCESS
-echo "5. Make Install ..." >> $PKGLOG_ERROR
+echo "6. Make Install ..."
+echo "6. Make Install ..." >> $LFSLOG_PROCESS
+echo "6. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
@@ -68,9 +73,9 @@ sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
 cp ../nscd/nscd.conf /etc/nscd.conf
 mkdir -p /var/cache/nscd
 
-echo "6. Locale Definitions ..."
-echo "6. Locale Definitions ..." >> $LFSLOG_PROCESS
-echo "6. Locale Definitions ..." >> $PKGLOG_ERROR
+echo "7. Locale Definitions ..."
+echo "7. Locale Definitions ..." >> $LFSLOG_PROCESS
+echo "7. Locale Definitions ..." >> $PKGLOG_ERROR
 mkdir -p /usr/lib/locale
 localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
 localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
@@ -108,19 +113,19 @@ localedef -i zh_CN -f GB18030 zh_CN.GB18030
 localedef -i zh_HK -f BIG5-HKSCS zh_HK.BIG5-HKSCS
 localedef -i zh_TW -f UTF-8 zh_TW.UTF-8
 
-echo "7. Make Install Locales ..."
-echo "7. Make Install Locales ..." >> $LFSLOG_PROCESS
-echo "7. Make Install Locales ..." >> $PKGLOG_ERROR
+echo "8. Make Install Locales ..."
+echo "8. Make Install Locales ..." >> $LFSLOG_PROCESS
+echo "8. Make Install Locales ..." >> $PKGLOG_ERROR
 make localedata/install-locales \
     >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
 localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true
 
-echo "8. Setting Time Zone ..."
-echo "8. Setting Time Zone ..." >> $LFSLOG_PROCESS
-echo "8. Setting Time Zone ..." >> $PKGLOG_ERROR
-tar -xf ../../tzdata2022g.tar.gz
+echo "9. Setting Time Zone ..."
+echo "9. Setting Time Zone ..." >> $LFSLOG_PROCESS
+echo "9. Setting Time Zone ..." >> $PKGLOG_ERROR
+tar -xf ../../tzdata2022g.tar.gz    \
     >> $PKGLOG_TAR 2>> $PKGLOG_ERROR
 
 ZONEINFO=/usr/share/zoneinfo
@@ -146,6 +151,7 @@ cd ..
 cd ..
 rm -rf $PKG
 unset LFSLOG_PROCESS
+unset PKGLOG_OTHERS
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
 unset PKGLOG_ERROR PKGLOG_TAR

@@ -36,6 +36,10 @@ echo "3. Make Build ..." >> $LFSLOG_PROCESS
 echo "3. Make Build ..." >> $PKGLOG_ERROR
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
+echo "4. Remove References to Build Directory ..."
+echo "4. Remove References to Build Directory ..." >> $LFSLOG_PROCESS
+echo "4. Remove References to Build Directory ..." >> $PKGLOG_ERROR
+
 sed -e "s|$SRCDIR/unix|/usr/lib|" \
     -e "s|$SRCDIR|/usr/include|"  \
     -i tclConfig.sh
@@ -53,18 +57,21 @@ sed -e "s|$SRCDIR/unix/pkgs/itcl4.2.3|/usr/lib/itcl4.2.3|" \
 
 unset SRCDIR
 
-echo "4. Make Check ..."
-echo "4. Make Check ..." >> $LFSLOG_PROCESS
-echo "4. Make Check ..." >> $PKGLOG_ERROR
+echo "5. Make Check ..."
+echo "5. Make Check ..." >> $LFSLOG_PROCESS
+echo "5. Make Check ..." >> $PKGLOG_ERROR
 make test > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
-echo "5. Make Install ..."
-echo "5. Make Install ..." >> $LFSLOG_PROCESS
-echo "5. Make Install ..." >> $PKGLOG_ERROR
+echo "6. Make Install ..."
+echo "6. Make Install ..." >> $LFSLOG_PROCESS
+echo "6. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 chmod u+w /usr/lib/libtcl8.6.so
 
+echo "7. Make Install Private Headers..."
+echo "7. Make Install Private Headers..." >> $LFSLOG_PROCESS
+echo "7. Make Install Private Headers..." >> $PKGLOG_ERROR
 make install-private-headers    \
     >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
@@ -72,6 +79,9 @@ ln -sf tclsh8.6 /usr/bin/tclsh
 
 mv /usr/share/man/man3/{Thread,Tcl_Thread}.3
 
+echo "8. Extract html tar..."
+echo "8. Extract html tar..." >> $LFSLOG_PROCESS
+echo "8. Extract html tar..." >> $PKGLOG_ERROR
 cd ..
 tar -xf ../tcl8.6.13-html.tar.gz --strip-components=1
 mkdir -p /usr/share/doc/tcl-8.6.13

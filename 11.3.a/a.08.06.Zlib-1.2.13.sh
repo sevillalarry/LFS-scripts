@@ -43,7 +43,7 @@ echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-rm -fv /usr/lib/libz.a
+rm -f /usr/lib/libz.a
 
 
 cd ..

@@ -1,7 +1,6 @@
 # a.08.39.Inetutils-2.4.sh
 #
 
-# (based on Errata use: )
 export PKG="inetutils-2.4"
 export PKGLOG_DIR=$LFSLOG/08.39
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log

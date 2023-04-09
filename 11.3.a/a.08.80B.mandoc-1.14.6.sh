@@ -39,8 +39,8 @@ make regress > $PKGLOG_CHECK  2>> $PKGLOG_ERROR
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
-install -m755 mandoc   /usr/bin             2>> $PKGLOG_ERROR
-install -m644 mandoc.1 /usr/share/man/man1  2>> $PKGLOG_ERROR
+install -m755 mandoc   /usr/bin
+install -m644 mandoc.1 /usr/share/man/man1
 
 
 cd ..

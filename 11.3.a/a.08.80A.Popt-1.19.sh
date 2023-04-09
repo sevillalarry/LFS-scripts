@@ -43,8 +43,8 @@ echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-install -vm755 -d /usr/share/doc/popt-1.19              > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-install -vm644 doxygen/html/* /usr/share/doc/popt-1.19 >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+install -m755 -d /usr/share/doc/popt-1.19
+install -m644 doxygen/html/* /usr/share/doc/popt-1.19
 
 
 cd ..

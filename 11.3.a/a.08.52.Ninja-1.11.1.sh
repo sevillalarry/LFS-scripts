@@ -34,7 +34,8 @@ sed -i '/int Guess/a \
 echo "2. Build ..."
 echo "2. Build ..." >> $LFSLOG_PROCESS
 echo "2. Build ..." >> $PKGLOG_ERROR
-python3 configure.py --bootstrap    \
+python3 configure.py    \
+         --bootstrap    \
     > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
 echo "3. Test ..."

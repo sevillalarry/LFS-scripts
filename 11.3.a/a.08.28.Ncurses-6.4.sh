@@ -59,8 +59,8 @@ rm -f                       /usr/lib/libcursesw.so
 echo "INPUT(-lncursesw)" >  /usr/lib/libcursesw.so
 ln -sf libncurses.so        /usr/lib/libcurses.so
 
-mkdir -p    /usr/share/doc/ncurses-6.3
-cp -R doc/* /usr/share/doc/ncurses-6.3
+mkdir -p    /usr/share/doc/ncurses-6.4
+cp -R doc/* /usr/share/doc/ncurses-6.4
 
 
 cd ..

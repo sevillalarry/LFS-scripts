@@ -1,5 +1,5 @@
-# a.08.35.Libtool-2.4.7.Part1.sh
-# Extract, configure, build & check
+# a.08.35.Libtool-2.4.7.sh
+#
 
 export PKG="libtool-2.4.7"
 export PKGLOG_DIR=$LFSLOG/08.35

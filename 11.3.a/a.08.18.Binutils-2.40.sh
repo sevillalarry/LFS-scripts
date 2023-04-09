@@ -52,8 +52,7 @@ make tooldir=/usr   \
 echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
-make -k check   \
-    >> $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+make -k check >> $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
