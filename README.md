@@ -4,9 +4,14 @@
 #  eMail: sevilla.larry.oss@gmail.com
 #
 #
-# LfS ver: 11.2
-# Started: 2022/Nov/08
+# LfS ver: 11.3
+# Started: 2023/Apr/06
 # arch: x64, UEFI
+#
+# Note:
+# LfS ver: 11.2 - status: NOT working
+# Started: 2022/Nov/08
+# Deleted: 2023/Apr/09
 #
 # based on: https://www.linuxfromscratch.org/lfs/
 #
