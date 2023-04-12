@@ -1,4 +1,4 @@
-# a.08.00.Part4.35-76.sh
+# a.08.00.Part3.35-76.sh
 # exludes 08.60 GRUB
 
 export LFSLOG_PROCESS=$LFSLOG/process.log

@@ -1,4 +1,4 @@
-# a.08.00.Part3.26-34.sh
+# a.08.00.Part2.26-34.sh
 #
 
 export LFSLOG_PROCESS=$LFSLOG/process.log

@@ -1,4 +1,4 @@
-# a.08.00.Part2.06-25.sh
+# a.08.00.Part1.03-25.sh
 #
 
 export LFSLOG_PROCESS=$LFSLOG/process.log
@@ -7,6 +7,48 @@ date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
 
 #####
+
+echo "08.03.Man-pages-6.03"
+echo "08.03.Man-pages-6.03" >> $LFSLOG_PROCESS
+
+time { bash a.08.03.Man-pages-6.03.sh ; }
+
+date +"%Y/%b/%d %H:%M"
+date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
+
+echo "." >> $LFSLOG_PROCESS
+echo "."
+echo "."
+
+###
+
+echo "08.04.Iana-Etc-20230202"
+echo "08.04.Iana-Etc-20230202" >> $LFSLOG_PROCESS
+
+time { bash a.08.04.Iana-Etc-20230202.sh ; }
+
+date +"%Y/%b/%d %H:%M"
+date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
+
+echo "." >> $LFSLOG_PROCESS
+echo "."
+echo "."
+
+###
+
+echo "08.05.Glibc-2.37"
+echo "08.05.Glibc-2.37" >> $LFSLOG_PROCESS
+
+time { bash a.08.05.Glibc-2.37.sh ; }
+
+date +"%Y/%b/%d %H:%M"
+date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
+
+echo "." >> $LFSLOG_PROCESS
+echo "."
+echo "."
+
+###
 
 echo "08.06.Zlib-1.2.13"
 echo "08.06.Zlib-1.2.13" >> $LFSLOG_PROCESS

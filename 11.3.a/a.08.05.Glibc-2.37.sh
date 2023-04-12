@@ -122,6 +122,24 @@ make localedata/install-locales \
 localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
 localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true
 
+cat > /etc/nsswitch.conf << "EOF"
+# Begin /etc/nsswitch.conf
+
+passwd: files
+group: files
+shadow: files
+
+hosts: files dns
+networks: files
+
+protocols: files
+services: files
+ethers: files
+rpc: files
+
+# End /etc/nsswitch.conf
+EOF
+
 echo "9. Setting Time Zone ..."
 echo "9. Setting Time Zone ..." >> $LFSLOG_PROCESS
 echo "9. Setting Time Zone ..." >> $PKGLOG_ERROR
@@ -143,6 +161,20 @@ zic -d $ZONEINFO -p $LOCAL_TIME_ZONE
 unset ZONEINFO
 
 ln -sf /usr/share/zoneinfo/$LOCAL_TIME_ZONE /etc/localtime
+
+cat > /etc/ld.so.conf << "EOF"
+# Begin /etc/ld.so.conf
+/usr/local/lib
+/opt/lib
+
+EOF
+
+cat >> /etc/ld.so.conf << "EOF"
+# Add an include directory
+include /etc/ld.so.conf.d/*.conf
+
+EOF
+mkdir -pv /etc/ld.so.conf.d
 
 
 unset LOCAL_TIME_ZONE
