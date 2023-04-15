@@ -29,7 +29,8 @@ make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 install -dm755 /etc/ssl/local
 
-/usr/sbin/make-ca -g
+#/usr/sbin/make-ca -g
+#FAILED there's NO net, execute if there's NET
 
 
 cd ..
