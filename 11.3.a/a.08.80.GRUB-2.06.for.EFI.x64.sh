@@ -38,7 +38,4 @@ echo "https://unifoundry.com/pub/unifont/unifont-15.0.01/font-builds/unifont-15.
 echo "."
 echo "."
 echo "."
-echo "."
-echo "Be sure the /boot is mounted properly"
-echo "."
 echo "....."
