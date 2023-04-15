@@ -46,7 +46,7 @@ rm -f /usr/lib/libltdl.a
 
 
 cd ..
-#rm -rf $PKG
+rm -rf $PKG
 unset LFSLOG_PROCESS
 unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
