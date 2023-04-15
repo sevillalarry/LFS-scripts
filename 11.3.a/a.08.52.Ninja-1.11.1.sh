@@ -22,7 +22,7 @@ cd $PKG
 
 
 #Number of Parallel processes
-export NINJAJOBS=8
+export NINJAJOBS=1
 
 sed -i '/int Guess/a \
   int   j = 0;\
