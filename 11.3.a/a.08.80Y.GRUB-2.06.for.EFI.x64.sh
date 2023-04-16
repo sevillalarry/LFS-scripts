@@ -45,6 +45,8 @@ echo "3. Configure ..." >> $PKGLOG_ERROR
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 #            --enable-grub-mkfont  \
+# exclude since this needs FreeType
+
 #unset TARGET_CC
 
 echo "4. Make Build ..."
