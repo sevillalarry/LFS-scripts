@@ -31,6 +31,8 @@ install -dm755 /etc/ssl/local
 
 #/usr/sbin/make-ca -g
 #FAILED there's NO net, execute if there's NET
+#
+#execute after 9.5 General Network Configuration
 
 
 cd ..
