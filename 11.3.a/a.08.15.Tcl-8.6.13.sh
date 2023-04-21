@@ -89,7 +89,6 @@ cp -r ./html/* /usr/share/doc/tcl-8.6.13
 
 
 cd ..
-cd ..
 rm -rf $PKG
 unset LFSLOG_PROCESS
 unset PKGLOG_CHECK
