@@ -59,6 +59,18 @@ echo "." >> $LFSLOG_PROCESS
 echo "."
 echo "."
 
+echo "08.82D.acpid-2.0.34"
+echo "08.82D.acpid-2.0.34" >> $LFSLOG_PROCESS
+
+time { bash a.08.82D.acpid-2.0.34.sh ; }
+
+date +"%Y/%b/%d %H:%M"
+date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
+
+echo "." >> $LFSLOG_PROCESS
+echo "."
+echo "."
+
 #####
 
 unset LFSLOG_PROCESS
