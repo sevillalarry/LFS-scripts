@@ -1,7 +1,7 @@
 # a.08.82A.Lynx-2.8.9rel.1.sh
 #
 
-export PKG="lynx-2.8.9rel.1"
+export PKG="lynx2.8.9rel.1"
 export PKGLOG_DIR=$LFSLOG/08.82A
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
