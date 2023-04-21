@@ -30,11 +30,12 @@ install  -m700 -d /var/lib/sshd
 chown    root:sys /var/lib/sshd
 
 groupadd -g 50 sshd
-useradd  -c 'sshd PrivSep' \
-         -d /var/lib/sshd  \
-         -g sshd           \
-         -s /bin/false     \
-         -u 50 sshd
+useradd  -c 'sshd PrivSep'  \
+         -d /var/lib/sshd   \
+         -g sshd            \
+         -s /bin/false      \
+         -u 50 sshd         \
+        > $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
 
 echo "3. Configure ..."
 echo "3. Configure ..." >> $LFSLOG_PROCESS
