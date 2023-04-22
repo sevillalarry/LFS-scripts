@@ -53,6 +53,11 @@ make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 ln -sf libsudo_util.so.0.0.0 /usr/lib/sudo/libsudo_util.so.0
 
+cat > /etc/sudoers.d/00-sudo << "EOF"
+Defaults secure_path="/usr/sbin:/usr/bin"
+%wheel ALL=(ALL) ALL
+EOF
+
 
 cd ..
 rm -rf $PKG
