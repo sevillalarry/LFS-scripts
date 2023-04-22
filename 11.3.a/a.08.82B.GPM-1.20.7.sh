@@ -63,6 +63,16 @@ install -m644       doc/support/*                       \
 install -m644       doc/{FAQ,HACK_GPM,README*}          \
                     /usr/share/doc/gpm-1.20.7
 
+cat > /etc/sysconfig/mouse << "EOF"
+# Begin /etc/sysconfig/mouse
+
+MDEVICE="/dev/input/mice"
+PROTOCOL="imps2"
+GPMOPTS=""
+
+# End /etc/sysconfig/mouse
+EOF
+
 echo "."
 echo "."                                                >> $LFSLOG_PROCESS
 echo "GPM installed but NOT configured"
