@@ -1,4 +1,4 @@
-https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.1.11.tar.xz
+https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.1.22.tar.xz
 https://www.nano-editor.org/dist/v7/nano-7.2.tar.xz
 http://ftp.rpm.org/popt/releases/popt-1.x/popt-1.19.tar.gz
 https://mandoc.bsd.lv/snapshots/mandoc-1.14.6.tar.gz
