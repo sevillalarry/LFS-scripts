@@ -1,0 +1,248 @@
+A. Preparation
+
+  A.01. Prepare a Gentoo VM (LFS) host with:
+
+        Q35, UEFI
+        50Gb VM.Gentoo.host.qcow2       /dev/vda
+        Install Gentoo x64 with UEFI
+        ( Big topic )
+
+        /etc/portage/package.mask
+          >=sys-devel/gcc-12.3
+        ( requirement of LFS 11.3 )
+
+  A.02. [LFS 2.2] execute: bash a.02.02.version-check.sh
+
+        (based on https://www.linuxfromscratch.org/lfs/view/11.3/chapter02/hostreqs.html )
+        shut down Gentoo VM (LFS) host
+
+  A.03. attach 2 Virtual Disk
+
+        1. 40Gb VM.LFS.sys.qcow2        /dev/vdb
+        2.  5Gb VM.LFS.src.qcow2        /dev/vdc
+
+  A.04. [LFS 2.4] Partition the newly attached VDs
+
+        /dev/vdb1   256M      VFAT/UEFI
+        /dev/vdb2   RAM*2     swap
+        /dev/vdb3   remaining
+
+        /dev/vdc1   all
+
+  A.05. [LFS 2.5] Creating File Systems on the Partitions
+
+        ###
+        # execute as root user
+        ###
+
+        ###
+        mkfs.vfat -v -F 32 -n BOOT /dev/vdb1
+        mkswap -L SWAP /dev/vdb2
+        mkfs.ext4 -v -L ROOT /dev/vdb3
+        mkfs.ext4 -v -L SOURCES /dev/vdc1
+        ###
+
+  A.06. [LFS 2.6] Setting the $LFS variable
+
+        ###
+        export LFS=/mnt/lfs
+        ###
+
+  A.07. [LFS 2.7] Mounting the New Partition
+
+        ###
+        mkdir -pv $LFS
+        mount -v -t ext4 /dev/vdb3 $LFS
+        ###
+
+        /etc/fstab
+          /dev/vdb3   /mnt/lfs  ...
+
+  A.08. [LFS 3.1] Packages ( Sources ) - Modified
+
+        ###
+        mkdir -pv $LFS/mnt/src
+        mount /dev/vdc1 $LFS/mnt/src
+
+        mkdir -v $LFS/mnt/src/lfs.src
+        mkdir -v $LFS/mnt/src/lfs.log
+
+        chmod -v a+wt $LFS/mnt/src/lfs.src
+        chmod -v a+wt $LFS/mnt/src/lfs.log
+
+        ln -sf $LFS/mnt/src/lfs.src $LFS/sources
+
+        cd $LFS/sources
+        ###
+
+        ( download wget-list & md5sums )
+
+        ###
+        wget --input-file=wget-list-sysv --continue --directory-prefix=$LFS/sources
+        md5sum -c md5sums
+
+        wget --input-file=a.03.01.wget-list-sysv.additional.txt --continue --directory-prefix=$LFS/sources
+        ###
+
+  A.09. [LFS 4.2] Creating a limited directory layout in LFS filesystem
+
+        ###
+        mkdir -pv $LFS/{etc,var} $LFS/usr/{bin,lib,sbin}
+
+        for i in bin lib sbin; do
+          ln -sv usr/$i $LFS/$i
+        done
+
+        case $(uname -m) in
+          x86_64) mkdir -pv $LFS/lib64 ;;
+        esac
+
+        mkdir -pv $LFS/tools
+        ###
+
+  A.10. [LFS 4.3] Adding the LFS user
+
+        ###
+        groupadd lfs
+        useradd -s /bin/bash -g lfs -m -k /dev/null lfs
+
+        passwd lfs
+
+        chown -v lfs $LFS/{usr{,/*},lib,var,etc,bin,sbin,tools}
+        case $(uname -m) in
+          x86_64) chown -v lfs $LFS/lib64 ;;
+        esac
+
+        chown -v lfs:lfs $LFS/sources
+        chown -v lfs:lfs $LFS/sources/*
+        ###
+
+        ( Logging )
+
+        ###
+        mkdir -vp $LFS/var/log
+        chown -v lfs:lfs $LFS/var/log
+        chown -v lfs:lfs $LFS/mnt/src/lfs.log
+        ln -sfv $LFS/mnt/src/lfs.log $LFS/var/log/lfs
+
+        export LFSLOG=$LFS/var/log/lfs
+
+        chown -v lfs:lfs $LFSLOG
+        ###
+
+  A.11. [LFS 4.3] Start a shell running as user "lfs"
+
+        ###
+        su - lfs
+        ###
+
+  A.12. [LFS 4.4] Setting Up the Environment
+        ( Note: change the MAKEFLAGS based on the number of threads )
+        ###
+
+        cat > ~/.bash_profile << "EOF"
+        exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash
+        EOF
+
+        cat > ~/.bashrc << "EOF"
+        set +h
+        umask 022
+        LFS=/mnt/lfs
+        LFSLOG=/mnt/lfs/var/log/lfs
+        LC_ALL=POSIX
+        LFS_TGT=$(uname -m)-lfs-linux-gnu
+        MAKEFLAGS='-j8'
+        PATH=/usr/bin
+        if [ ! -L /bin ]; then PATH=/bin:$PATH; fi
+        PATH=$LFS/tools/bin:$PATH
+        CONFIG_SITE=$LFS/usr/share/config.site
+        export LFS LFSLOG LC_ALL LFS_TGT MAKEFLAGS PATH CONFIG_SITE
+        EOF
+
+        source ~/.bash_profile
+
+        ###
+
+B.  Generate LFS
+
+  B.01. General Compilation Instructions / Checking Environment
+
+        $$$
+        $ execute as lfs user
+        $$$
+
+        $$$
+
+        echo $LFS             /mnt/lfs
+        echo $LFSLOG          /mnt/lfs/var/log/lfs
+        echo $MAKEFLAGS       -j8
+
+        echo $shell           /bin/bash
+        ls -l /bin/sh         bash
+        ls -l /usr/bin/awk    gawk
+        ls -l /usr/bin/yacc   yacc.bison
+
+        cd $LFS/sources
+
+        $$$
+
+        ( display )
+        lfs:/mnt/lfs/sources$
+
+  B.02. [LFS 5.x & 6.x] Chapter 5 & 6
+
+        $$$
+        bash a.05.00.sh
+        bash a.06.00.sh
+        $$$
+
+  B.03. [LFS 7.2] Exit as lfs user and login as root
+
+        $$$
+        exit
+        $$$
+
+  B.04. [LFS 7.2] Change Ownership to root
+
+        ( check environment should be )
+
+        ###
+
+        echo $LFS             /mnt/lfs
+        echo $LFSLOG          /mnt/lfs/var/log/lfs
+        echo $MAKEFLAGS       -j8
+
+        echo $shell           /bin/bash
+        ls -l /bin/sh         bash
+        ls -l /usr/bin/awk    gawk
+        ls -l /usr/bin/yacc   yacc.bison
+
+        ###
+
+        chown -R root:root $LFS/{usr,lib,var,etc,bin,sbin,tools}
+        case $(uname -m) in
+          x86_64) chown -R root:root $LFS/lib64 ;;
+        esac
+
+        ###
+
+  B.05  [LFS 7.3] Preparing Virtual Kernel File Systems
+
+        ###
+
+        mkdir -pv $LFS/{dev,proc,sys,run}
+
+        mount -v --bind /dev $LFS/dev
+
+        mount -v --bind /dev/pts $LFS/dev/pts
+        mount -vt proc proc $LFS/proc
+        mount -vt sysfs sysfs $LFS/sys
+        mount -vt tmpfs tmpfs $LFS/run
+
+        if [ -h $LFS/dev/shm ]; then
+          mkdir -pv $LFS/$(readlink $LFS/dev/shm)
+        else
+          mount -t tmpfs -o nosuid,nodev tmpfs $LFS/dev/shm
+        fi
+
+        ###

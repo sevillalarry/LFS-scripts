@@ -1,7 +1,7 @@
-# a.08.50.Python-3.11.2.sh
+# a.08.50.Python-3.11.4.sh
 #
 
-export PKG="Python-3.11.2"
+export PKG="Python-3.11.4"
 export PKGLOG_DIR=$LFSLOG/08.50
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -48,13 +48,13 @@ EOF
 
 echo "5. Extract documentation tar..."
 
-install -dm755 /usr/share/doc/python-3.11.2/html
+install -dm755 /usr/share/doc/python-3.11.4/html
 
 tar --strip-components=1                    \
     --no-same-owner                         \
     --no-same-permissions                   \
-    -C /usr/share/doc/python-3.11.2/html    \
-    -xf ../python-3.11.2-docs-html.tar.bz2  \
+    -C /usr/share/doc/python-3.11.4/html    \
+    -xf ../python-3.11.4-docs-html.tar.bz2  \
     >> $PKGLOG_TAR 2> $PKGLOG_ERROR
 
 

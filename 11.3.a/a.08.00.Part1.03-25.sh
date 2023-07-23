@@ -302,10 +302,10 @@ echo "."
 
 ###
 
-echo "08.24.Libcap-2.67"
-echo "08.24.Libcap-2.67" >> $LFSLOG_PROCESS
+echo "08.24.Libcap-2.69"
+echo "08.24.Libcap-2.69" >> $LFSLOG_PROCESS
 
-time { bash a.08.24.Libcap-2.67.sh ; }
+time { bash a.08.24.Libcap-2.69.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
