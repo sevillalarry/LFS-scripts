@@ -36,10 +36,10 @@ echo "."
 
 ###
 
-echo "05.04.Linux-6.1.22.API.Headers"
-echo "05.04.Linux-6.1.22.API.Headers" >> $LFSLOG_PROCESS
+echo "05.04.Linux-6.1.31.API.Headers"
+echo "05.04.Linux-6.1.31.API.Headers" >> $LFSLOG_PROCESS
 
-time { bash a.05.04.Linux-6.1.22.API.Headers.sh ; }
+time { bash a.05.04.Linux-6.1.31.API.Headers.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
