@@ -23,11 +23,13 @@ A. Preparation
 
   A.04. [LFS 2.4] Partition the newly attached VDs
 
-        /dev/vdb1   256M      VFAT/UEFI
-        /dev/vdb2   RAM*2     swap
-        /dev/vdb3   remaining
+        set as GPT ( UEFI )
 
-        /dev/vdc1   all
+        /dev/vdb1   256M      VFAT / UEFI / EFI System
+        /dev/vdb2   RAM*2     swap
+        /dev/vdb3   remaining Linux filesystem
+
+        /dev/vdc1   all       Linux filesystem
 
   A.05. [LFS 2.5] Creating File Systems on the Partitions
 
@@ -69,11 +71,9 @@ A. Preparation
         mkdir -pv $LFS/mnt/src
         mount /dev/vdc1 $LFS/mnt/src
 
-        mkdir -v $LFS/mnt/src/lfs.src
-        mkdir -v $LFS/mnt/src/lfs.log
+        mkdir -v $LFS/mnt/src/lfs.{src,log}
 
-        chmod -v a+wt $LFS/mnt/src/lfs.src
-        chmod -v a+wt $LFS/mnt/src/lfs.log
+        chmod -v a+wt $LFS/mnt/src/lfs.{src,log}
 
         ln -sf $LFS/mnt/src/lfs.src $LFS/sources
 
