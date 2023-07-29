@@ -92,7 +92,11 @@ A. Preparation
 
         ###
 
-  A.09. [LFS 4.2] Creating a limited directory layout in LFS filesystem
+  A.09. Copy all script files
+
+        copy all script files to $LFS/sources
+
+  A.10. [LFS 4.2] Creating a limited directory layout in LFS filesystem
 
         ###
 
@@ -110,7 +114,7 @@ A. Preparation
 
         ###
 
-  A.10. [LFS 4.3] Adding the LFS user
+  A.11. [LFS 4.3] Adding the LFS user
 
         ###
 
@@ -144,16 +148,21 @@ A. Preparation
 
         ###
 
-  A.11. [LFS 4.3] Start a shell running as user "lfs"
+
+  A.12. [LFS 4.3] Start a shell running as user "lfs"
 
         ###
         su - lfs
         ###
 
-  A.12. [LFS 4.4] Setting Up the Environment
+  A.13. [LFS 4.4] Setting Up the Environment
         ( Note: change the MAKEFLAGS based on the number of threads )
 
-        ###
+        $$$
+        $ execute as lfs user
+        $$$
+
+        $$$
 
         cat > ~/.bash_profile << "EOF"
         exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash
@@ -176,15 +185,11 @@ A. Preparation
 
         source ~/.bash_profile
 
-        ###
+        $$$
 
 B.  Generate LFS
 
   B.01. General Compilation Instructions / Checking Environment
-
-        $$$
-        $ execute as lfs user
-        $$$
 
         $$$
 
@@ -192,7 +197,7 @@ B.  Generate LFS
         echo $LFSLOG          /mnt/lfs/var/log/lfs
         echo $MAKEFLAGS       -j8
 
-        echo $shell           /bin/bash
+        echo $SHELL           /bin/bash
         ls -l /bin/sh         bash
         ls -l /usr/bin/awk    gawk
         ls -l /usr/bin/yacc   yacc.bison
@@ -202,7 +207,7 @@ B.  Generate LFS
         $$$
 
         ( display )
-        lfs:/mnt/lfs/sources$
+        lfs@VMGentooHostname /mnt/lfs/sources $
 
   B.02. [LFS 5.x & 6.x] Chapter 5 & 6
 
@@ -229,7 +234,7 @@ B.  Generate LFS
         echo $LFSLOG          /mnt/lfs/var/log/lfs
         echo $MAKEFLAGS       -j8
 
-        echo $shell           /bin/bash
+        echo $SHELL           /bin/bash
         ls -l /bin/sh         bash
         ls -l /usr/bin/awk    gawk
         ls -l /usr/bin/yacc   yacc.bison
@@ -276,7 +281,7 @@ B.  Generate LFS
             PATH=/usr/bin:/usr/sbin     \
             /bin/bash --login
 
-        export MAKEFILES="-j8"
+        export MAKEFLAGS="-j8"
 
         ###
 
@@ -381,6 +386,8 @@ B.  Generate LFS
 
         export LFSLOG=/var/log/lfs
 
+        cd /sources
+
         ###
 
   B.10. [LFS 7.7-7.12] Chapter 7
@@ -391,19 +398,7 @@ B.  Generate LFS
 
         ###
 
-  B.11. [LFS 7.13.1] Cleaning
-
-        ###
-
-        rm -rf /usr/share/{info,man,doc}/*
-
-        find /usr/{lib,libexec} -name \*.la -delete
-
-        rm -rf /tools
-
-        ###
-
-  B.12. [LFS 8.03-8.25] Chapter 8 Part 1
+  B.11. [LFS 8.03-8.25] Chapter 8 Part 1
 
         ###
 
@@ -411,7 +406,7 @@ B.  Generate LFS
 
         ###
 
-  B.13. [LFS 8.25.2 & 8.25.3] Configuring Shadow & Setting the Root password
+  B.12. [LFS 8.25.2 & 8.25.3] Configuring Shadow & Setting the Root password
 
         ###
 
@@ -428,7 +423,7 @@ B.  Generate LFS
 
         ###
 
-  B.14. [LFS 8.26-8.34] Chapter 8 Part 2
+  B.13. [LFS 8.26-8.34] Chapter 8 Part 2
 
         ###
 
@@ -436,7 +431,7 @@ B.  Generate LFS
 
         ###
 
-  B.15. [LFS 8.34] run the newly compiled BASH program
+  B.14. [LFS 8.34] run the newly compiled BASH program
 
         ###
 
@@ -444,7 +439,7 @@ B.  Generate LFS
 
         ###
 
-  B.16. [LFS 8.35-8.76] Chapter 8 Part 3
+  B.15. [LFS 8.35-8.76] Chapter 8 Part 3
 
         ###
 
@@ -452,7 +447,7 @@ B.  Generate LFS
 
         ###
 
-  B.17. [LFS 8.60] Chapter 8 Part 4 GRUB
+  B.16. [LFS 8.60] Chapter 8 Part 4 GRUB
         ( based on: https://www.linuxfromscratch.org/blfs/view/11.3/postlfs/grub-efi.html )
 
         ###
@@ -461,7 +456,7 @@ B.  Generate LFS
 
         ###
 
-  B.18. Additional Application needed - WGet
+  B.17. Additional Applications needed - WGet
 
         ###
 
@@ -469,7 +464,7 @@ B.  Generate LFS
 
         ###
 
-  B.19. Additional Application needed - misc
+  B.18. Additional Applications needed - misc
 
         ###
 
@@ -477,7 +472,7 @@ B.  Generate LFS
 
         ###
 
-  B.20. [LFS 8.78] Stripping
+  B.19. [LFS 8.78] Stripping
 
         ###
 
@@ -539,7 +534,7 @@ B.  Generate LFS
 
         ###
 
-  B.21. [LFS 8.79] Cleaning Up
+  B.20. [LFS 8.79] Cleaning Up
 
         ###
 
@@ -558,6 +553,8 @@ C. Finishing Up
   C.01. [LFS 9.2] LFS-Bootscripts
 
         ###
+
+        cd /sources
 
         bash a.09.02.LFS-Bootscripts-20230101.sh
 
@@ -743,15 +740,38 @@ C. Finishing Up
 
         ###
 
+        cd /sources
+
         bash a.09.99.BLFS-Bootscripts-20230101.extract.only.sh
+
+        cd blfs-bootscripts-20230101
 
         ###
 
   C.08. GPM bootscripts
 
+        ###
+
+        make install-gpm
+
+        ###
+
   C.09. OpenSSH bootscripts
 
+
+        ###
+
+        make install-sshd
+
+        ###
+
   C.10. acpid bootscripts
+
+        ###
+
+        make install-acpid
+
+        ###
 
 D. [LFS 10.x] Making the LFS System Bootable
 
@@ -788,9 +808,20 @@ D. [LFS 10.x] Making the LFS System Bootable
 
         ###
 
+        mkdir /mnt/cdrom
+
+        ###
+
+
   D.2.  [LFS 10.3] Linux-6.1.31 Kernel
 
         ###
+
+        cd /sources
+
+        bash a.10.03.Linux-6.1.31.extract.only.sh
+        
+        cd linux-6.1.31
 
         make mrproper
         make defconfig
@@ -799,7 +830,14 @@ D. [LFS 10.x] Making the LFS System Bootable
         ( Note the flags needed )
         https://www.linuxfromscratch.org/lfs/view/11.3/chapter10/kernel.html
         https://www.linuxfromscratch.org/blfs/view/11.3/postlfs/grub-setup.html
+        https://www.linuxfromscratch.org/blfs/view/11.3/general/gpm.html
         https://wiki.gentoo.org/wiki/QEMU/Linux_guest
+
+        ( additional )
+
+        Kernel hacking --->
+          Memory Debugging
+            [ ] Stack Utilitization Instrumentation
 
         make
         make modules_install
@@ -819,7 +857,7 @@ D. [LFS 10.x] Making the LFS System Bootable
         ###
 
         mkdir -pv /boot/efi
-        mount -v -t vfat /dev/vda1 /boot/efi
+        mount -v -t vfat /dev/vdb1 /boot/efi
 
         grub-install --target=x86_64-efi --removable
 
