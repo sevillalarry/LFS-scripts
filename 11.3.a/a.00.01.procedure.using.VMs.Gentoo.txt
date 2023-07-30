@@ -915,7 +915,19 @@ E. The End
 
         ###
 
-  E.2. [LFS 11.3] UnMounting
+  E.2. Adding user
+
+        # substitute <user> with the desired username
+
+        ###
+
+        useradd -m -G users,wheel,audio,cdrom,usb,video -s /bin/bash <user>
+
+        passwd <user>
+
+        ###
+
+  E.3. [LFS 11.3] UnMounting
 
         ###
 
@@ -935,7 +947,7 @@ E. The End
 
         ###
 
-  E.3. Detach the 2 VDs from host
+  E.4. Detach the 2 VDs from host
 
 F. Create a new VM for LFS and run it
       VM.LFS.sys.qcow2 as vda
