@@ -64,7 +64,7 @@ A. Preparation
         /etc/fstab
           /dev/vdb3   /mnt/lfs  ...
 
-  A.08. [LFS 3.1] Packages ( Sources ) - Modified
+  A.08. [LFS 3.1] Packages ( Sources )
 
         ###
 
@@ -88,13 +88,17 @@ A. Preparation
         wget --input-file=wget-list-sysv --continue --directory-prefix=$LFS/sources
         md5sum -c md5sums
 
-        wget --input-file=a.03.01.wget-list-sysv.additional.txt --continue --directory-prefix=$LFS/sources
+        ###
+
+  A.09. Copy all script files and Download additional Packages
+
+        copy all script files to $LFS/sources
 
         ###
 
-  A.09. Copy all script files
+        wget --input-file=a.03.01.wget-list-sysv.additional.txt --continue --directory-prefix=$LFS/sources
 
-        copy all script files to $LFS/sources
+        ###
 
   A.10. [LFS 4.2] Creating a limited directory layout in LFS filesystem
 
@@ -189,7 +193,7 @@ A. Preparation
 
 B.  Generate LFS
 
-  B.01. General Compilation Instructions / Checking Environment
+  B.01. [LFS pre-5] General Compilation Instructions / Checking Environment
 
         $$$
 
@@ -775,7 +779,7 @@ C. Finishing Up
 
 D. [LFS 10.x] Making the LFS System Bootable
 
-  D.1.  [LFS 10.2] /etc/fstab
+  D.01. [LFS 10.2] /etc/fstab
 
         ###
 
@@ -813,7 +817,7 @@ D. [LFS 10.x] Making the LFS System Bootable
         ###
 
 
-  D.2.  [LFS 10.3] Linux-6.1.31 Kernel
+  D.02. [LFS 10.3] Linux-6.1.31 Kernel
 
         ###
 
@@ -851,7 +855,7 @@ D. [LFS 10.x] Making the LFS System Bootable
 
         ###
 
-  D.3.  [LFS 10.4] Using GRUB to Set Up the Boot Process with UEFI
+  D.03. [LFS 10.4] Using GRUB to Set Up the Boot Process with UEFI
         ( https://www.linuxfromscratch.org/blfs/view/11.3/postlfs/grub-setup.html )
 
         ###
@@ -890,7 +894,7 @@ D. [LFS 10.x] Making the LFS System Bootable
 
 E. The End
 
-  E.1. [LFS 11.1] The End
+  E.01. [LFS 11.1] The End
 
         ###
 
@@ -915,7 +919,7 @@ E. The End
 
         ###
 
-  E.2. Adding user
+  E.02. Adding user
 
         # substitute <user> with the desired username
 
@@ -927,7 +931,14 @@ E. The End
 
         ###
 
-  E.3. [LFS 11.3] UnMounting
+  E.03. Bash shell
+
+        Read and execute, if needed, as root, initially.
+        For files that start with "~", execute also with <user>.
+
+        https://www.linuxfromscratch.org/blfs/view/11.3/postlfs/profile.html
+
+  E.04. [LFS 11.3] UnMounting
 
         ###
 
@@ -947,7 +958,7 @@ E. The End
 
         ###
 
-  E.4. Detach the 2 VDs from host
+  E.05. Detach the 2 VDs from host
 
 F. Create a new VM for LFS and run it
       VM.LFS.sys.qcow2 as vda
