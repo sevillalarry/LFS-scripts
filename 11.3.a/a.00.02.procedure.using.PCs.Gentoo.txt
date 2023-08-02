@@ -1,9 +1,9 @@
 A. Preparation
 
-  A.01. Prepare a Gentoo VM (LFS) host with:
+  A.01. Prepare a Gentoo PC (LFS) host with:
 
-        Q35, UEFI
-        50Gb VM.Gentoo.host.qcow2       /dev/vda
+        UEFI
+        /dev/sda
         Install Gentoo x64 with UEFI
         ( Big topic )
 
@@ -16,22 +16,19 @@ A. Preparation
         (based on https://www.linuxfromscratch.org/lfs/view/11.3/chapter02/hostreqs.html )
         check the corresponding versions
 
-        shut down Gentoo VM (LFS) host
+        shut down Gentoo PC (LFS) host
 
-  A.03. attach 2 Virtual Disk
+  A.03. attach a 2nd Disk
 
-        1. 40Gb VM.LFS.sys.qcow2        /dev/vdb
-        2.  5Gb VM.LFS.src.qcow2        /dev/vdc
+        /dev/sdb
 
-  A.04. [LFS 2.4] Partition the newly attached VDs
+  A.04. [LFS 2.4] Partition the newly attached disk
 
         set as GPT ( UEFI )
 
-        /dev/vdb1   256M      VFAT / UEFI / EFI System
-        /dev/vdb2   RAM*2     swap
-        /dev/vdb3   remaining Linux filesystem
-
-        /dev/vdc1   all       Linux filesystem
+        /dev/sdb1   256M      VFAT / UEFI / EFI System
+        /dev/sdb2   RAM*2     swap
+        /dev/sdb3   remaining Linux filesystem
 
   A.05. [LFS 2.5] Creating File Systems on the Partitions
 
@@ -44,7 +41,6 @@ A. Preparation
         mkfs.vfat -v -F 32 -n BOOT /dev/vdb1
         mkswap -L SWAP /dev/vdb2
         mkfs.ext4 -v -L ROOT /dev/vdb3
-        mkfs.ext4 -v -L SOURCES /dev/vdc1
 
         ###
 
@@ -70,14 +66,11 @@ A. Preparation
 
         ###
 
-        mkdir -pv $LFS/mnt/src
-        mount /dev/vdc1 $LFS/mnt/src
+        mkdir -vp $LFS/usr/src/lfs
 
-        mkdir -v $LFS/mnt/src/lfs.{src,log}
+        chmod -v a+wt $LFS/usr/src/lfs
 
-        chmod -v a+wt $LFS/mnt/src/lfs.{src,log}
-
-        ln -sf $LFS/mnt/src/lfs.src $LFS/sources
+        ln -sf $LFS/usr/src/lfs $LFS/sources
 
         cd $LFS/sources
 
@@ -134,8 +127,8 @@ A. Preparation
           x86_64) chown -v lfs $LFS/lib64 ;;
         esac
 
-        chown -v lfs:lfs $LFS/sources
-        chown -v lfs:lfs $LFS/sources/*
+        chown -v lfs $LFS/sources
+        chown -v lfs $LFS/sources/*
 
         ###
 
@@ -143,10 +136,8 @@ A. Preparation
 
         ###
 
-        mkdir -vp $LFS/var/log
-        chown -v lfs $LFS/var/log
-        chown -v lfs $LFS/mnt/src/lfs.log
-        ln -sfv $LFS/mnt/src/lfs.log $LFS/var/log/lfs
+        mkdir -vp $LFS/var/log/lfs
+        chown -v lfs $LFS/var/log/lfs
 
         export LFSLOG=$LFS/var/log/lfs
 
@@ -792,11 +783,9 @@ D. [LFS 10.x] Making the LFS System Bootable
         #/dev/<xxx>     /            <fff>    defaults            1     1
         #/dev/<yyy>     swap         swap     pri=1               0     0
 
-        /dev/vda1       /boot/efi   vfat  defaults,noatime,discard      0 2
-        /dev/vda2       none        swap  sw,discard                    0 0
-        /dev/vda3       /           ext4  noatime,discard               0 1
-
-        /dev/vdb1       /mnt/src    ext4  noatime,discard               0 3
+        /dev/sda1       /boot/efi   vfat  defaults,noatime,discard      0 2
+        /dev/sda2       none        swap  sw,discard                    0 0
+        /dev/sda3       /           ext4  noatime,discard               0 1
 
         /dev/cdrom      /mnt/cdrom  auto  noauto,user                   0 0
 
@@ -835,8 +824,8 @@ D. [LFS 10.x] Making the LFS System Bootable
         https://www.linuxfromscratch.org/lfs/view/11.3/chapter10/kernel.html
         https://www.linuxfromscratch.org/blfs/view/11.3/postlfs/grub-setup.html
         https://www.linuxfromscratch.org/blfs/view/11.3/general/gpm.html
-        https://wiki.gentoo.org/wiki/QEMU/Linux_guest
         https://www.linuxfromscratch.org/blfs/view/11.3/x/x7driver.html#libevdev
+
         ( additional )
 
         Kernel hacking --->
@@ -954,12 +943,8 @@ E. The End
 
         umount -v $LFS
 
-        poweroff         ( --- the VM Gentoo Host )
+        poweroff         ( --- the PC Gentoo Host )
 
         ###
 
-  E.05. Detach the 2 VDs from host
-
-F. Create a new VM for LFS and run it
-      VM.LFS.sys.qcow2 as vda
-      VM.LFS.src.qcow2 as vdb
+F. Start-up the PC from the newly installed LFS drive.
