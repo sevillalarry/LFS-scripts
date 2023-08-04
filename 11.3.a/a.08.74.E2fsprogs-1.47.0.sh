@@ -45,6 +45,13 @@ echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
 make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+# from Errata:
+#
+# In e2fsprogs-1.47.0 test suite,
+# the test named m_assume_storage_prezeroed
+# is known to fail
+# but the failure is not documented in the book.
+# Please ignore this test failure.
 
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
