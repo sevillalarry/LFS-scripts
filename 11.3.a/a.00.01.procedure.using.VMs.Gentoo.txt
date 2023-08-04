@@ -836,11 +836,7 @@ D. [LFS 10.x] Making the LFS System Bootable
         https://www.linuxfromscratch.org/blfs/view/11.3/postlfs/grub-setup.html
         https://www.linuxfromscratch.org/blfs/view/11.3/general/gpm.html
         https://wiki.gentoo.org/wiki/QEMU/Linux_guest
-<<<<<<< HEAD
-        https://www.linuxfromscratch.org/blfs/view/11.3/x/x7driver.html ( evdev )
-=======
         https://www.linuxfromscratch.org/blfs/view/11.3/x/x7driver.html#libevdev
->>>>>>> 76f2c8953b06c54fd0dd0c0c339584b005768e68
         ( additional )
 
         Kernel hacking --->
