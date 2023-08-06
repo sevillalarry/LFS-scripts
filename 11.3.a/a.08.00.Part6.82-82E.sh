@@ -47,10 +47,10 @@ echo "."
 
 ###
 
-echo "08.82C.OpenSSH-9.2p1"
-echo "08.82C.OpenSSH-9.2p1" >> $LFSLOG_PROCESS
+echo "08.82C.OpenSSH-9.3p2"
+echo "08.82C.OpenSSH-9.3p2" >> $LFSLOG_PROCESS
 
-time { bash a.08.82C.OpenSSH-9.2p1.sh ; }
+time { bash a.08.82C.OpenSSH-9.3p2.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
