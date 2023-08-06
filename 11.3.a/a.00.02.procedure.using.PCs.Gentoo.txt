@@ -38,9 +38,9 @@ A. Preparation
 
         ###
 
-        mkfs.vfat -v -F 32 -n BOOT /dev/vdb1
-        mkswap -L SWAP /dev/vdb2
-        mkfs.ext4 -v -L ROOT /dev/vdb3
+        mkfs.vfat -v -F 32 -n BOOT /dev/sdb1
+        mkswap -L SWAP /dev/sdb2
+        mkfs.ext4 -v -L ROOT /dev/sdb3
 
         ###
 
@@ -55,18 +55,18 @@ A. Preparation
         ###
 
         mkdir -pv $LFS
-        mount -v -t ext4 /dev/vdb3 $LFS
+        mount -v -t ext4 /dev/sdb3 $LFS
 
         ###
 
         /etc/fstab
-          /dev/vdb3   /mnt/lfs  ...
+          /dev/sdb3   /mnt/lfs  ...
 
   A.08. [LFS 3.1] Packages ( Sources )
 
         ###
 
-        mkdir -vp $LFS/usr/src/lfs
+        mkdir -pv $LFS/usr/src/lfs
 
         chmod -v a+wt $LFS/usr/src/lfs
 
@@ -136,7 +136,7 @@ A. Preparation
 
         ###
 
-        mkdir -vp $LFS/var/log/lfs
+        mkdir -pv $LFS/var/log/lfs
         chown -v lfs $LFS/var/log/lfs
 
         export LFSLOG=$LFS/var/log/lfs
@@ -369,21 +369,26 @@ B.  Generate LFS
         chmod -v 664  /var/log/lastlog
         chmod -v 600  /var/log/btmp
 
-  B.09. [before LFS 7.7] Adjust links and environment
+  B.09. [before LFS 7.7] Adjust links and checking environment
 
         ###
 
         rm /sources
-        ln -s /mnt/src/lfs.src /sources
-
-        rm /var/log/lfs
-        ln -sf /mnt/src/lfs.log /var/log/lfs
+        ln -sf /usr/src/lfs /sources
 
         export LFSLOG=/var/log/lfs
 
         cd /sources
 
         ###
+
+        echo $LFSLOG          /var/log/lfs
+        echo $MAKEFLAGS       -j8
+
+        echo $SHELL           /bin/bash
+        ls -l /bin/sh         bash
+        ls -l /usr/bin/awk    gawk
+     
 
   B.10. [LFS 7.7-7.12] Chapter 7
 
