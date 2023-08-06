@@ -1,7 +1,7 @@
-# a.08.82C.OpenSSH-9.2p1.sh
+# a.08.82C.OpenSSH-9.3p2.sh
 #
 
-export PKG="openssh-9.2p1"
+export PKG="openssh-9.3p2"
 export PKGLOG_DIR=$LFSLOG/08.82C
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -26,8 +26,7 @@ echo "2. Initial Install ..."
 echo "2. Initial Install ..." >> $LFSLOG_PROCESS
 echo "2. Initial Install ..." >> $PKGLOG_ERROR
 
-install  -m700 -d /var/lib/sshd
-chown    root:sys /var/lib/sshd
+install -g sys -m700 -d /var/lib/sshd
 
 groupadd -g 50 sshd
 useradd  -c 'sshd PrivSep'  \
@@ -53,24 +52,24 @@ echo "4. Make Build ..." >> $LFSLOG_PROCESS
 echo "4. Make Build ..." >> $PKGLOG_ERROR
 make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 
-echo "5. Make Install ..."
-echo "5. Make Install ..." >> $LFSLOG_PROCESS
-echo "5. Make Install ..." >> $PKGLOG_ERROR
+echo "5. Make Test ..."
+echo "5. Make Test ..." >> $LFSLOG_PROCESS
+echo "5. Make Test ..." >> $PKGLOG_ERROR
+make -j1 tests  \
+    > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+
+echo "6. Make Install ..."
+echo "6. Make Install ..." >> $LFSLOG_PROCESS
+echo "6. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 install -m755       contrib/ssh-copy-id /usr/bin
 
 install -m644       contrib/ssh-copy-id.1               \
                     /usr/share/man/man1
-install -m755 -d    /usr/share/doc/openssh-9.2p1
+install -m755 -d    /usr/share/doc/openssh-9.3p2
 install -m644       INSTALL LICENCE OVERVIEW README*    \
-                    /usr/share/doc/openssh-9.2p1
-
-echo "6. Make Test ..."
-echo "6. Make Test ..." >> $LFSLOG_PROCESS
-echo "6. Make Test ..." >> $PKGLOG_ERROR
-make install -j1 tests  \
-    > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+                    /usr/share/doc/openssh-9.3p2
 
 echo "."
 echo "."                                                    >> $LFSLOG_PROCESS

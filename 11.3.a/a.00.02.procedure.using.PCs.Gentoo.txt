@@ -830,7 +830,7 @@ D. [LFS 10.x] Making the LFS System Bootable
         https://www.linuxfromscratch.org/blfs/view/11.3/postlfs/grub-setup.html
         https://www.linuxfromscratch.org/blfs/view/11.3/general/gpm.html
         https://www.linuxfromscratch.org/blfs/view/11.3/x/x7driver.html#libevdev
-
+        https://www.linuxfromscratch.org/blfs/view/11.3/general/elogind.html
         ( additional )
 
         Kernel hacking --->
@@ -925,14 +925,29 @@ E. The End
 
         ###
 
-  E.03. Bash shell
+  E.03. Clean Up
+
+        # Based on:
+        #
+        #   https://www.linuxfromscratch.org/blfs/view/11.3/introduction/notes-on-building.html
+        #   https://www.linuxfromscratch.org/blfs/view/11.3/introduction/la-files.html
+        #   https://www.linuxfromscratch.org/blfs/view/11.3/introduction/locale-issues.html
+        #
+
+        ###
+
+        bash a.12.00.sh
+
+        ###
+
+  E.04. Bash shell
 
         Read and execute, if needed, as root, initially.
         For files that start with "~", execute also with <user>.
 
         https://www.linuxfromscratch.org/blfs/view/11.3/postlfs/profile.html
 
-  E.04. [LFS 11.3] UnMounting
+  E.05. [LFS 11.3] UnMounting
 
         ###
 
@@ -951,5 +966,7 @@ E. The End
         poweroff         ( --- the PC Gentoo Host )
 
         ###
+
+  E.06. Detach the 1st Disk
 
 F. Start-up the PC from the newly installed LFS drive.

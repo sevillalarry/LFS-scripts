@@ -6,7 +6,7 @@ export PKGLOG_DIR=$LFSLOG/08.25
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
-export PKGLOG_CHECK=$PKGLOG_DIR/check.log
+#export PKGLOG_CHECK=$PKGLOG_DIR/check.log
 export PKGLOG_INSTALL=$PKGLOG_DIR/install.log
 export PKGLOG_ERROR=$PKGLOG_DIR/error.log
 export LFSLOG_PROCESS=$LFSLOG/process.log
@@ -22,9 +22,9 @@ cd $PKG
 
 
 sed -i 's/groups$(EXEEXT) //' src/Makefile.in
-find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \;
-find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \;
-find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
+find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {}
+find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {}
+find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {}
 
 sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD SHA512:' \
     -e 's@#\(SHA_CRYPT_..._ROUNDS 5000\)@\100@'       \
@@ -58,7 +58,7 @@ make -C man install-man         \
 cd ..
 rm -rf $PKG
 unset LFSLOG_PROCESS
-unset PKGLOG_CHECK
+#unset PKGLOG_CHECK
 unset PKGLOG_INSTALL PKGLOG_BUILD PKGLOG_CONFIG
 unset PKGLOG_ERROR PKGLOG_TAR
 unset PKGLOG_DIR PKG
