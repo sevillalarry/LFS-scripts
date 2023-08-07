@@ -594,7 +594,7 @@ C. Finishing Up
         EOF
 
 
-        echo "VM-LFS" > /etc/hostname
+        echo "PC-LFS" > /etc/hostname
 
 
         cat > /etc/hosts << "EOF"
@@ -788,9 +788,9 @@ D. [LFS 10.x] Making the LFS System Bootable
         #/dev/<xxx>     /            <fff>    defaults            1     1
         #/dev/<yyy>     swap         swap     pri=1               0     0
 
-        /dev/sda1       /boot/efi   vfat  defaults,noatime,discard      0 2
-        /dev/sda2       none        swap  sw,discard                    0 0
-        /dev/sda3       /           ext4  noatime,discard               0 1
+        /dev/sda1       /boot/efi   vfat  defaults,noatime        0 2
+        /dev/sda2       none        swap  sw                      0 0
+        /dev/sda3       /           ext4  noatime                 0 1
 
         /dev/cdrom      /mnt/cdrom  auto  noauto,user                   0 0
 
@@ -855,7 +855,7 @@ D. [LFS 10.x] Making the LFS System Bootable
         ###
 
         mkdir -pv /boot/efi
-        mount -v -t vfat /dev/vdb1 /boot/efi
+        mount -v -t vfat /dev/sdb1 /boot/efi
 
         grub-install --target=x86_64-efi --removable
 
@@ -876,7 +876,7 @@ D. [LFS 10.x] Making the LFS System Bootable
         fi
 
         menuentry "GNU/Linux, Linux 6.1.31-lfs-11.3-r00"  {
-          linux   /boot/vmlinuz-6.1.31-lfs-11.3-r00 root=/dev/vda3 ro
+          linux   /boot/vmlinuz-6.1.31-lfs-11.3-r00 root=/dev/sda3 ro
         }
 
         menuentry "Firmware Setup" {
