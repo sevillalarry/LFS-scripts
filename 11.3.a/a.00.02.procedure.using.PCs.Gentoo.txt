@@ -936,6 +936,8 @@ E. The End
 
         ###
 
+        cd /sources
+        
         bash a.12.00.sh
 
         ###
