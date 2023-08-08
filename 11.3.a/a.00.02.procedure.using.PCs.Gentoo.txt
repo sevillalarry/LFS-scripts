@@ -658,7 +658,10 @@ C. Finishing Up
         cat > /etc/sysconfig/clock << "EOF"
         # Begin /etc/sysconfig/clock
 
-        UTC=1
+        #UTC=1
+
+        # local time was set in a.08.05.Glibc-2.37.sh
+        UTC=0
 
         # Set this to any options you might need to give to hwclock,
         # such as machine hardware clock type for Alphas.
