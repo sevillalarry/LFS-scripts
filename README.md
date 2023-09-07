@@ -4,7 +4,11 @@
 #  eMail: sevilla.larry.oss@gmail.com
 #
 #
-# LfS ver: 11.3
+# Ongoing LfS ver: 12.0
+# Started: 2023/Sept/09
+# arch: x64, UEFI
+#
+# Working LfS ver: 11.3
 # Started: 2023/Apr/06
 # arch: x64, UEFI
 #
@@ -12,6 +16,11 @@
 # LfS ver: 11.2 - status: NOT working
 # Started: 2022/Nov/08
 # Deleted: 2023/Apr/09
+
+
+
+
+
 #
 # based on: https://www.linuxfromscratch.org/lfs/
 #
@@ -26,6 +35,10 @@
 # For scripts of Chapter 7 & up, the scripts assumed you finished executing Chapter/Section 7.2 to 7.6.
 # the username should be "root", should had CHROOT, and the location should be "/sources" directory.  That means the prompt should be:
 # root:/sources#
+#
+
+
+
 #
 # copy the script files ( *.sh ) in the said directory
 #
