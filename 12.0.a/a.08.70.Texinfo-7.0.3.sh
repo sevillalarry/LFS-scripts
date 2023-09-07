@@ -1,8 +1,8 @@
-# a.08.25.Libxcrypt-4.4.36.sh
+# a.08.70.Texinfo-7.0.3.sh
 #
 
-export PKG="libxcrypt-4.4.36"
-export PKGLOG_DIR=$LFSLOG/08.25
+export PKG="texinfo-7.0.3"
+export PKGLOG_DIR=$LFSLOG/08.70
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -24,12 +24,8 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr                   \
-            --enable-hashes=strong,glibc    \
-            --enable-obsolete-api=no        \
-            --disable-static                \
-            --disable-failure-tokens        \
-            > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
+./configure --prefix=/usr     \
+     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
 echo "3. Make Build ..." >> $LFSLOG_PROCESS
@@ -45,6 +41,8 @@ echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+make TEXMF=/usr/share/texmf install-tex \
+     >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 
 cd ..

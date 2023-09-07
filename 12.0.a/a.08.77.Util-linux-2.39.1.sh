@@ -1,8 +1,8 @@
-# a.08.25.Libxcrypt-4.4.36.sh
+# a.08.77.Util-linux-2.39.1.sh
 #
 
-export PKG="libxcrypt-4.4.36"
-export PKGLOG_DIR=$LFSLOG/08.25
+export PKG="util-linux-2.39.1"
+export PKGLOG_DIR=$LFSLOG/08.77
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -21,14 +21,28 @@ tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
 
+sed -i '/test_mkfds/s/^/#/' tests/helpers/Makemodule.am
+
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr                   \
-            --enable-hashes=strong,glibc    \
-            --enable-obsolete-api=no        \
-            --disable-static                \
-            --disable-failure-tokens        \
+./configure ADJTIME_PATH=/var/lib/hwclock/adjtime      \
+            --bindir=/usr/bin    \
+            --libdir=/usr/lib    \
+            --runstatedir=/run   \
+            --sbindir=/usr/sbin  \
+            --disable-chfn-chsh  \
+            --disable-login      \
+            --disable-nologin    \
+            --disable-su         \
+            --disable-setpriv    \
+            --disable-runuser    \
+            --disable-pylibmount \
+            --disable-static     \
+            --without-python     \
+            --without-systemd    \
+            --without-systemdsystemunitdir             \
+            --docdir=/usr/share/doc/util-linux-2.39.1  \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -39,7 +53,9 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
-make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+chown -R tester .
+su tester -c "make -k check"  \
+     > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS

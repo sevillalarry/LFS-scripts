@@ -1,8 +1,8 @@
-# a.08.25.Libxcrypt-4.4.36.sh
+# a.08.49.Libelf.from.Elfutils-0.189.sh
 #
 
-export PKG="libxcrypt-4.4.36"
-export PKGLOG_DIR=$LFSLOG/08.25
+export PKG="elfutils-0.189"
+export PKGLOG_DIR=$LFSLOG/08.49
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -17,18 +17,16 @@ mkdir $PKGLOG_DIR
 echo "1. Extract tar..."
 echo "1. Extract tar..." >> $LFSLOG_PROCESS
 echo "1. Extract tar..." >> $PKGLOG_ERROR
-tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
+tar xvf $PKG.tar.bz2 > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
 
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr                   \
-            --enable-hashes=strong,glibc    \
-            --enable-obsolete-api=no        \
-            --disable-static                \
-            --disable-failure-tokens        \
+./configure --prefix=/usr                    \
+            --disable-debuginfod             \
+            --enable-libdebuginfod=dummy     \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
@@ -44,7 +42,10 @@ make check > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
 echo "5. Make Install ..." >> $PKGLOG_ERROR
-make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+make -C libelf install   \
+     > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+install -m644 config/libelf.pc /usr/lib/pkgconfig
+rm /usr/lib/libelf.a
 
 
 cd ..

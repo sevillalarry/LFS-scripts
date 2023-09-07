@@ -444,11 +444,11 @@ B.  Generate LFS
 
         ###
 
-  B.15. [LFS 8.35-8.76] Chapter 8 Part 3
+  B.15. [LFS 8.36-8.80] Chapter 8 Part 3
 
         ###
 
-        bash a.08.00.Part3.35-76.sh
+        bash a.08.00.Part3.36-80.sh
 
         ###
 

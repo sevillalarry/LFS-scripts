@@ -1,8 +1,8 @@
-# a.08.25.Libxcrypt-4.4.36.sh
+# a.08.37.GDBM-1.23.sh
 #
 
-export PKG="libxcrypt-4.4.36"
-export PKGLOG_DIR=$LFSLOG/08.25
+export PKG="gdbm-1.23"
+export PKGLOG_DIR=$LFSLOG/08.37
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -17,18 +17,16 @@ mkdir $PKGLOG_DIR
 echo "1. Extract tar..."
 echo "1. Extract tar..." >> $LFSLOG_PROCESS
 echo "1. Extract tar..." >> $PKGLOG_ERROR
-tar xvf $PKG.tar.xz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
+tar xvf $PKG.tar.gz > $PKGLOG_TAR 2>> $PKGLOG_ERROR
 cd $PKG
 
 
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr                   \
-            --enable-hashes=strong,glibc    \
-            --enable-obsolete-api=no        \
-            --disable-static                \
-            --disable-failure-tokens        \
+./configure --prefix=/usr                       \
+            --disable-static                    \
+            --enable-libgdbm-compat             \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."

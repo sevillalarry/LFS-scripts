@@ -1,8 +1,8 @@
-# a.08.25.Libxcrypt-4.4.36.sh
+# a.08.76.Procps-ng-4.0.3.sh
 #
 
-export PKG="libxcrypt-4.4.36"
-export PKGLOG_DIR=$LFSLOG/08.25
+export PKG="procps-ng-4.0.3"
+export PKGLOG_DIR=$LFSLOG/08.76
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
 export PKGLOG_BUILD=$PKGLOG_DIR/build.log
@@ -24,11 +24,10 @@ cd $PKG
 echo "2. Configure ..."
 echo "2. Configure ..." >> $LFSLOG_PROCESS
 echo "2. Configure ..." >> $PKGLOG_ERROR
-./configure --prefix=/usr                   \
-            --enable-hashes=strong,glibc    \
-            --enable-obsolete-api=no        \
-            --disable-static                \
-            --disable-failure-tokens        \
+./configure --prefix=/usr                              \
+            --docdir=/usr/share/doc/procps-ng-4.0.3    \
+            --disable-static                           \
+            --disable-kill                             \
             > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 echo "3. Make Build ..."
