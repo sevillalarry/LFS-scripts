@@ -432,11 +432,11 @@ B.  Generate LFS
 
         ###
 
-        bash a.08.00.Part2.26-34.sh
+        bash a.08.00.Part2.27-35.sh
 
         ###
 
-  B.14. [LFS 8.34] run the newly compiled BASH program
+  B.14. [LFS 8.35] run the newly compiled BASH program
 
         ###
 
