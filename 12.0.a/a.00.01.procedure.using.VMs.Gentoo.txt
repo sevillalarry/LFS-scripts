@@ -403,7 +403,7 @@ B.  Generate LFS
 
         ###
 
-  B.11. [LFS 8.03-8.25] Chapter 8 Part 1
+  B.11. [LFS 8.03-8.26] Chapter 8 Part 1
 
         ###
 
@@ -411,7 +411,7 @@ B.  Generate LFS
 
         ###
 
-  B.12. [LFS 8.25.2 & 8.25.3] Configuring Shadow & Setting the Root password
+  B.12. [LFS 8.26.2 & 8.26.3] Configuring Shadow & Setting the Root password
 
         ###
 
@@ -428,7 +428,7 @@ B.  Generate LFS
 
         ###
 
-  B.13. [LFS 8.26-8.34] Chapter 8 Part 2
+  B.13. [LFS 8.27-8.35] Chapter 8 Part 2
 
         ###
 
