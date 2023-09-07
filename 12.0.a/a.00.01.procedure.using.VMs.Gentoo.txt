@@ -407,7 +407,7 @@ B.  Generate LFS
 
         ###
 
-        bash a.08.00.Part1.03-25.sh
+        bash a.08.00.Part1.03-26.sh
 
         ###
 
