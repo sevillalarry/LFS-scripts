@@ -8,5 +8,11 @@ https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.19.0.tar.gz
 https://github.com/p11-glue/p11-kit/releases/download/0.25.0/p11-kit-0.25.0.tar.xz
 https://github.com/lfs-book/make-ca/releases/download/v1.12/make-ca-1.12.tar.xz
 https://ftp.gnu.org/gnu/wget/wget-1.21.4.tar.gz
+https://invisible-mirror.net/archives/lynx/tarballs/lynx2.8.9rel.1.tar.bz2
+https://www.linuxfromscratch.org/patches/blfs/12.0/lynx-2.8.9rel.1-security_fix-1.patch
+https://anduin.linuxfromscratch.org/BLFS/gpm/gpm-1.20.7.tar.bz2
+https://www.linuxfromscratch.org/patches/blfs/12.0/gpm-1.20.7-consolidated-1.patch
+https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.4p1.tar.gz
+https://www.sudo.ws/dist/sudo-1.9.14p3.tar.gz
 https://www.python.org/ftp/python/3.11.5/Python-3.11.5.tar.xz
 https://www.python.org/ftp/python/doc/3.11.5/python-3.11.5-docs-html.tar.bz2
