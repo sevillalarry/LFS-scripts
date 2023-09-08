@@ -1,4 +1,4 @@
-# a.08.05.Glibc-2.37.Part0.sh
+# a.08.05.Glibc-2.38.note.sh
 #
 echo "....."
 echo "Read 8.5. Glibc-2.38"

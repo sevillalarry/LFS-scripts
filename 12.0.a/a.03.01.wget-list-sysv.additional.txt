@@ -1,3 +1,8 @@
 https://www.nano-editor.org/dist/v7/nano-7.2.tar.xz
+http://ftp.rpm.org/popt/releases/popt-1.x/popt-1.19.tar.gz
+https://mandoc.bsd.lv/snapshots/mandoc-1.14.6.tar.gz
+https://github.com/rhboot/efivar/releases/download/38/efivar-38.tar.bz2
+https://github.com/rhboot/efibootmgr/archive/18/efibootmgr-18.tar.gz
+https://unifoundry.com/pub/unifont/unifont-15.0.06/font-builds/unifont-15.0.06.pcf.gz
 https://www.python.org/ftp/python/3.11.5/Python-3.11.5.tar.xz
 https://www.python.org/ftp/python/doc/3.11.5/python-3.11.5-docs-html.tar.bz2
