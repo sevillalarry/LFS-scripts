@@ -5,7 +5,7 @@
 #
 #
 # Ongoing LfS ver: 12.0
-# Started: 2023/Sept/09
+# Started: 2023/Sept/07
 # arch: x64, UEFI
 #
 # Working LfS ver: 11.3
