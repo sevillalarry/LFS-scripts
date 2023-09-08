@@ -452,12 +452,12 @@ B.  Generate LFS
 
         ###
 
-  B.16. [LFS 8.60] Chapter 8 Part 4 GRUB
-        ( based on: https://www.linuxfromscratch.org/blfs/view/11.3/postlfs/grub-efi.html )
+  B.16. [LFS 8.62] Chapter 8 Part 4 GRUB
+        ( based on: https://www.linuxfromscratch.org/blfs/view/12.0/postlfs/grub-efi.html )
 
         ###
 
-        bash a.08.00.Part4.80-80Y.sh
+        bash a.08.00.Part4.90-90Y.sh
 
         ###
 
@@ -465,7 +465,7 @@ B.  Generate LFS
 
         ###
 
-        bash a.08.00.Part5.81-81Z.sh
+        bash a.08.00.Part5.91-91Z.sh
 
         ###
 
@@ -473,7 +473,7 @@ B.  Generate LFS
 
         ###
 
-        bash a.08.00.Part6.82-82E.sh
+        bash a.08.00.Part6.92-92E.sh
 
         ###
 
