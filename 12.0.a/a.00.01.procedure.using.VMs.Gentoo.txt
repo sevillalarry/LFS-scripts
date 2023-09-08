@@ -485,7 +485,7 @@ C. Finishing Up
 
         cd /sources
 
-        bash a.09.02.LFS-Bootscripts-20230101.sh
+        bash a.09.02.LFS-Bootscripts-20230728.sh
 
         ###
 
@@ -671,9 +671,9 @@ C. Finishing Up
 
         cd /sources
 
-        bash a.09.99.BLFS-Bootscripts-20230101.extract.only.sh
+        bash a.09.99.BLFS-Bootscripts-20230824.extract.only.sh
 
-        cd blfs-bootscripts-20230101
+        cd blfs-bootscripts-20230824
 
         ###
 
@@ -694,13 +694,15 @@ C. Finishing Up
 
         ###
 
-  C.10. acpid bootscripts
-
-        ###
-
-        make install-acpid
-
-        ###
+#  C.10. acpid bootscripts
+#
+#        ###
+#           Possible conflict with
+#           elogind
+#
+#        make install-acpid
+#
+#        ###
 
 D. [LFS 10.x] Making the LFS System Bootable
 
@@ -718,19 +720,21 @@ D. [LFS 10.x] Making the LFS System Bootable
         #/dev/<yyy>     swap         swap     pri=1               0     0
 
         /dev/vda1       /boot/efi   vfat  defaults,noatime,discard      0 2
-        /dev/vda2       none        swap  sw,discard                    0 0
-        /dev/vda3       /           ext4  noatime,discard               0 1
+        /dev/vda2       /           ext4  noatime,discard               0 1
 
         /dev/vdb1       /mnt/src    ext4  noatime,discard               0 3
 
+        /dev/vdc1       none        swap  sw,discard                    0 0
+
         /dev/cdrom      /mnt/cdrom  auto  noauto,user                   0 0
 
-        proc           /proc        proc     nosuid,noexec,nodev 0     0
-        sysfs          /sys         sysfs    nosuid,noexec,nodev 0     0
-        devpts         /dev/pts     devpts   gid=5,mode=620      0     0
-        tmpfs          /run         tmpfs    defaults            0     0
-        devtmpfs       /dev         devtmpfs mode=0755,nosuid    0     0
-        tmpfs          /dev/shm     tmpfs    nosuid,nodev        0     0
+        proc           /proc          proc     nosuid,noexec,nodev 0     0
+        sysfs          /sys           sysfs    nosuid,noexec,nodev 0     0
+        devpts         /dev/pts       devpts   gid=5,mode=620      0     0
+        tmpfs          /run           tmpfs    defaults            0     0
+        devtmpfs       /dev           devtmpfs mode=0755,nosuid    0     0
+        tmpfs          /dev/shm       tmpfs    nosuid,nodev        0     0
+        cgroup2        /sys/fs/cgroup cgroup2  nosuid,noexec,nodev 0     0
 
         # End /etc/fstab
         EOF
@@ -742,29 +746,29 @@ D. [LFS 10.x] Making the LFS System Bootable
         ###
 
 
-  D.02. [LFS 10.3] Linux-6.1.31 Kernel
+  D.02. [LFS 10.3] Linux-6.4.12 Kernel
 
         ###
 
         cd /sources
 
-        bash a.10.03.Linux-6.1.31.extract.only.sh
+        bash a.10.03.Linux-6.4.12.extract.only.sh
         
-        cd linux-6.1.31
+        cd linux-6.4.12
 
         make mrproper
         make defconfig
         make MENUCONFIG_COLOR=blackbg menuconfig
 
         ( Note the flags needed )
-        https://www.linuxfromscratch.org/lfs/view/11.3/chapter10/kernel.html
-        https://www.linuxfromscratch.org/blfs/view/11.3/postlfs/grub-setup.html
-        https://www.linuxfromscratch.org/blfs/view/11.3/general/gpm.html
+        https://www.linuxfromscratch.org/lfs/view/12.0/chapter10/kernel.html
+        https://www.linuxfromscratch.org/blfs/view/12.0/postlfs/grub-setup.html
+        https://www.linuxfromscratch.org/blfs/view/12.0/general/gpm.html
         https://wiki.gentoo.org/wiki/QEMU/Linux_guest
-        https://www.linuxfromscratch.org/blfs/view/11.3/x/x7driver.html#libevdev
-        https://www.linuxfromscratch.org/blfs/view/11.3/general/elogind.html
+        https://www.linuxfromscratch.org/blfs/view/12.0/x/x7driver.html#libevdev
+        https://www.linuxfromscratch.org/blfs/view/12.0/general/elogind.html
+        
         ( additional )
-
         Kernel hacking --->
           Memory Debugging
             [ ] Stack Utilitization Instrumentation
@@ -772,17 +776,16 @@ D. [LFS 10.x] Making the LFS System Bootable
         make
         make modules_install
 
-        cp -iv arch/x86/boot/bzImage /boot/vmlinuz-6.1.31-lfs-11.3-r00
-        cp -iv System.map /boot/System.map-6.1.31-r00
-        cp -iv .config /boot/config-6.1.31-r00
+        cp -iv arch/x86/boot/bzImage /boot/vmlinuz-6.4.12-lfs-12.0-r00
+        cp -iv System.map /boot/System.map-6.4.12-r00
+        cp -iv .config /boot/config-6.4.12-r00
 
-        install -d /usr/share/doc/linux-6.1.31
-        cp -r Documentation/* /usr/share/doc/linux-6.1.31
+        cp -r Documentation -T /usr/share/doc/linux-6.4.12
 
         ###
 
   D.03. [LFS 10.4] Using GRUB to Set Up the Boot Process with UEFI
-        ( https://www.linuxfromscratch.org/blfs/view/11.3/postlfs/grub-setup.html )
+        ( https://www.linuxfromscratch.org/blfs/view/12.0/postlfs/grub-setup.html )
 
         ###
 
@@ -799,16 +802,15 @@ D. [LFS 10.x] Making the LFS System Bootable
 
         insmod part_gpt
         insmod ext2
-        set root=(hd0,3)
+        set root=(hd0,2)
 
+        insmod all_video
         if loadfont /boot/grub/fonts/unicode.pf2; then
-          set gfxmode=auto
-          insmod all_video
           terminal_output gfxterm
         fi
 
-        menuentry "GNU/Linux, Linux 6.1.31-lfs-11.3-r00"  {
-          linux   /boot/vmlinuz-6.1.31-lfs-11.3-r00 root=/dev/vda3 ro
+        menuentry "GNU/Linux, Linux 6.4.12-lfs-12.0-r00"  {
+          linux   /boot/vmlinuz-6.4.12-lfs-12.0-r00 root=/dev/vda2 ro
         }
 
         menuentry "Firmware Setup" {
@@ -824,12 +826,12 @@ E. The End
 
         ###
 
-        echo 11.3 > /etc/lfs-release
+        echo 12.0 > /etc/lfs-release
 
 
         cat > /etc/lsb-release << "EOF"
         DISTRIB_ID="Linux From Scratch"
-        DISTRIB_RELEASE="11.3"
+        DISTRIB_RELEASE="12.0"
         DISTRIB_CODENAME="<your name here>"
         DISTRIB_DESCRIPTION="Linux From Scratch"
         EOF
@@ -837,9 +839,9 @@ E. The End
 
         cat > /etc/os-release << "EOF"
         NAME="Linux From Scratch"
-        VERSION="11.3"
+        VERSION="12.0"
         ID=lfs
-        PRETTY_NAME="Linux From Scratch 11.3"
+        PRETTY_NAME="Linux From Scratch 12.0"
         VERSION_CODENAME="<your name here>"
         EOF
 
@@ -861,12 +863,12 @@ E. The End
 
         # Based on:
         #
-        #   https://www.linuxfromscratch.org/lfs/view/11.3/chapter08/stripping.html
-        #   https://www.linuxfromscratch.org/lfs/view/11.3/chapter08/cleanup.html
+        #   https://www.linuxfromscratch.org/lfs/view/12.0/chapter08/stripping.html
+        #   https://www.linuxfromscratch.org/lfs/view/12.0/chapter08/cleanup.html
         #
-        #   https://www.linuxfromscratch.org/blfs/view/11.3/introduction/notes-on-building.html
-        #   https://www.linuxfromscratch.org/blfs/view/11.3/introduction/la-files.html
-        #   https://www.linuxfromscratch.org/blfs/view/11.3/introduction/locale-issues.html
+        #   https://www.linuxfromscratch.org/blfs/view/12.0/introduction/notes-on-building.html
+        #   https://www.linuxfromscratch.org/blfs/view/12.0/introduction/la-files.html
+        #   https://www.linuxfromscratch.org/blfs/view/12.0/introduction/locale-issues.html
         #
 
         ###
@@ -882,7 +884,7 @@ E. The End
         Read and execute, if needed, as root, initially.
         For files that start with "~", execute also with <user>.
 
-        https://www.linuxfromscratch.org/blfs/view/11.3/postlfs/profile.html
+        https://www.linuxfromscratch.org/blfs/view/12.0/postlfs/profile.html
 
   E.05. [LFS 11.3] UnMounting
 
@@ -891,11 +893,12 @@ E. The End
         logout
 
         umount -v $LFS/dev/pts
-        mountpoint -q $LFS/dev/shm && umount $LFS/dev/shm
+        mountpoint -q $LFS/dev/shm && umount -v $LFS/dev/shm
         umount -v $LFS/dev
         umount -v $LFS/run
         umount -v $LFS/proc
         umount -v $LFS/sys
+
         umount -v $LFS/mnt/src
 
         umount -v $LFS
@@ -909,3 +912,4 @@ E. The End
 F. Create a new VM for LFS and run it
       VM.LFS.sys.qcow2 as vda
       VM.LFS.src.qcow2 as vdb
+      VM.LFS.swp.qcow2 as vdc
