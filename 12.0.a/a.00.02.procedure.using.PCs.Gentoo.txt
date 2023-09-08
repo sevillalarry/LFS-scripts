@@ -1,9 +1,9 @@
 A. Preparation
 
-  A.01. Prepare a Gentoo VM (LFS) host with:
+  A.01. Prepare a Gentoo PC (LFS) host with:
 
-        Q35, UEFI
-        50Gb VM.Gentoo.host.qcow2       /dev/vda
+        UEFI
+        /dev/sda
         Install Gentoo x64 with UEFI
         ( Big topic )
 
@@ -16,24 +16,19 @@ A. Preparation
         (based on https://www.linuxfromscratch.org/lfs/view/12.0/chapter02/hostreqs.html )
         check the corresponding versions
 
-        shut down Gentoo VM (LFS) host
+        shut down Gentoo PC (LFS) host
 
-  A.03. attach 2 Virtual Disk
+  A.03. attach a 2nd Disk
 
-        1.    20Gb      VM.LfS.sys.qcow2        /dev/vdb
-        2.     5Gb      VM.LfS.src.qcow2        /dev/vdc
-        3. RAM*2Gb      VM.LfS.swp.qcow2        /dev/vdd    ( will be used after installation )
+        /dev/sdb
 
-  A.04. [LFS 2.4] Partition the newly attached VDs
+  A.04. [LFS 2.4] Partition the newly attached disk
 
         set as GPT ( UEFI )
 
-        /dev/vdb1   256M      VFAT / UEFI / EFI System
-        /dev/vdb2   remaining Linux filesystem
-
-        /dev/vdc1   all       Linux filesystem
-
-        /dev/vdd1   all       swap
+        /dev/sdb1   256M            VFAT / UEFI / EFI System
+        /dev/sdb2   Max - RAM*2     Linux filesystem
+        /dev/sdb3   RAM*2           swap
 
   A.05. [LFS 2.5] Creating File Systems on the Partitions
 
@@ -43,10 +38,9 @@ A. Preparation
 
         ###
 
-        mkfs.vfat -v -F 32 -n BOOT /dev/vdb1
-        mkfs.ext4 -v -L ROOT /dev/vdb2
-        mkfs.ext4 -v -L SOURCES /dev/vdc1
-        mkswap -L SWAP /dev/vdd1
+        mkfs.vfat -v -F 32 -n BOOT /dev/sdb1
+        mkfs.ext4 -v -L ROOT /dev/sdb2
+        mkswap -L SWAP /dev/sdb3
 
         ###
 
@@ -61,25 +55,22 @@ A. Preparation
         ###
 
         mkdir -pv $LFS
-        mount -v -t ext4 /dev/vdb2 $LFS
+        mount -v -t ext4 /dev/sdb2 $LFS
 
         ###
 
         /etc/fstab
-          /dev/vdb2   /mnt/lfs  ...
+          /dev/sdb2   /mnt/lfs  ...
 
   A.08. [LFS 3.1] Packages ( Sources )
 
         ###
 
-        mkdir -pv $LFS/mnt/src
-        mount /dev/vdc1 $LFS/mnt/src
+        mkdir -pv $LFS/usr/src/lfs
 
-        mkdir -v $LFS/mnt/src/lfs.{src,log}
+        chmod -v a+wt $LFS/usr/src/lfs
 
-        chmod -v a+wt $LFS/mnt/src/lfs.{src,log}
-
-        ln -sf $LFS/mnt/src/lfs.src $LFS/sources
+        ln -sf $LFS/usr/src/lfs $LFS/sources
 
         cd $LFS/sources
 
@@ -145,14 +136,15 @@ A. Preparation
 
         ( Logging )
 
-        mkdir -pv $LFS/var/log
-        chown -v lfs $LFS/var/log
-        chown -v lfs $LFS/mnt/src/lfs.log
-        ln -sfv $LFS/mnt/src/lfs.log $LFS/var/log/lfs
+        ###
+
+        mkdir -pv $LFS/var/log/lfs
+        chown -v lfs $LFS/var/log/lfs
 
         export LFSLOG=$LFS/var/log/lfs
 
         ###
+
 
   A.12. [LFS 4.3] Start a shell running as user "lfs"
 
@@ -379,15 +371,12 @@ B.  Generate LFS
         chmod -v 664  /var/log/lastlog
         chmod -v 600  /var/log/btmp
 
-  B.09. [before LFS 7.7] Adjust links and environment
+  B.09. [before LFS 7.7] Adjust links and checking environment
 
         ###
 
         rm /sources
-        ln -s /mnt/src/lfs.src /sources
-
-        rm /var/log/lfs
-        ln -sf /mnt/src/lfs.log /var/log/lfs
+        ln -sf /usr/src/lfs /sources
 
         export LFSLOG=/var/log/lfs
 
@@ -509,10 +498,10 @@ C. Finishing Up
         ONBOOT=yes
         IFACE=eth0
         SERVICE=ipv4-static
-        IP=192.168.122.111
-        GATEWAY=192.168.122.1
+        IP=192.168.1.111
+        GATEWAY=192.168.1.1
         PREFIX=24
-        BROADCAST=192.168.122.255
+        BROADCAST=192.168.1.255
         EOF
 
 
@@ -530,7 +519,7 @@ C. Finishing Up
         EOF
 
 
-        echo "VM-LFS" > /etc/hostname
+        echo "PC-LFS" > /etc/hostname
 
 
         cat > /etc/hosts << "EOF"
@@ -594,7 +583,10 @@ C. Finishing Up
         cat > /etc/sysconfig/clock << "EOF"
         # Begin /etc/sysconfig/clock
 
-        UTC=1
+        #UTC=1
+
+        # local time was set in a.08.05.Glibc-2.37.sh
+        UTC=0
 
         # Set this to any options you might need to give to hwclock,
         # such as machine hardware clock type for Alphas.
@@ -726,12 +718,9 @@ D. [LFS 10.x] Making the LFS System Bootable
         #/dev/<xxx>     /            <fff>    defaults            1     1
         #/dev/<yyy>     swap         swap     pri=1               0     0
 
-        /dev/vda1       /boot/efi   vfat  defaults,noatime,discard      0 2
-        /dev/vda2       /           ext4  noatime,discard               0 1
-
-        /dev/vdb1       /mnt/src    ext4  noatime,discard               0 3
-
-        /dev/vdc1       none        swap  sw,discard                    0 0
+        /dev/sda1       /boot/efi   vfat  defaults,noatime        0 2
+        /dev/sda2       /           ext4  noatime                 0 1
+        /dev/sda3       none        swap  sw                      0 0
 
         /dev/cdrom      /mnt/cdrom  auto  noauto,user                   0 0
 
@@ -771,11 +760,10 @@ D. [LFS 10.x] Making the LFS System Bootable
         https://www.linuxfromscratch.org/lfs/view/12.0/chapter10/kernel.html
         https://www.linuxfromscratch.org/blfs/view/12.0/postlfs/grub-setup.html
         https://www.linuxfromscratch.org/blfs/view/12.0/general/gpm.html
-        https://wiki.gentoo.org/wiki/QEMU/Linux_guest
         https://www.linuxfromscratch.org/blfs/view/12.0/x/x7driver.html#libevdev
         https://www.linuxfromscratch.org/blfs/view/12.0/general/elogind.html
-        
         ( additional )
+
         Kernel hacking --->
           Memory Debugging
             [ ] Stack Utilitization Instrumentation
@@ -797,7 +785,7 @@ D. [LFS 10.x] Making the LFS System Bootable
         ###
 
         mkdir -pv /boot/efi
-        mount -v -t vfat /dev/vdb1 /boot/efi
+        mount -v -t vfat /dev/sdb1 /boot/efi
 
         grub-install --target=x86_64-efi --removable
 
@@ -817,7 +805,7 @@ D. [LFS 10.x] Making the LFS System Bootable
         fi
 
         menuentry "GNU/Linux, Linux 6.4.12-lfs-12.0-r00"  {
-          linux   /boot/vmlinuz-6.4.12-lfs-12.0-r00 root=/dev/vda2 ro
+          linux   /boot/vmlinuz-6.4.12-lfs-12.0-r00 root=/dev/sda2 ro
         }
 
         menuentry "Firmware Setup" {
@@ -900,23 +888,19 @@ E. The End
         logout
 
         umount -v $LFS/dev/pts
-        mountpoint -q $LFS/dev/shm && umount -v $LFS/dev/shm
+        mountpoint -q $LFS/dev/shm && umount $LFS/dev/shm
         umount -v $LFS/dev
         umount -v $LFS/run
         umount -v $LFS/proc
         umount -v $LFS/sys
-
         umount -v $LFS/mnt/src
 
         umount -v $LFS
 
-        poweroff         ( --- the VM Gentoo Host )
+        poweroff         ( --- the PC Gentoo Host )
 
         ###
 
-  E.06. Detach the 3 VDs from host
+  E.06. Detach the 1st Disk
 
-F. Create a new VM for LFS and run it
-      VM.LFS.sys.qcow2 as vda
-      VM.LFS.src.qcow2 as vdb
-      VM.LFS.swp.qcow2 as vdc
+F. Start-up the PC from the newly installed LFS drive.
