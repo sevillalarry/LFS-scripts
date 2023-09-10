@@ -672,7 +672,6 @@ C. Finishing Up
 
         ###
 
-
   C.07. BLFS-Bootscripts
 
         ###
