@@ -1,7 +1,7 @@
 # a.08.28.Pkg-config-2.0.1.sh
 #
 
-export PKG="pkg-config-2.0.1"
+export PKG="pkgconf-2.0.1"
 export PKGLOG_DIR=$LFSLOG/08.28
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
