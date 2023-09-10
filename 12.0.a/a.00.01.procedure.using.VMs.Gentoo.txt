@@ -20,9 +20,9 @@ A. Preparation
 
   A.03. attach 2 Virtual Disk
 
-        1.    20Gb      VM.LfS.sys.qcow2        /dev/vdb
-        2.     5Gb      VM.LfS.src.qcow2        /dev/vdc
-        3. RAM*2Gb      VM.LfS.swp.qcow2        /dev/vdd    ( will be used after installation )
+        1.      20Gb      VM.LfS.sys.qcow2        /dev/vdb
+        2.       5Gb      VM.LfS.src.qcow2        /dev/vdc
+        3. (RAM*2)Gb      VM.LfS.swp.qcow2        /dev/vdd    ( will be used after installation )
 
   A.04. [LFS 2.4] Partition the newly attached VDs
 
