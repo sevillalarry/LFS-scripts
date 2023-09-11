@@ -95,8 +95,6 @@ A. Preparation
 
         ###
 
-        chown root:root $LFS/sources/*
-
   A.10. [LFS 4.2] Creating a limited directory layout in LFS filesystem
 
         ###
