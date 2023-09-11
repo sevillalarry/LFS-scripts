@@ -772,6 +772,8 @@ D. [LFS 10.x] Making the LFS System Bootable
         https://www.linuxfromscratch.org/blfs/view/12.0/postlfs/grub-setup.html
         https://www.linuxfromscratch.org/blfs/view/12.0/general/gpm.html
         https://wiki.gentoo.org/wiki/QEMU/Linux_guest
+        https://www.linuxfromscratch.org/blfs/view/12.0/x/mesa.html
+        https://www.linuxfromscratch.org/blfs/view/12.0/x/xorg-server.html
         https://www.linuxfromscratch.org/blfs/view/12.0/x/x7driver.html#libevdev
         https://www.linuxfromscratch.org/blfs/view/12.0/general/elogind.html
         
