@@ -762,8 +762,8 @@ D. [LFS 10.x] Making the LFS System Bootable
         https://www.linuxfromscratch.org/blfs/view/12.0/general/gpm.html
         https://www.linuxfromscratch.org/blfs/view/12.0/x/x7driver.html#libevdev
         https://www.linuxfromscratch.org/blfs/view/12.0/general/elogind.html
-        ( additional )
 
+        ( additional )
         Kernel hacking --->
           Memory Debugging
             [ ] Stack Utilitization Instrumentation
@@ -893,7 +893,6 @@ E. The End
         umount -v $LFS/run
         umount -v $LFS/proc
         umount -v $LFS/sys
-        umount -v $LFS/mnt/src
 
         umount -v $LFS
 

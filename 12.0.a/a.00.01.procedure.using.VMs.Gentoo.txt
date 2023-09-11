@@ -379,7 +379,7 @@ B.  Generate LFS
         chmod -v 664  /var/log/lastlog
         chmod -v 600  /var/log/btmp
 
-  B.09. [before LFS 7.7] Adjust links and environment
+  B.09. [before LFS 7.7] Adjust links and checking environment
 
         ###
 
