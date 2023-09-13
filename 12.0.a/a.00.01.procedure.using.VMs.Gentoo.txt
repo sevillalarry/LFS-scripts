@@ -760,7 +760,7 @@ D. [LFS 10.x] Making the LFS System Bootable
         cd /sources
 
         bash a.10.03.Linux-6.4.12.extract.only.sh
-        
+
         cd linux-6.4.12
 
         make mrproper
@@ -786,8 +786,8 @@ D. [LFS 10.x] Making the LFS System Bootable
         make modules_install
 
         cp -iv arch/x86/boot/bzImage /boot/vmlinuz-6.4.12-lfs-12.0-r00
-        cp -iv System.map /boot/System.map-6.4.12-r00
-        cp -iv .config /boot/config-6.4.12-r00
+        cp -iv System.map /boot/System.map-6.4.12-lfs-12.0-r00
+        cp -iv .config /boot/config-6.4.12-lfs-12.0-r00
 
         cp -r Documentation -T /usr/share/doc/linux-6.4.12
 
