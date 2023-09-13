@@ -586,7 +586,7 @@ C. Finishing Up
 
         #UTC=1
 
-        # local time was set in a.08.05.Glibc-2.37.sh
+        # local time was set in a.08.05.Glibc-2.38.sh
         UTC=0
 
         # Set this to any options you might need to give to hwclock,
