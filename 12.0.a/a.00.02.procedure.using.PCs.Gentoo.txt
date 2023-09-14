@@ -272,8 +272,6 @@ B.  Generate LFS
             PATH=/usr/bin:/usr/sbin     \
             /bin/bash --login
 
-        export MAKEFLAGS="-j8"
-
         ###
 
   B.07. [LFS 7.5] Creating Directories
