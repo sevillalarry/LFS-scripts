@@ -381,6 +381,7 @@ B.  Generate LFS
         ln -sf /mnt/src/lfs.log /var/log/lfs
 
         export LFSLOG=/var/log/lfs
+        export MAKEFLAGS="-j8"
 
         cd /sources
 
