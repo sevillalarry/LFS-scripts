@@ -229,13 +229,6 @@ B.  Generate LFS
         ###
 
         echo $LFS             /mnt/lfs
-        echo $LFSLOG          /mnt/lfs/var/log/lfs
-        echo $MAKEFLAGS       -j8
-
-        echo $SHELL           /bin/bash
-        ls -l /bin/sh         bash
-        ls -l /usr/bin/awk    gawk
-        ls -l /usr/bin/yacc   yacc.bison
 
         ###
 
