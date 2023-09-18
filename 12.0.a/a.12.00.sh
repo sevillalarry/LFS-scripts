@@ -73,18 +73,20 @@ echo "."
 
 ###
 
-echo "12.17.checkman"
-echo "12.17.checkman" >> $LFSLOG_PROCESS
+# NOT working, permission denied
+#
+# echo "12.17.checkman"
+# echo "12.17.checkman" >> $LFSLOG_PROCESS
 
-# time { bash a.12.17.checkman.sh ; }
-time { find /usr/share/man -type f | xargs a.12.17.checkman.sh ; }
+# # time { bash a.12.17.checkman.sh ; }
+# time { find /usr/share/man -type f | xargs /sources/a.12.17.checkman.sh ; }
 
-date +"%Y/%b/%d %H:%M"
-date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
+# date +"%Y/%b/%d %H:%M"
+# date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
 
-echo "." >> $LFSLOG_PROCESS
-echo "."
-echo "."
+# echo "." >> $LFSLOG_PROCESS
+# echo "."
+# echo "."
 
 #####
 
