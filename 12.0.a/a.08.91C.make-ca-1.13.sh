@@ -1,7 +1,9 @@
-# a.08.91C.make-ca-1.12.sh
+# a.08.91C.make-ca-1.13.sh
+#
+# BLfS Errata
 #
 
-export PKG="make-ca-1.12"
+export PKG="make-ca-1.13"
 export PKGLOG_DIR=$LFSLOG/08.91C
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log

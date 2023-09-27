@@ -6,7 +6,7 @@ https://github.com/rhboot/efibootmgr/archive/18/efibootmgr-18.tar.gz
 https://unifoundry.com/pub/unifont/unifont-15.0.06/font-builds/unifont-15.0.06.pcf.gz
 https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.19.0.tar.gz
 https://github.com/p11-glue/p11-kit/releases/download/0.25.0/p11-kit-0.25.0.tar.xz
-https://github.com/lfs-book/make-ca/releases/download/v1.12/make-ca-1.12.tar.xz
+https://github.com/lfs-book/make-ca/releases/download/v1.13/make-ca-1.13.tar.xz
 https://ftp.gnu.org/gnu/wget/wget-1.21.4.tar.gz
 https://invisible-mirror.net/archives/lynx/tarballs/lynx2.8.9rel.1.tar.bz2
 https://www.linuxfromscratch.org/patches/blfs/12.0/lynx-2.8.9rel.1-security_fix-1.patch
