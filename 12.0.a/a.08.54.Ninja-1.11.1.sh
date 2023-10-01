@@ -49,12 +49,12 @@ echo "3. Test ..." >> $PKGLOG_ERROR
 echo "4. Install ..."
 echo "4. Install ..." >> $LFSLOG_PROCESS
 echo "4. Install ..." >> $PKGLOG_ERROR
-install -m755 ninja /usr/bin/                       \
+install -vm755 ninja /usr/bin/                      \
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-install -Dm644 misc/bash-completion                 \
+install -vDm644 misc/bash-completion                \
     /usr/share/bash-completion/completions/ninja    \
     >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-install -Dm644 misc/zsh-completion                  \
+install -vDm644 misc/zsh-completion                 \
     /usr/share/zsh/site-functions/_ninja            \
     >> $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
