@@ -70,7 +70,7 @@ tar --strip-components=1                    \
     --no-same-permissions                   \
     -C /usr/share/doc/python-3.11.5/html    \
     -xvf ../python-3.11.5-docs-html.tar.bz2  \
-    >> $PKGLOG_TAR 2> $PKGLOG_ERROR
+    >> $PKGLOG_TAR 2>> $PKGLOG_ERROR
 
 
 cd ..
