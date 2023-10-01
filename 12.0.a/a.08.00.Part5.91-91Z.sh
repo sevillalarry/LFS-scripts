@@ -47,10 +47,10 @@ echo "."
 
 ###
 
-echo "08.91C.make-ca-1.12"
-echo "08.91C.make-ca-1.12" >> $LFSLOG_PROCESS
+echo "08.91C.make-ca-1.13"
+echo "08.91C.make-ca-1.13" >> $LFSLOG_PROCESS
 
-time { bash a.08.91C.make-ca-1.12.sh ; }
+time { bash a.08.91C.make-ca-1.13.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
