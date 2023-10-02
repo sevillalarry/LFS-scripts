@@ -268,7 +268,6 @@ B.  Generate LFS
         ###
 
   B.06. [LFS 7.4] Entering the Chroot Environment
-        ( Note: change the MAKEFLAGS based on the number of threads )
 
         ###
 
