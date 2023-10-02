@@ -756,6 +756,7 @@ D. [LFS 10.x] Making the LFS System Bootable
 
         make mrproper
         make defconfig
+        make kvm_guest.config
         make MENUCONFIG_COLOR=blackbg menuconfig
 
         ( Note the flags needed )
@@ -769,6 +770,11 @@ D. [LFS 10.x] Making the LFS System Bootable
         https://www.linuxfromscratch.org/blfs/view/12.0/general/elogind.html
         
         ( additional )
+
+        Device Drivers --->
+          Graphics Support --->
+            [*] Bootup logo
+
         Kernel hacking --->
           Memory Debugging
             [ ] Stack Utilitization Instrumentation
