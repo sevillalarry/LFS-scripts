@@ -284,6 +284,9 @@ B.  Generate LFS
 
         ###
 
+        bash a.07.05.Creating.Directories.sh
+
+        ?????????????
         mkdir -pv /{boot,home,mnt,opt,srv}
 
         mkdir -pv /etc/{opt,sysconfig}
