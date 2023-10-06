@@ -17,3 +17,4 @@ https://www.sudo.ws/dist/sudo-1.9.14p3.tar.gz
 https://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20230824.tar.xz
 https://www.python.org/ftp/python/3.11.5/Python-3.11.5.tar.xz
 https://www.python.org/ftp/python/doc/3.11.5/python-3.11.5-docs-html.tar.bz2
+https://www.linuxfromscratch.org/patches/downloads/glibc/glibc-2.38-upstream_fixes-3.patch

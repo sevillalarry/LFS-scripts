@@ -1,7 +1,7 @@
 # a.07.06.Creating.Essential.Files.and.Symlinks.sh
 #
 
-ln -s /proc/self/mounts /etc/mtab
+ln -sv /proc/self/mounts /etc/mtab
 
 cat > /etc/hosts << EOF
 127.0.0.1  localhost $(hostname)

@@ -1,5 +1,7 @@
 # a.08.05.Glibc-2.38.sh
 #
+# Development version due to: Errata 12.0 018 Glibc (LFS) 2023-10-03 High
+#
 
 export PKG="glibc-2.38"
 export PKGLOG_DIR=$LFSLOG/08.05
@@ -31,7 +33,8 @@ echo "2. Patching..." >> $PKGLOG_ERROR
 patch -Np1 -i ../glibc-2.38-fhs-1.patch \
      > $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
 
-patch -Np1 -i ../glibc-2.38-memalign_fix-1.patch    \
+#glibc-2.38-memalign_fix-1.patch --- Errata
+patch -Np1 -i ../glibc-2.38-upstream_fixes-3.patch  \
      >> $PKGLOG_OTHERS 2>> $PKGLOG_ERROR
 
 mkdir build
@@ -47,6 +50,7 @@ echo "3. Configure ..." >> $PKGLOG_ERROR
              --enable-kernel=4.14               \
              --enable-stack-protector=strong    \
              --with-headers=/usr/include        \
+             --disable-nscd                     \
              libc_cv_slibdir=/usr/lib           \
     > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
@@ -68,11 +72,14 @@ echo "6. Make Install ..."
 echo "6. Make Install ..." >> $LFSLOG_PROCESS
 echo "6. Make Install ..." >> $PKGLOG_ERROR
 make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+#make install DESTDIR=$PWD/dest                 --- Errata 12.0 018 Glibc (LFS) 2023-10-03 High
 
 sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
 
-cp ../nscd/nscd.conf /etc/nscd.conf
-mkdir -p /var/cache/nscd
+#install -m755 dest/usr/lib/ld-linux* /usr/lib  --- Errata 12.0 018 Glibc (LFS) 2023-10-03 High
+
+# cp ../nscd/nscd.conf /etc/nscd.conf           --- Excluded ( see Development version )
+# mkdir -p /var/cache/nscd
 
 echo "7. Locale Definitions ..."
 echo "7. Locale Definitions ..." >> $LFSLOG_PROCESS
