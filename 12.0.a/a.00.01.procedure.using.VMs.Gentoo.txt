@@ -94,8 +94,6 @@ A. Preparation
 
         ###
 
-        chown root:root $LFS/sources/*
-
   A.09. Copy all script files and Download additional Packages
 
         copy all script files to $LFS/sources
