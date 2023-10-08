@@ -142,6 +142,8 @@ A. Preparation
 
         $$$
 
+        cd $LFS/sources
+
         bash a.04.04.Setting.Up.the.Environment.sh
 
         source ~/.bash_profile
