@@ -11,10 +11,12 @@ A. Preparation
           >sys-devel/gcc-13.2
         ( requirement of LFS 12.0 )
 
-  A.02. [LFS 2.2] execute: bash a.02.02.version-check.sh
+  A.02. [LFS 2.2] Host System Requirements
 
         (based on https://www.linuxfromscratch.org/lfs/view/12.0/chapter02/hostreqs.html )
         check the corresponding versions
+
+        bash a.02.02.version-check.sh
 
         shut down Gentoo VM (LFS) host
 
