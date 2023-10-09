@@ -224,24 +224,7 @@ B.  Generate LFS
 
         ###
 
-  B.07. [LFS 7.5] Creating Directories
-
-        ###
-
-        bash a.07.05.Creating.Directories.sh
-
-        ###
-
-  B.08. [LFS 7.6] Creating Essential Files and Symlinks
-
-        ###
-
-        bash a.07.06.Creating.Essential.Files.and.Symlinks.sh
-
-        exec /usr/bin/bash --login
-        ( I have no name! ) - removed
-
-  B.09. [before LFS 7.7] Adjust links and checking environment
+  B.07. [before LFS 7.5] Adjust links and checking environment
         ( Note: change the MAKEFLAGS based on the number of threads )
 
         ###
@@ -262,6 +245,23 @@ B.  Generate LFS
         echo $SHELL           # /bin/bash
         ls -l /bin/sh         # bash
         ls -l /usr/bin/awk    # gawk
+
+  B.08. [LFS 7.5] Creating Directories
+
+        ###
+
+        bash a.07.05.Creating.Directories.sh
+
+        ###
+
+  B.09. [LFS 7.6] Creating Essential Files and Symlinks
+
+        ###
+
+        bash a.07.06.Creating.Essential.Files.and.Symlinks.sh
+
+        exec /usr/bin/bash --login
+        ( I have no name! ) - removed
 
   B.10. [LFS 7.7-7.12] Chapter 7
 
