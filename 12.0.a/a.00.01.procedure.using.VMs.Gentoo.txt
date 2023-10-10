@@ -430,6 +430,8 @@ C. Finishing Up
 
         ###
 
+        cd /sources
+
         bash a.09.06.System.V.Bootscript.Usage.and.Configuration.sh
 
         ###

@@ -421,6 +421,8 @@ C. Finishing Up
 
         ###
 
+        cd /sources
+
         bash a.09.06.System.V.Bootscript.Usage.and.Configuration.sh
 
         # modify /etc/sysconfig/clock with UTC=0
