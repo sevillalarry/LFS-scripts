@@ -684,11 +684,15 @@ E. The End
 
         ### as root
 
+        cd /sources
+
         bash a.13.01.root.sh
 
         $$$ as user
 
         su - <user>
+
+        cd /sources
 
         bash a.13.02.user.sh
 
