@@ -1,7 +1,7 @@
-# a.08.47.OpenSSL-3.1.2.sh
+# a.08.47.OpenSSL-3.1.4.sh
 #
 
-export PKG="openssl-3.1.2"
+export PKG="openssl-3.1.4"
 export PKGLOG_DIR=$LFSLOG/08.47
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
@@ -39,7 +39,7 @@ make > $PKGLOG_BUILD 2>> $PKGLOG_ERROR
 echo "4. Make Check ..."
 echo "4. Make Check ..." >> $LFSLOG_PROCESS
 echo "4. Make Check ..." >> $PKGLOG_ERROR
-make test > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
+HARNESS_JOBS=$(MAKE_FLAGS) make test > $PKGLOG_CHECK 2>> $PKGLOG_ERROR
 
 echo "5. Make Install ..."
 echo "5. Make Install ..." >> $LFSLOG_PROCESS
@@ -48,9 +48,9 @@ sed -i '/INSTALL_LIBS/s/libcrypto.a libssl.a//' Makefile
 make MANSUFFIX=ssl install    \
      > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-mv /usr/share/doc/openssl /usr/share/doc/openssl-3.1.2
+mv /usr/share/doc/openssl /usr/share/doc/openssl-3.1.4
 
-cp -fr doc/* /usr/share/doc/openssl-3.1.2
+cp -fr doc/* /usr/share/doc/openssl-3.1.4
 
 
 cd ..
