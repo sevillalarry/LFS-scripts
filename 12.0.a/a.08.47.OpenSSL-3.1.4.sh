@@ -1,4 +1,5 @@
 # a.08.47.OpenSSL-3.1.4.sh
+# Errata
 #
 
 export PKG="openssl-3.1.4"
