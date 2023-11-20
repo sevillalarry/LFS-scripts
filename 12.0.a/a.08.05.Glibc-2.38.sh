@@ -71,12 +71,14 @@ sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile
 echo "6. Make Install ..."
 echo "6. Make Install ..." >> $LFSLOG_PROCESS
 echo "6. Make Install ..." >> $PKGLOG_ERROR
-make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
-#make install DESTDIR=$PWD/dest                 --- Errata 12.0 018 Glibc (LFS) 2023-10-03 High
+#make install > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
+#Errata 12.0 018 Glibc (LFS) 2023-10-03 High
+make install DESTDIR=$PWD/dest > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
 sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
 
-#install -m755 dest/usr/lib/ld-linux* /usr/lib  --- Errata 12.0 018 Glibc (LFS) 2023-10-03 High
+# Errata 12.0 018 Glibc (LFS) 2023-10-03 High
+install -m755 dest/usr/lib/ld-linux* /usr/lib
 
 # cp ../nscd/nscd.conf /etc/nscd.conf           --- Excluded ( see Development version )
 # mkdir -p /var/cache/nscd
