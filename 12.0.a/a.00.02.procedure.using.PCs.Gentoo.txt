@@ -11,10 +11,12 @@ A. Preparation
           >sys-devel/gcc-13.2
         ( requirement of LFS 12.0 )
 
-  A.02. [LFS 2.2] execute: bash a.02.02.version-check.sh
+  A.02. [LFS 2.2] Host System Requirements
 
         (based on https://www.linuxfromscratch.org/lfs/view/12.0/chapter02/hostreqs.html )
         check the corresponding versions
+
+        bash a.02.02.version-check.sh
 
         shut down Gentoo PC (LFS) host
 
@@ -142,6 +144,8 @@ A. Preparation
 
         $$$
 
+        cd $LFS/sources
+
         bash a.04.04.Setting.Up.the.Environment.sh
 
         source ~/.bash_profile
@@ -220,24 +224,7 @@ B.  Generate LFS
 
         ###
 
-  B.07. [LFS 7.5] Creating Directories
-
-        ###
-
-        bash a.07.05.Creating.Directories.sh
-
-        ###
-
-  B.08. [LFS 7.6] Creating Essential Files and Symlinks
-
-        ###
-
-        bash a.07.06.Creating.Essential.Files.and.Symlinks.sh
-
-        exec /usr/bin/bash --login
-        ( I have no name! ) - removed
-
-  B.09. [before LFS 7.7] Adjust links and checking environment
+  B.07. [before LFS 7.5] Adjust links and checking environment
         ( Note: change the MAKEFLAGS based on the number of threads )
 
         ###
@@ -255,9 +242,26 @@ B.  Generate LFS
         echo $LFSLOG          # /var/log/lfs
         echo $MAKEFLAGS       # -j8
 
-        echo $SHELL           # /bin/bash
+        echo $SHELL           # /bin/sh
         ls -l /bin/sh         # bash
         ls -l /usr/bin/awk    # gawk
+
+  B.08. [LFS 7.5] Creating Directories
+
+        ###
+
+        bash a.07.05.Creating.Directories.sh
+
+        ###
+
+  B.09. [LFS 7.6] Creating Essential Files and Symlinks
+
+        ###
+
+        bash a.07.06.Creating.Essential.Files.and.Symlinks.sh
+
+        exec /usr/bin/bash --login
+        ( I have no name! ) - removed
 
   B.10. [LFS 7.7-7.12] Chapter 7
 
@@ -416,6 +420,8 @@ C. Finishing Up
   C.04. [LFS 9.6] System V Bootscript Usage and Configuration
 
         ###
+
+        cd /sources
 
         bash a.09.06.System.V.Bootscript.Usage.and.Configuration.sh
 
@@ -667,9 +673,13 @@ E. The End
 
         ### as root
 
+        cd /sources
+
         bash a.13.01.root.sh
 
         $$$ as user
+
+        cd /sources
 
         su - <user>
 

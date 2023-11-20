@@ -49,8 +49,9 @@ echo "2. Configure ..." >> $PKGLOG_ERROR
       --build=$(../scripts/config.guess)    \
       --enable-kernel=4.14                  \
       --with-headers=$LFS/usr/include       \
+      --disable-nscd                        \
       libc_cv_slibdir=/usr/lib              \
-        > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
+    > $PKGLOG_CONFIG 2>> $PKGLOG_ERROR
 
 export OLD_MAKEFLAGS=$MAKEFLAGS
 export MAKEFLAGS="-j1"
