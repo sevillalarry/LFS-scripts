@@ -234,6 +234,7 @@ B.  Generate LFS
 
         export LFSLOG=/var/log/lfs
         export MAKEFLAGS="-j8"
+        export NPROC=4
 
         cd /sources
 
