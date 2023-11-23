@@ -681,9 +681,9 @@ E. The End
 
         $$$ as user
 
-        cd /sources
-
         su - <user>
+
+        cd /sources
 
         bash a.13.02.user.sh
 
