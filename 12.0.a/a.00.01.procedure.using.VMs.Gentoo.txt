@@ -460,8 +460,6 @@ C. Finishing Up
 
         ###
 
-        cd /sources
-
         bash a.09.99.BLFS-Bootscripts-20230824.extract.only.sh
 
         cd blfs-bootscripts-20230824

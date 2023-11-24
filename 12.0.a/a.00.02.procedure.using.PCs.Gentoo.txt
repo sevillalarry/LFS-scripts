@@ -453,8 +453,6 @@ C. Finishing Up
 
         ###
 
-        cd /sources
-
         bash a.09.99.BLFS-Bootscripts-20230824.extract.only.sh
 
         cd blfs-bootscripts-20230824
@@ -679,9 +677,9 @@ E. The End
 
         $$$ as user
 
-        cd /sources
-
         su - <user>
+
+        cd /sources
 
         bash a.13.02.user.sh
 
