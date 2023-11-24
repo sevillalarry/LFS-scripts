@@ -156,6 +156,8 @@ A. Preparation
 
         source ~/.bash_profile
 
+        cd $LFS/sources
+
         $$$
 
 B.  Generate LFS
