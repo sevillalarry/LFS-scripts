@@ -85,6 +85,8 @@ sed 's|lib.*udevd|sbin/udevd|'                                        \
   > /usr/share/man/man8/udevd.8
 rm  /usr/share/man/man8/systemd-*.8
 
+udev-hwdb update
+
 
 cd ..
 cd ..
