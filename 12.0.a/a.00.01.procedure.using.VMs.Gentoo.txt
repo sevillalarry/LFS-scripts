@@ -22,7 +22,7 @@ A. Preparation
 
   A.03. attach 3 Virtual Disks
 
-        1.      20Gb      VM.LfS.sys.qcow2        /dev/vdb
+        1.      40Gb      VM.LfS.sys.qcow2        /dev/vdb
         2.      40Gb      VM.LfS.src.qcow2        /dev/vdc
         3. (RAM*2)Gb      VM.LfS.swp.qcow2        /dev/vdd    ( will be used after installation )
 
