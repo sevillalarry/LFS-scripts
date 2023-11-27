@@ -264,7 +264,7 @@ B.  Generate LFS
 
         bash a.07.06.Creating.Essential.Files.and.Symlinks.sh
 
-        exec /usr/bin/bash --login
+        exec: /usr/bin/bash --login
         ( I have no name! ) - removed
 
   B.10. [LFS 7.7-7.12] Chapter 7
