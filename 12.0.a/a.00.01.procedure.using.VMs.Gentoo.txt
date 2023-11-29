@@ -708,6 +708,7 @@ E. The End
 
         logout    # twice
         logout    #
+        cd
 
         umount -v $LFS/dev/pts
         mountpoint -q $LFS/dev/shm && umount -v $LFS/dev/shm
