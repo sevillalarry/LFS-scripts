@@ -505,8 +505,8 @@ D. [LFS 10.x] Making the LFS System Bootable
         #/dev/<xxx>     /            <fff>    defaults            1     1
         #/dev/<yyy>     swap         swap     pri=1               0     0
 
-        /dev/sda1       /boot/efi   vfat  defaults,noatime        0 2
-        /dev/sda2       /           ext4  noatime                 0 1
+        /dev/sda1       /boot/efi   vfat  defaults                0 2
+        /dev/sda2       /           ext4  defaults,noatime        0 1
         /dev/sda3       none        swap  sw                      0 0
 
         /dev/cdrom      /mnt/cdrom  auto  noauto,user                   0 0
