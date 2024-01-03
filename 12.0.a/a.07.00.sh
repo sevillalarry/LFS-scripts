@@ -36,10 +36,10 @@ echo "."
 
 ###
 
-echo "07.09.Perl-5.38.0"
-echo "07.09.Perl-5.38.0" >> $LFSLOG_PROCESS
+echo "07.09.Perl-5.38.2"
+echo "07.09.Perl-5.38.2" >> $LFSLOG_PROCESS
 
-time { bash a.07.09.Perl-5.38.0.sh ; }
+time { bash a.07.09.Perl-5.38.2.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
