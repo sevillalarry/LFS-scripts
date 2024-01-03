@@ -245,6 +245,7 @@ B.  Generate LFS
 
         echo $LFSLOG          # /var/log/lfs
         echo $MAKEFLAGS       # -j8
+        echo $NPROC           # 8
 
         echo $SHELL           # /bin/sh
         ls -l /bin/sh         # bash

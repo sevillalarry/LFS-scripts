@@ -162,10 +162,10 @@ echo "."
 
 ###
 
-echo "08.47.OpenSSL-3.1.4"
-echo "08.47.OpenSSL-3.1.4" >> $LFSLOG_PROCESS
+echo "08.47.OpenSSL-3.2.0"
+echo "08.47.OpenSSL-3.2.0" >> $LFSLOG_PROCESS
 
-time { bash a.08.47.OpenSSL-3.1.4.sh ; }
+time { bash a.08.47.OpenSSL-3.2.0.sh ; }
 
 date +"%Y/%b/%d %H:%M"
 date +"%Y/%b/%d %H:%M" >> $LFSLOG_PROCESS
