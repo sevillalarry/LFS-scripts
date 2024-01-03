@@ -150,6 +150,8 @@ A. Preparation
 
         source ~/.bash_profile
 
+        cd $LFS/sources
+
         $$$
 
 B.  Generate LFS
@@ -243,7 +245,6 @@ B.  Generate LFS
 
         echo $LFSLOG          # /var/log/lfs
         echo $MAKEFLAGS       # -j8
-        echo $NPROC           # 8
 
         echo $SHELL           # /bin/sh
         ls -l /bin/sh         # bash
@@ -263,7 +264,7 @@ B.  Generate LFS
 
         bash a.07.06.Creating.Essential.Files.and.Symlinks.sh
 
-        exec /usr/bin/bash --login
+        exec: /usr/bin/bash --login
         ( I have no name! ) - removed
 
   B.10. [LFS 7.7-7.12] Chapter 7
@@ -456,8 +457,6 @@ C. Finishing Up
 
         ###
 
-        cd /sources
-
         bash a.09.99.BLFS-Bootscripts-20230824.extract.only.sh
 
         cd blfs-bootscripts-20230824
@@ -506,8 +505,8 @@ D. [LFS 10.x] Making the LFS System Bootable
         #/dev/<xxx>     /            <fff>    defaults            1     1
         #/dev/<yyy>     swap         swap     pri=1               0     0
 
-        /dev/sda1       /boot/efi   vfat  defaults,noatime        0 2
-        /dev/sda2       /           ext4  noatime                 0 1
+        /dev/sda1       /boot/efi   vfat  defaults                0 2
+        /dev/sda2       /           ext4  defaults,noatime        0 1
         /dev/sda3       none        swap  sw                      0 0
 
         /dev/cdrom      /mnt/cdrom  auto  noauto,user                   0 0
@@ -682,9 +681,9 @@ E. The End
 
         $$$ as user
 
-        cd /sources
-
         su - <user>
+
+        cd /sources
 
         bash a.13.02.user.sh
 
@@ -696,7 +695,9 @@ E. The End
 
         ###
 
-        logout
+        logout    # twice
+        logout    #
+        cd
 
         umount -v $LFS/dev/pts
         mountpoint -q $LFS/dev/shm && umount $LFS/dev/shm

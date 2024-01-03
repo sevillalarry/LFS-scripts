@@ -22,7 +22,7 @@ A. Preparation
 
   A.03. attach 3 Virtual Disks
 
-        1.      20Gb      VM.LfS.sys.qcow2        /dev/vdb
+        1.      40Gb      VM.LfS.sys.qcow2        /dev/vdb
         2.      40Gb      VM.LfS.src.qcow2        /dev/vdc
         3. (RAM*2)Gb      VM.LfS.swp.qcow2        /dev/vdd    ( will be used after installation )
 
@@ -156,6 +156,8 @@ A. Preparation
 
         source ~/.bash_profile
 
+        cd $LFS/sources
+
         $$$
 
 B.  Generate LFS
@@ -252,7 +254,6 @@ B.  Generate LFS
 
         echo $LFSLOG          # /var/log/lfs
         echo $MAKEFLAGS       # -j8
-        echo $NPROC           # 8
 
         echo $SHELL           # /bin/bash
         ls -l /bin/sh         # bash
@@ -272,7 +273,7 @@ B.  Generate LFS
 
         bash a.07.06.Creating.Essential.Files.and.Symlinks.sh
 
-        exec /usr/bin/bash --login
+        exec: /usr/bin/bash --login
         # ( I have no name! ) - removed
 
   B.10. [LFS 7.7-7.12] Chapter 7
@@ -463,8 +464,6 @@ C. Finishing Up
 
         ###
 
-        cd /sources
-
         bash a.09.99.BLFS-Bootscripts-20230824.extract.only.sh
 
         cd blfs-bootscripts-20230824
@@ -513,8 +512,8 @@ D. [LFS 10.x] Making the LFS System Bootable
         #/dev/<xxx>     /            <fff>    defaults            1     1
         #/dev/<yyy>     swap         swap     pri=1               0     0
 
-        /dev/vda1       /boot/efi   vfat  defaults,noatime,discard      0 2
-        /dev/vda2       /           ext4  noatime,discard               0 1
+        /dev/vda1       /boot/efi   vfat  defaults,discard      0 2
+        /dev/vda2       /           ext4  defaults,noatime,discard               0 1
 
         /dev/vdb1       /mnt/src    ext4  noatime,discard               0 3
 
@@ -707,7 +706,9 @@ E. The End
 
         ###
 
-        logout
+        logout    # twice
+        logout    #
+        cd
 
         umount -v $LFS/dev/pts
         mountpoint -q $LFS/dev/shm && umount -v $LFS/dev/shm
