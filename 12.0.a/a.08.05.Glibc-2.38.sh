@@ -75,10 +75,10 @@ echo "6. Make Install ..." >> $PKGLOG_ERROR
 #Errata 12.0 018 Glibc (LFS) 2023-10-03 High
 make install DESTDIR=$PWD/dest > $PKGLOG_INSTALL 2>> $PKGLOG_ERROR
 
-sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
-
 # Errata 12.0 018 Glibc (LFS) 2023-10-03 High
 install -m755 dest/usr/lib/ld-linux* /usr/lib
+
+sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
 
 # cp ../nscd/nscd.conf /etc/nscd.conf           --- Excluded ( see Development version )
 # mkdir -p /var/cache/nscd
