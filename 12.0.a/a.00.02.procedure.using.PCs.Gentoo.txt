@@ -707,6 +707,8 @@ E. The End
         umount -v $LFS/proc
         umount -v $LFS/sys
 
+        umount -v $LFS/boot/efi
+
         umount -v $LFS
 
         poweroff         ( --- the PC Gentoo Host )

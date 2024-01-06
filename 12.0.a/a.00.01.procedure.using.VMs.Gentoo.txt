@@ -719,6 +719,7 @@ E. The End
         umount -v $LFS/sys
 
         umount -v $LFS/mnt/src
+        umount -v $LFS/boot/efi
 
         umount -v $LFS
 
