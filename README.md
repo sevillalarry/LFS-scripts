@@ -4,7 +4,7 @@
 #  eMail: sevilla.larry.oss@gmail.com
 #
 #
-# Ongoing LfS ver: 12.0
+# Working LfS ver: 12.0
 # Started: 2023/Sept/07
 # arch: x64, UEFI
 #
@@ -33,7 +33,7 @@
 #
 #
 # For scripts of Chapter 7 & up, the scripts assumed you finished executing Chapter/Section 7.2 to 7.6.
-# the username should be "root", should had CHROOT, and the location should be "/sources" directory.  That means the prompt should be:
+# the username should be "root", should had CHROOTed, and the location should be "/sources" directory.  That means the prompt should be:
 # root:/sources#
 #
 
