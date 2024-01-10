@@ -1,9 +1,10 @@
-# a.09.99.BLFS-Bootscripts-20230824.extract.only.sh
+# a.09.99.BLFS-Bootscripts-20231119.extract.only.sh
+# SVN due to errata in BLFS
 #
 # This will only extract the .tar.xz file
 # and will NOT delete the source directory
 
-export PKG="blfs-bootscripts-20230824"
+export PKG="blfs-bootscripts-20231119"
 export PKGLOG_DIR=$LFSLOG/09.99
 export PKGLOG_TAR=$PKGLOG_DIR/tar.log
 #export PKGLOG_CONFIG=$PKGLOG_DIR/config.log
