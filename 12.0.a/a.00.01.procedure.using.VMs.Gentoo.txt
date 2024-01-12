@@ -212,6 +212,7 @@ B.  Generate LFS
 
         chown -v root:root $LFS/var/log
         chown -v root:root $LFS/mnt/src/lfs.log
+        chown -v root:root $LFS/mnt/src/lfs.log/*
 
         ###
 
