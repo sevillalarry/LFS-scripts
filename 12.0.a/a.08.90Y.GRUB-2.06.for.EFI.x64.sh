@@ -23,7 +23,7 @@ cd $PKG
 
 
 mkdir -p /usr/share/fonts/unifont
-gunzip -c ../unifont-15.0.01.pcf.gz       \
+gunzip -c ../unifont-15.0.06.pcf.gz       \
   > /usr/share/fonts/unifont/unifont.pcf  \
   2>> $PKGLOG_ERROR
 
