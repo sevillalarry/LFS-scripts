@@ -204,6 +204,8 @@ B.  Generate LFS
 
         bash a.07.02.Changing.Ownership.to.root.User.sh
 
+        chown -v root:root $LFS/var/log
+
         ###
 
   B.05. [LFS 7.3] Preparing Virtual Kernel File Systems
