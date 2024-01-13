@@ -469,7 +469,7 @@ C. Finishing Up
 
         ###
 
-        bash a.09.99.BLFS-Bootscripts-20231119.extract.only
+        bash a.09.99.BLFS-Bootscripts-20231119.extract.only.sh
 
         cd blfs-bootscripts-20231119
 
