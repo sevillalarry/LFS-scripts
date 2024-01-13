@@ -471,7 +471,7 @@ C. Finishing Up
 
         bash a.09.99.BLFS-Bootscripts-20231119.extract.only
 
-        cd blfs-bootscripts-20230824
+        cd blfs-bootscripts-20231119
 
         ###
 
