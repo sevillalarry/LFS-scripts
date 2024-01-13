@@ -711,7 +711,6 @@ E. The End
 
         ###
 
-        logout    # twice
         logout    #
         cd
 
