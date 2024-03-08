@@ -4,6 +4,8 @@
 #  eMail: sevilla.larry.oss@gmail.com
 #
 #
+# on-going
+#
 # Working LfS ver: 12.0
 # Started: 2023/Sept/07
 # arch: x64, UEFI
