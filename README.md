@@ -4,7 +4,9 @@
 #  eMail: sevilla.larry.oss@gmail.com
 #
 #
-# on-going
+# Note: moved to "https://github.com/sevilla-larry/LfS-scripts"
+# (due to some issues with VS Community and VS Code on Windows with muliple GitHub accts)
+# (using: sevilla.larry.prg@gmail.com)
 #
 # Working LfS ver: 12.0
 # Started: 2023/Sept/07
